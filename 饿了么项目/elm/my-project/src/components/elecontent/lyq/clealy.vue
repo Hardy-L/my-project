@@ -1,25 +1,18 @@
 <template>
-    <div class="saetch">
-     <!-- 头部 -->
-      <div class="hand">
+    <div class="clealy">
+        <div class="hand">
         <!-- 返回 -->
-  <router-link class="el-icon-arrow-left" to="/Aaa"></router-link>
+  <router-link class="el-icon-arrow-left" to="/myele"></router-link>
     <div class="title_head">  
-      <span class="title_text">搜索</span>
-      
+      <span class="title_text">我的优惠</span>
     </div>
-    </div>
-    <wode></wode>
+    </div>  
     </div>
 </template>
 
 <script>
-import wode from '../elecontent/wode'
 export default {
-  name: "saetch",
-  components:{
-    wode
-  }
+  name: "clealy"
 };
 </script>
 
@@ -33,7 +26,7 @@ p,
 span {
   font-family: Helvetica Neue, Tahoma, Arial;
 }
-.saetch {
+.clealy {
   background-color: rgb(236, 236, 236);
 }
 .hand {
@@ -65,4 +58,3 @@ span {
   font-weight: bold;
 }
 </style>
-

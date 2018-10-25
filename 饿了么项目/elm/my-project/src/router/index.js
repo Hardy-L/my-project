@@ -12,33 +12,40 @@ import titleaaa from "../components/elecontent/titleaaa";
 import slide from "../components/elecontent/slide";
 import Aaa from "../components/elecontent/aaa";
 import elecontenter from "@/components/erjiyemian/elecontenter";
+/* 雷雨晴*/
+import Login from '../components/elecontent/lyq/login'
+import Cleal from '../components/elecontent/lyq/cleal'
+import Clealy from '../components/elecontent/lyq/clealy'
+import Clealj from '../components/elecontent/lyq/clealj'
+import Infodata from '../components/elecontent/lyq/info-data'
+import Infointegral from '../components/elecontent/lyq/info-integral'
+import Infomembers from '../components/elecontent/lyq/info-members'
+import Myorder from '../components/elecontent/lyq/myorder'
+import Myorder_two from '../components/elecontent/lyq/myorder-two'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-       path:'/',
-       component:Home
+  routes: [{
+      path: '/',
+      component: Home
     },
     {
-      path:'/home',
-      component:Home
+      path: '/home',
+      component: Home
+    },{
+      path:'/elecontenter',
+      component:elecontenter
     },
     {
       path: '/huntsite/:id?',
       component: Huntsite
-    },{
-      path:'/store',
-      component:Store
-    }
-    // , {
-    //   path: "/",
-    //   component:Aaa
-    // }
-    ,
+    }, {
+      path: '/store',
+      component: Store
+    },
     {
       path: "/Aaa",
-      component:Aaa
+      component: Aaa
     },
     {
       path: "/elecontent",
@@ -74,11 +81,33 @@ export default new Router({
       path: "/slide",
       // name: "slide",
       component: slide
-    },
-    {
-      path: "/elecontenter",
-      name: "elecontenter",
-      component: elecontenter
+    }, {
+      path: '/login',
+      component: Login
+    }, {
+      path: '/cleal',
+      component: Cleal
+    }, {
+      path: '/clealy',
+      component: Clealy
+    }, {
+      path: '/info_data',
+      component: Infodata
+    }, {
+      path: '/info_integral',
+      component: Infointegral
+    }, {
+      path: '/info_members',
+      component: Infomembers
+    }, {
+      path: '/clealj',
+      component: Clealj
+    }, {
+      path: '/myorder_two',
+      component: Myorder_two
+    }, {
+      path: '/myorder',
+      component: Myorder
     }
   ]
 })

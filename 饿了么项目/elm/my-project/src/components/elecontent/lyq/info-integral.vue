@@ -1,25 +1,19 @@
 <template>
-    <div class="saetch">
+    <div class="info-integral">
      <!-- 头部 -->
       <div class="hand">
         <!-- 返回 -->
-  <router-link class="el-icon-arrow-left" to="/Aaa"></router-link>
+  <router-link class="el-icon-arrow-left" to="/myele"></router-link>
     <div class="title_head">  
-      <span class="title_text">搜索</span>
-      
+      <span class="title_text">积分商城</span>
     </div>
     </div>
-    <wode></wode>
     </div>
 </template>
 
 <script>
-import wode from '../elecontent/wode'
 export default {
-  name: "saetch",
-  components:{
-    wode
-  }
+  name: "info_integral"
 };
 </script>
 
@@ -33,7 +27,7 @@ p,
 span {
   font-family: Helvetica Neue, Tahoma, Arial;
 }
-.saetch {
+.info-integral {
   background-color: rgb(236, 236, 236);
 }
 .hand {

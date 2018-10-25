@@ -5,14 +5,18 @@
    <div class="top-left">
  <router-link to="/seatch"  class="el-icon-search"></router-link>
    </div>
+   <div class="location">
+     <span>定位地址</span>
+   </div>
    <!--<i class="el-icon-search"></i>-->
-   <div class="top-right">
+   
    <p class="log-in">
-     <span>登录</span>
-     <span>|</span>
-     <span>注册</span>
+     <router-link to="/login" class="top-right">登录</router-link>
+     <span class="top-right">|</span>
+     <router-link to="/login" class="top-right">注册</router-link>
      </p>
-     </div>
+    
+    
 </div>
 <div class="merchant">
 <div v-for="(item,index) in data" :key="index" class="merchant-single">
@@ -40,7 +44,7 @@
 </template>
 <script>
 // import merchantlist from "./merchantlist"
-import elecontenter from "@/components/erjiyemian/elecontenter"
+import elecontenter from "@/components/erjiyemian/elecontenter";
 export default {
   // name: "elecontent"
   data: () => ({
@@ -73,8 +77,8 @@ export default {
 <style scoped>
 .head {
   width: 100%;
-  height: 2.1em;
-  background-color: blue;
+  height: 3rem;
+  background-color: #3190e8;
   overflow: hidden;
 }
 .top-left {
@@ -85,9 +89,22 @@ export default {
 }
 .top-right {
   float: right;
-  font-size: 1.3rem;
+  font-size: 1rem;
+  line-height: 2rem;
   padding: 0.5rem;
-  /* border:0.1rem solid red; */
+  color: #ffffff;
+}
+.location span {
+  color: white;
+  line-height: 3rem;
+  float: left;
+  margin-left: 6.7rem;
+}
+/*登录注册*/
+.top-right span {
+  color: white;
+  font-size: 1rem;
+  line-height: 2rem;
 }
 .merchant {
   padding-top: 0.5em;
@@ -104,7 +121,7 @@ export default {
 .merchant-single img {
   width: 75%;
 }
-.wenzi{
-  color:gray;
+.wenzi {
+  color: gray;
 }
 </style>

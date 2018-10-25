@@ -2,7 +2,7 @@
     <div class="home">
     <header>
         <a href="#/home" class="head_left"><span>首页</span></a>
-        <a href="#" class="head_right"><span>登陆|注册</span></a>
+        <a href="#/login" class="head_right"><span>登陆|注册</span></a>
     </header>
     <div class="top">
         <span>当前定位城市:</span>

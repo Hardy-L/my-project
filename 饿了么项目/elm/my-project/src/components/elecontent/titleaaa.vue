@@ -24,14 +24,20 @@ export default {
 <style scoped>
 .head {
   width: 100%;
-  background-color: rgb(44, 22, 241);
-  /* border: 1px solid red; */
-  height: 2.3rem;
+  background-color: #3190e8;
+  height: 3rem;
+  line-height: 2.5rem;
+  color: #fff;
+  font-size: 0.8rem;
   overflow: hidden;
+}
+p{
+  text-align: center;
 }
 .el-icon-search {
   float: left;
   font-size: 2em;
+  margin: 0.4rem 0.3rem;
 }
 .log-in {
   text-align: center;

@@ -11,8 +11,9 @@
         <span class="icon-img"><img src="@/assets/3搜索2.png" alt=""> </span>
        <span class="icon-wenzi">搜索</span>
        </router-link>
+       
        <!-- 订单 -->
-     <router-link to="/orderfrom" class="icon">
+     <router-link to="/info_data" class="icon">
          <span class="icon-img"><img src="@/assets/订单.png" alt=""></span>
        <span class="icon-wenzi">订单</span>
        </router-link>
@@ -35,7 +36,7 @@ export default {
 <style scoped>
 .bottom {
   width: 100%;
-  background-color: blue;
+  background-color: #3190e8;
   /* border: 1px solid red; */
   display: flex;
   position: fixed;

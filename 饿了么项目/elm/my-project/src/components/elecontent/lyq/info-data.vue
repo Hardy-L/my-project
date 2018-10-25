@@ -1,12 +1,11 @@
 <template>
-    <div class="saetch">
+    <div class="info-data">
      <!-- 头部 -->
       <div class="hand">
         <!-- 返回 -->
   <router-link class="el-icon-arrow-left" to="/Aaa"></router-link>
     <div class="title_head">  
-      <span class="title_text">搜索</span>
-      
+      <span class="title_text">我的订单</span>
     </div>
     </div>
     <wode></wode>
@@ -14,10 +13,10 @@
 </template>
 
 <script>
-import wode from '../elecontent/wode'
+import wode from "../wode";
 export default {
-  name: "saetch",
-  components:{
+  name: "info_data",
+  components: {
     wode
   }
 };
@@ -33,7 +32,7 @@ p,
 span {
   font-family: Helvetica Neue, Tahoma, Arial;
 }
-.saetch {
+.info-data {
   background-color: rgb(236, 236, 236);
 }
 .hand {
