@@ -14,7 +14,7 @@
           搜索历史
       </div>
       <ul class="details">
-        <router-link to="/store">
+        <router-link to="/Aaa">
         <li v-for="item in datas" :key="item.id">
           <h4>{{item.name}}</h4>
           <p>{{item.address}}</p>

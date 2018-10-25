@@ -1,0 +1,110 @@
+<template>
+<!--商品分类-->
+ <div>
+ <div class="head">
+   <div class="top-left">
+ <router-link to="/seatch"  class="el-icon-search"></router-link>
+   </div>
+   <!--<i class="el-icon-search"></i>-->
+   <div class="top-right">
+   <p class="log-in">
+     <span>登录</span>
+     <span>|</span>
+     <span>注册</span>
+     </p>
+     </div>
+</div>
+<div class="merchant">
+<div v-for="(item,index) in data" :key="index" class="merchant-single">
+  <div v-if="index<8" class="left">
+    
+  <router-link to="/elecontenter">
+    <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
+   <p class="wenzi">{{item.title}}</p>
+   </router-link>
+  </div>
+  
+  <div v-else class="right">
+      <router-link to="/elecontenter">
+    <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
+    {{item.title}}
+    </router-link>
+   </div>
+</div>
+    </div>
+   <!-- <merchantlist></merchantlist> -->
+   <!-- <router-view></router-view> -->
+   </div>
+   
+   
+</template>
+<script>
+// import merchantlist from "./merchantlist"
+import elecontenter from "@/components/erjiyemian/elecontenter"
+export default {
+  // name: "elecontent"
+  data: () => ({
+    data: []
+  }),
+  created() {
+    // 接口  5
+    var api5 = "https://elm.cangdu.org/v2/index_entry";
+    var _this = this;
+    this.$http.get(api5).then(data => {
+      // params: {
+      //     shopid: this.id
+      //   }
+      // console.log(shopid)
+      //关闭加载提示
+      // loadingInstance1.close();
+      // 成功后的回调
+      // console.log("成功了....");
+      //展示所有商店名
+      // console.log(data);
+      _this.data = data.data;
+      // console.log(_this.data);
+    });
+  }
+};
+//组件内的每一个this对象,都是Vue的孩子
+//Vue祖宗的原型数据,就会共享给所有的孩子
+// Vue.prototype.$axios=axios;
+</script>
+<style scoped>
+.head {
+  width: 100%;
+  height: 2.1em;
+  background-color: blue;
+  overflow: hidden;
+}
+.top-left {
+  float: left;
+  /* border:0.1rem solid red; */
+  font-size: 1.6rem;
+  padding: 0.3rem;
+}
+.top-right {
+  float: right;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  /* border:0.1rem solid red; */
+}
+.merchant {
+  padding-top: 0.5em;
+  width: 100%;
+}
+.merchant-single {
+  margin: 0 2%;
+  width: 20%;
+  height: 5rem;
+  border: 1px solid red;
+  float: left;
+  text-align: center;
+}
+.merchant-single img {
+  width: 75%;
+}
+.wenzi{
+  color:gray;
+}
+</style>
