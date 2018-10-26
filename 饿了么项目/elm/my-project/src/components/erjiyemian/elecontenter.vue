@@ -4,10 +4,10 @@
            <titleaaa/>
        </div>
        <div class="down">
-           <pulldown/>
+           <pulldown :cli="updaMsg"/>
        </div>
        <div class="content">
-           <merchantlist/>
+           <merchantlist :cli="cont"/>
        </div>
         <div class="buttom">
            <wode/>
@@ -26,11 +26,22 @@ import merchantlist from "@/components/elecontent/merchantlist"
 import wode from "@/components/elecontent/wode"
    export default {
     name:"elecontenter",
+    data(){
+        return {
+            // 随意写的数字,用于让子组件监听到更新
+            cont:""
+        }
+    },
     components:{
         titleaaa,
         pulldown,
         merchantlist,
         wode
+    },
+    methods:{
+        updaMsg(el){
+            this.cont=el
+        }
     }
    } 
 </script>
