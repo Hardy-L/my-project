@@ -2,6 +2,7 @@
 <!--导航栏-->
 <div class="head">
    <router-link class="fanhui" to="/Aaa"> &it; </router-link>
+   <i class="el-icon-search"></i>
    <p class="log-in">甜品饮品</p>
   </div>
 </template>
@@ -36,18 +37,13 @@ export default {
 p{
   text-align: center;
 }
-.fanhui {
+.el-icon-search {
   float: left;
   font-size: 2em;
-  margin: 0.2rem 0.3rem;
-  /* border:1px solid red; */
-  line-height: 1.6rem;
-  font-size: 2rem;
-  color:white;
+  margin: 0.4rem 0.3rem;
 }
 .log-in {
   text-align: center;
   font-size: 1.5em;
-  font-size: 1.3rem;
 }
 </style>
