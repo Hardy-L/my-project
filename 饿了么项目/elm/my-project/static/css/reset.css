@@ -24,7 +24,9 @@
  footer, header, menu, nav, section {
      display: block;
  }
-
+input{
+    outline: none;
+}
  html,body {
      line-height: 1;
  }

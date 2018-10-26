@@ -6,7 +6,7 @@
        <div class="merchant-list">
         <p v-for="mls in data6" :key="mls.id" class="merchant-list-single">
          
-          <router-link :to="{name:'store',params:{id:mls.id}}"><!-- btns(mls.id) -->
+          <router-link :to="{name:'store',params:{id:mls.id}}">  <!-- btns(mls.id) --> 
               <div class="flex">
                 <img :src="'https://elm.cangdu.org/img/'+mls.image_path" alt="" class="flex-left">
                 <div class="flex-right">
@@ -54,17 +54,27 @@ export default {
     value5: 3.7
   }),
   // 设置属性,便于监听这个属性是否更新
-  props:["cli"],
+  // props:["cli"],
+  props:['cli'],
   watch:{
-    cli(news,olds){
-      this.data6=this.data6b
-      console.log(olds)
+    cli(news,jiu){
+      this.data6=this.data6b;
       console.log(news)
-      this.data6 = this.data6.filter(function(val){
-       return  val.category == news;
+      this.data6=this.data6.filter(function(val){
+        return val.category == news;
       })
     }
   },
+  // watch:{
+  //   cli(news,olds){
+  //     this.data6=this.data6b
+  //     console.log(olds)
+  //     console.log(news)
+  //     this.data6 = this.data6.filter(function(val){
+  //      return  val.category == news;
+  //     })
+  //   }
+  // },
   created() {
     // 接口 6
     var _this = this;
@@ -93,6 +103,11 @@ export default {
   // methods:{
   //   btns(el){
   //     el
+  //   }
+  // }
+  // methods:{
+  //   btns(el){
+  //      el
   //   }
   // }
 };
