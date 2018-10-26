@@ -29,7 +29,7 @@
   </div>
   <div v-for="(item,index) in data" :key="index" class="merchant-single">
 
-    <!-- <div v-if="index<8" class="left">
+    <div v-if="index<8" class="left">
       <router-link to="/elecontenter">
       <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
       <p class="wenzi">{{item.title}}</p>
@@ -41,39 +41,13 @@
       <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
       {{item.title}}
       </router-link>
-    </div> -->
-
-
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        
-           <div v-if="index<8" class="left">
-             <div class="swiper-slide">
-      <router-link to="/elecontenter">
-      <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
-      <p class="wenzi">{{item.title}}</p>
-      </router-link>
-    </div>
-        </div>
-        
-
-          <div v-else class="right">
-            <div class="swiper-slide">
-      <router-link to="/elecontenter">
-      <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
-      {{item.title}}
-      </router-link>
-    </div>
-
-        </div>
-     </div>
     </div>
   </div>
 </div>
    <!-- <merchantlist></merchantlist> -->
    <!-- <router-view></router-view> -->
    </div>
-   
+ </div>
    
 </template>
 <script>
