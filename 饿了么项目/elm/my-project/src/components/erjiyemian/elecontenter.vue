@@ -1,16 +1,13 @@
 <template>
     <div class="warp">
        <div class="title">
-           <titleaaa :title="$route.params.item"></titleaaa>
+           <titleaaa/>
        </div>
        <div class="down">
-           <!-- <pulldown :cli="updaMsg"/> -->
-            <pulldown  :cli="updata"/>
+           <pulldown :cli="updaMsg"/>
        </div>
        <div class="content">
-           <!-- <merchantlist :cli="cont"/> -->
-
-           <merchantlist  :cli="aaa"/>
+           <merchantlist :cli="cont"/>
        </div>
         <div class="buttom">
            <wode/>
@@ -29,15 +26,10 @@ import merchantlist from "@/components/elecontent/merchantlist"
 import wode from "@/components/elecontent/wode"
    export default {
     name:"elecontenter",
-    // data(){
-    //     return {
-    //         // 随意写的数字,用于让子组件监听到更新
-    //         cont:""
-    //     }
-    // },
     data(){
         return {
-            aaa:3  //随意写个数字可以改变就行
+            // 随意写的数字,用于让子组件监听到更新
+            cont:""
         }
     },
     components:{
@@ -46,15 +38,9 @@ import wode from "@/components/elecontent/wode"
         merchantlist,
         wode
     },
-    // methods:{
-    //     updaMsg(el){
-    //         this.cont=el
-    //     }
-    // }
     methods:{
-        updata(a){
-            this.aaa=a
-            console.log("我走了")
+        updaMsg(el){
+            this.cont=el
         }
     }
    } 
