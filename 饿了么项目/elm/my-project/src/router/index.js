@@ -40,7 +40,8 @@ export default new Router({
       path: '/huntsite/:id?',
       component: Huntsite
     }, {
-      path: '/store',
+      path: '/store/:id?',
+      name:'store',
       component: Store
     },
     {
