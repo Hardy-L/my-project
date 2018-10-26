@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import Swiper from "swiper";
+// import 'swiper/dist/css/swiper.min.css';
+// Vue.use(Swiper)
 // 引入axios插件
 import axios from 'axios'
 import VueAxios from 'vue-axios'
