@@ -64,7 +64,7 @@ export default new Router({
     },
     {
       path: "/myele",
-      // name: "myele",
+      name: "myele",
       component: myele
     },
     {
