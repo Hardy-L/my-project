@@ -1,7 +1,7 @@
 <template>
     <div class="warp">
        <div class="title">
-           <titleaaa/>
+           <titleaaa :title="$route.params.item"></titleaaa>
        </div>
        <div class="down">
            <!-- <pulldown :cli="updaMsg"/> -->

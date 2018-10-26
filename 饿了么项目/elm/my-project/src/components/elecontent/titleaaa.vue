@@ -7,7 +7,8 @@
 </template>
 <script>
 export default {
-  name: "titleaaa"
+  props:[]
+  name: "titleaaa",
   //    data(){
   //      return{
   //        shopId:""

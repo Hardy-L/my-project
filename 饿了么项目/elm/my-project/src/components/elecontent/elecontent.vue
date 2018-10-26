@@ -27,15 +27,49 @@
    <p class="wenzi">{{item.title}}</p>
    </router-link>
   </div>
-  
-  <div v-else class="right">
+  <div v-for="(item,index) in data" :key="index" class="merchant-single">
+
+    <!-- <div v-if="index<8" class="left">
       <router-link to="/elecontenter">
-    <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
-    {{item.title}}
-    </router-link>
-   </div>
-</div>
+      <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
+      <p class="wenzi">{{item.title}}</p>
+      </router-link>
+    </div> 
+  
+     <div v-else class="right">
+      <router-link to="/elecontenter">
+      <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
+      {{item.title}}
+      </router-link>
+    </div> -->
+
+
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        
+           <div v-if="index<8" class="left">
+             <div class="swiper-slide">
+      <router-link to="/elecontenter">
+      <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
+      <p class="wenzi">{{item.title}}</p>
+      </router-link>
     </div>
+        </div>
+        
+
+          <div v-else class="right">
+            <div class="swiper-slide">
+      <router-link to="/elecontenter">
+      <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
+      {{item.title}}
+      </router-link>
+    </div>
+
+        </div>
+     </div>
+    </div>
+  </div>
+</div>
    <!-- <merchantlist></merchantlist> -->
    <!-- <router-view></router-view> -->
    </div>
@@ -43,6 +77,7 @@
    
 </template>
 <script>
+// import Swiper from "swiper";
 // import merchantlist from "./merchantlist"
 import elecontenter from "@/components/erjiyemian/elecontenter";
 export default {
@@ -50,7 +85,13 @@ export default {
   data: () => ({
     data: []
   }),
-  created() {
+  mounted(){
+  //    new Swiper ('.swiper-container', {
+  //   loop: true,
+   
+  // })
+  },        
+  created(){
     // 接口  5
     var api5 = "https://elm.cangdu.org/v2/index_entry";
     var _this = this;
