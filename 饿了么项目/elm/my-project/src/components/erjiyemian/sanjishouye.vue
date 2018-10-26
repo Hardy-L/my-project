@@ -50,45 +50,28 @@ export default {
   name: "merchantlist",
   data: () => ({
     data6: [],
-    data6b: [],
     value5: 3.7
   }),
-  // 设置属性,便于监听这个属性是否更新
-  props:["cli"],
-  watch:{
-    cli(news,olds){
-      this.data6=this.data6b
-      console.log(olds)
-      console.log(news)
-      this.data6 = this.data6.filter(function(val){
-       return  val.category == news;
-      })
-    }
-  },
   created() {
     // 接口 6
     var _this = this;
     var api6 =
-      "https://elm.cangdu.org/shopping/restaurants";
+      "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
 
-    this.$http.get(api6,{
-        params: {
-         latitude:31.22967,
-         longitude:121.4762,
-         limit:100,
-         order_by:5
-        }
-      }).then(function(data){
-        //关闭加载提示
-        // loadingInstance1.close();
-        // 成功后的回调
-        console.log("成功了....");
-        //展示所有商店名
-        console.log(data);
-        _this.data6 = data.data;
-        console.log(_this.data6);
-        _this.data6b=data.data
-      });
+    this.$http.get(api6).then(data => {
+      params: {
+        //  latitude=31.22967,
+        //   longitude=121.4762
+      }
+      //关闭加载提示
+      // loadingInstance1.close();
+      // 成功后的回调
+      console.log("成功了....");
+      //展示所有商店名
+      console.log(data);
+      _this.data6 = data.data;
+      console.log(_this.data6);
+    });
   },
   // methods:{
   //   btns(el){
