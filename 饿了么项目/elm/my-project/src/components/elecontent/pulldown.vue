@@ -79,8 +79,7 @@
        <div v-show="value4">
          <div class="scoll">
            <div v-for="(right,index) in arr" :key="index">
-           <!-- <div class="left-right" @click="updaMsg(index)"> -->
-             <div class="left-right" @click="updata(index)">
+           <div class="left-right" @click="updaMsg(index)">
               <router-link to="/elecontenter">
             <span class="wen">{{right.name}}</span>
             <span class="shu2">{{right.count}}</span>
@@ -107,7 +106,6 @@ export default {
     name2:[],
   }),
   // 设置属性,让我可以调用父组件的方法,致使其他页面方便监听
-  // props:["cli"],
   props:["cli"],
   methods: {
     dianji1: function() {
@@ -133,33 +131,19 @@ export default {
       this.name1=this.data8[a].name;
     },
     // 点击我,我调用父组件传过来的方法
-  //   updaMsg(b){
-  //     this.name2=this.arr[b].name;
-  //     this.value1 = false;
-  //     this.value2 = false;
-  //     this.value3 = false;
-  //     this.value4 = false;
-  //   }
-   updata(b){
+    updaMsg(b){
       this.name2=this.arr[b].name;
       this.value1 = false;
       this.value2 = false;
       this.value3 = false;
       this.value4 = false;
-   }
+    }
   },
-  // watch:{
-  //   name2(){
-  //     var a = this.name1+'/'+this.name2
-  //     this.cli(a)
-  //   }
-  // },
   watch:{
-   name2(){
-     var a=this.name1+'/'+this.name2
-     this.cli(a)
-     console.log(a)
-   }
+    name2(){
+      var a = this.name1+'/'+this.name2
+      this.cli(a)
+    }
   },
   created(){
       var _this = this;

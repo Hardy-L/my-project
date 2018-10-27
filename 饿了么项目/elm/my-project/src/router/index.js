@@ -50,12 +50,12 @@ export default new Router({
     },
     {
       path: "/elecontent",
-      name: "elecontent",
+      // name: "elecontent",
       component: elecontent
     },
     {
       path: "/seatch",
-      name: "seatch",
+      // name: "seatch",
       component: seatch
     },
     {
@@ -65,7 +65,7 @@ export default new Router({
     },
     {
       path: "/myele",
-      // name: "myele",
+      name: "myele",
       component: myele
     },
     {
