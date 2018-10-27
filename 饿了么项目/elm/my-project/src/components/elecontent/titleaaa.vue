@@ -1,14 +1,14 @@
 <template>
 <!--导航栏-->
 <div class="head">
-   <router-link class="fanhui" to="/Aaa"> < </router-link>
-   <p class="log-in">甜品饮品</p>
+   <router-link class="fanhui" to="/Aaa"> &lt;</router-link>
+   <p class="log-in">{{title}}</p>
   </div>
 </template>
 <script>
 export default {
-  props:[]
-  name: "titleaaa",
+  props:["title"],
+  name: "titleaaa"
   //    data(){
   //      return{
   //        shopId:""
