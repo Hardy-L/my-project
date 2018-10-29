@@ -1,6 +1,6 @@
 <template>
 <!--  商品列表-->
-    <div>
+    <div class="list">
         <!-- <titleaaa></titleaaa> -->
          <p class="fujin">附近商家</p>
        <div class="merchant-list">
@@ -30,7 +30,9 @@
                   </div>
               </div>
               <div class="flex-right-bottom mutual">
-                <div class="flex-right-content-left">¥{{mls.float_minimum_order_amount}}起送/配送费约¥{{mls.float_delivery_fee}}</div>
+                <div class="flex-right-content-left">
+                  ¥{{mls.float_minimum_order_amount}}起送/配送费约¥{{mls.float_delivery_fee}}
+                </div>
                 <div class="flex-right-tocontentp-right">
                   <span class="gongli">{{mls.distance}}/</span>
                   <span class="time">{{mls.order_lead_time}}</span>
@@ -41,11 +43,9 @@
             </router-link>
              </p>
              </div>
-             <!-- <router-view></router-view> -->
              </div>
 </template>
 <script>
-// import titleaaa from "./titleaaa";
 export default {
   name: "merchantlist",
   data: () => ({
@@ -55,9 +55,9 @@ export default {
     value5: 3.7,
     id: "",
     suoyouxinxi: [],
-    sbdata: '',
+    sbdata: "",
     data: [],
-    aaa:[]
+    aaa: []
   }),
   // 设置属性,便于监听这个属性是否更新
   props: ["cli", "cli2"],
@@ -74,37 +74,26 @@ export default {
       var arrId = [];
       var storeMsg = [];
       var newArr;
-       // 所有数据
+      // 所有数据
       _this.data6.forEach((value, index) => {
-        // console.log(value)
         for (var items of value.supports) {
-          // console.log(items)
-            news2.forEach(element => {
-
-          if (items.name ==  element) {
-            // console.log(123)
-            //  console.log(this.sbdata)
-            arrId.push(index);
-           
-             
-           }
-            
-             
+          news2.forEach(element => {
+            if (items.name == element) {
+              arrId.push(index);
+            }
           });
-       
-        }  
-          newArr=Array.from(new Set(arrId));
-         console.log(newArr)
+        }
+        newArr = Array.from(new Set(arrId));
+        // console.log(newArr);
       });
       newArr.forEach(function(value) {
-            storeMsg.push(_this.data6[value]);
-             });
-        console.log(storeMsg)
-        _this.data6=storeMsg;
-      
+        storeMsg.push(_this.data6[value]);
+      });
+      // console.log(storeMsg);
+      _this.data6 = storeMsg;
     },
     data6(news) {
-      console.log(news);
+      // console.log(news);
     },
     id() {
       var _this = this;
@@ -127,7 +116,7 @@ export default {
           //展示所有商店名
           console.log(data);
           _this.data6 = data.data;
-          
+
           console.log(_this.data6);
           _this.data6b = data.data;
         });
@@ -156,7 +145,7 @@ export default {
         _this.data6 = data.data;
         console.log(_this.data6);
         _this.data6b = data.data;
-        
+
         _this.suoyouxinxi = _this.data6b[0].supports[1].name;
         console.log("所有信息" + _this.suoyouxinxi);
       });
@@ -164,9 +153,11 @@ export default {
 };
 </script>
 <style scoped>
+.list {
+  background: #fff;
+}
 .flex {
   overflow: hidden;
-  /* border:1px solid red; */
 }
 .merchant-list {
   margin: 0.8rem 0.8rem 0 0.4rem;
@@ -175,7 +166,6 @@ export default {
   float: left;
   width: 20%;
   padding: 1%;
-  /* border:1px solid blue; */
 }
 .flex-right {
   float: right;
@@ -183,14 +173,13 @@ export default {
 }
 .mutual {
   overflow: hidden;
-  /* border:1px solid blueviolet; */
 }
 .flex-right-top-left {
   float: left;
 }
 .flex-right-top-right {
   float: right;
-  color: gray;
+  color: #999;
   font-size: 0.1rem;
 }
 .pinpai {
@@ -236,7 +225,7 @@ flex-right-content-right {
 .fujin {
   margin: 0.4rem;
   font-size: 1rem;
-  color: gray;
+  color: #999;
 }
 .flex-right-content-left {
   float: left;
@@ -256,6 +245,7 @@ flex-right-content-right {
 }
 </style>
 <style>
+/* 星星评分 */
 <style > .el-rate__item {
   width: 0.001rem;
 }

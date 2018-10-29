@@ -76,20 +76,18 @@ export default {
       this.$route.params.id;
     this.$http.get(api).then(res => {
       _this.data16 = res.data;
-      //  console.log(_this.data16)
     });
     let url =
       "https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
       _this.datas = data11.data;
-      console.log(_this.datas);
     });
   },
   methods: {
     handleSelect(key, keyPath) {},
     menu(id) {
       this.facevalue = id;
-    }
+    },
   }
 };
 </script>
