@@ -9,17 +9,30 @@
     </div>
     </div>
      <div class="myorder-div">
-               <input type="text" placeholder="输入用户名">
+               <input type="text" placeholder="输入用户名" v-model="name">
                <p>用户名只能修改一次(2-24字符之间)</p>
                 </div>
 
-    <div class="login_container" >确认修改</div>
+    <div class="login_container" @click="edit()">确认修改</div>
     </div>
 </template>
 
 <script>
 export default {
-  name: "account_username"
+  name: "account_username",
+  data(){
+    return{
+      name:this.$store.state.usermsg.username
+    }
+  },
+  methods:{
+    edit(){
+      console.log(this.$store.state.usermsg.username);
+      this.$store.state.usermsg.username = this.name;
+      // this.$router.push({name:'login_account'})
+    }
+  }
+
 };
 </script>
 

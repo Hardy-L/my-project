@@ -2,7 +2,7 @@
     <div class="shops">
         <!-- 导航栏 -->
         <header>
-          <router-link to="/store"><span>&lt;</span></router-link>
+          <span class="el-icon-arrow-left"  @click="$router.back(-1)"></span>
             <span>商家详情</span>
         </header>
         <!-- 活动与属性页 -->
@@ -87,6 +87,15 @@ header span:nth-child(1) {
 }
 header span:nth-child(2) {
   margin-left: 8.3rem;
+}
+.el-icon-arrow-left {
+  float: left;
+  line-height: 3rem;
+  text-decoration-line: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-left: 0.4rem;
 }
 /* 活动与属性页  */
 .activity {

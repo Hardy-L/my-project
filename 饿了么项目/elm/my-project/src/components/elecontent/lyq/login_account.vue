@@ -16,30 +16,23 @@
             <div class="myorder-div">
                <span>头像</span>
             </div>
-            <!-- <img src="../../../assets/头像.png" alt=""> -->
-            <el-upload
-            class="avatar-uploader"
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload">
-
-            <img v-if="imageUrl" :src="imageUrl" class="avatar">
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-
-            <span class="el-icon-arrow-right" id="arrow-right"></span>
+            <div class="span">
+          
+          <span style="line-height:5rem" class="el-icon-arrow-right" id="arrow-right"></span>
+          <img src="../../../assets/头像.png" alt="">
+          </div>
+          </li>
             
-            </li>
+            
 
         <!-- 用户名 -->
        <router-link to="account_username">
             <li>
             <div class="myorder-div">
                <span>用户名:</span>
-               <b>{{username}}</b>
             </div>
             <span class="el-icon-arrow-right" id="arrow-right"></span>
+            <b style="float:right;line-height:2.6rem;color:#888">{{username}}</b>
             </li>
 </router-link>
         <!-- 收货地址 -->
@@ -79,8 +72,8 @@
                 </router-link>
             </ul>
             </div>
-    <router-link to="/login">
-    <div class="login_container">退出登录</div>
+    <router-link :to="goudan">
+    <div class="login_container" @click="exit()">退出登录</div>
     </router-link>
     </div>
 </template>
@@ -91,24 +84,26 @@ export default {
   data() {
     return {
       username: (this.username = this.$store.state.usermsg.username),
-      imageUrl: ""
+      imageUrl: "",
+      goudan: ""
     };
   },
+  created() {},
   methods: {
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
-      }
-      if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
-      }
-      return isJPG && isLt2M;
+    exit() {
+      let api26 = "https://elm.cangdu.org/v2/signout";
+      this.$http.get(api26).then(data => {
+        console.log(data);
+        alert(data.data.message);
+        if (data.data.status == 1) {
+          // this.goudan = "/myele";
+          this.$store.commit("clear");
+          this.$router.push({name:"myele"})
+        } else {
+          this.goudan = "/login_account";
+          alert(data.data.message);
+        }
+      });
     }
   }
 };
@@ -134,7 +129,7 @@ export default {
   text-decoration-line: none;
   font-weight: bold;
   color: #999;
-  font-weight: bold;
+  margin-right: 0.5rem;
 }
 /* 头像*/
 .avatar-uploader .el-upload {
