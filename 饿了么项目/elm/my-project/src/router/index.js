@@ -34,6 +34,9 @@ import VipinvoiceRecord from '../components/elecontent/lyq/vipinvoiceRecord'
 import VipuseCart from '../components/elecontent/lyq/vipuseCart'
 import Payment from '../components/elecontent/lyq/payment'
 import useCart from '../components/elecontent/lyq/useCart'
+import Shops from "../components/elm/shops.vue";
+import Shopsafe from "../components/elm/shopsafe.vue";
+// >>>>>>> 84b04fe8ec37ef69eea6705845d13c4d565668bb
 Vue.use(Router)
 
 export default new Router({
@@ -47,6 +50,10 @@ export default new Router({
     }, {
       path: '/elecontenter',
       component: elecontenter
+
+    },{
+      path:'/elecontenter',
+      name:'elecontenter'
     },
     {
       path: '/huntsite/:id?',
@@ -155,6 +162,13 @@ export default new Router({
     },{
       path:"/useCart",
       component:useCart
+    },
+    {
+      path:'/shops',
+      component:Shops
+    },{
+      path:'/shopsafe',
+      component:Shopsafe
     }
 
   ]

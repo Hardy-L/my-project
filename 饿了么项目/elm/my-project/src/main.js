@@ -10,15 +10,14 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios);
-import Vuex from 'vuex'
-
+// import Vuex from 'vuex'
 // 引入elementui
 
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
-Vue.use(Vuex);
+// Vue.use(Vuex);
 Vue.config.productionTip = false;
 
 // 引入store模块

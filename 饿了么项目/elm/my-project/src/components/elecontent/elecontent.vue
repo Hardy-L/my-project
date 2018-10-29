@@ -17,47 +17,40 @@
      </p>
     
     
-</div>
-<div class="merchant">
+ </div>
+ <div class="merchant">
   <div v-for="(item,index) in data" :key="index" class="merchant-single">
 
     <div v-if="index<8" class="left">
-      <router-link to="/elecontenter">
+      <router-link :to="{name:'elecontenter',params:{value:item.title} }">
       <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
       <p class="wenzi">{{item.title}}</p>
       </router-link>
     </div> 
   
      <div v-else class="right">
-      <router-link to="/elecontenter">
+      <router-link :to="{name:'elecontenter',params:{value:item.title} }">
       <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
       {{item.title}}
       </router-link>
     </div>
   </div>
-</div>
+  </div>
+</div> 
+
    <!-- <merchantlist></merchantlist> -->
    <!-- <router-view></router-view> -->
-   </div>
- </div>
-   
 </template>
 <script>
-// import Swiper from "swiper";
-// import merchantlist from "./merchantlist"
 import elecontenter from "@/components/erjiyemian/elecontenter";
 export default {
   // name: "elecontent"
   data: () => ({
     data: []
   }),
-  mounted(){
-  //    new Swiper ('.swiper-container', {
-  //   loop: true,
-   
-  // })
-  },        
-  created(){
+  mounted() {
+  },
+  created() {
     // 接口  5
     var api5 = "https://elm.cangdu.org/v2/index_entry";
     var _this = this;

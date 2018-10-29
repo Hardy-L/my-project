@@ -11,7 +11,7 @@
                 <p>{{datas.promotion_info}}</p>
             </div>
             <router-link to="/Aaa"> <b class="return">&lt;</b></router-link>
-            <router-link to=""> <b class="next">&gt;</b></router-link>
+            <router-link to="/shops"> <b class="next">&gt;</b></router-link>
        </header>
        <div class="content">
            <el-menu 
@@ -58,43 +58,46 @@
     </div>  
 </template>
 <script>
-export default{ 
+export default {
   name: "store",
   data() {
     return {
       activeIndex: "1",
-      data16:[],
-      facevalue:'0',
-      datas:[]
+      data16: [],
+      facevalue: "0",
+      datas: []
     };
   },
   created() {
-    var _this=this;
+    var _this = this;
     // 接口16
-    let api = "https://elm.cangdu.org/shopping/v2/menu?restaurant_id="+this.$route.params.id
+    let api =
+      "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
+      this.$route.params.id;
     this.$http.get(api).then(res => {
-      _this.data16=res.data;
+      _this.data16 = res.data;
       //  console.log(_this.data16)
     });
-   let url = "https://elm.cangdu.org/shopping/restaurant/"+this.$route.params.id;
+    let url =
+      "https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
-      _this.datas=data11.data;
-       console.log(_this.datas)
+      _this.datas = data11.data;
+      console.log(_this.datas);
     });
   },
   methods: {
     handleSelect(key, keyPath) {},
     menu(id) {
-      this.facevalue = id
+      this.facevalue = id;
     }
   }
 };
 </script>
 <style scoped>
-a{ 
-text-decoration:none; 
-color:#333; 
-} 
+a {
+  text-decoration: none;
+  color: #333;
+}
 .store {
   background: #ededed;
 }
@@ -102,7 +105,7 @@ header {
   height: 6.6rem;
   overflow: hidden;
 }
-.return{
+.return {
   position: absolute;
   top: 0;
   left: 0;
@@ -110,23 +113,23 @@ header {
   font-size: 2rem;
   font-weight: normal;
 }
-.next{
+.next {
   position: absolute;
-  top:1.8rem;
-  right: .3rem;
+  top: 1.8rem;
+  right: 0.3rem;
   color: white;
   font-size: 1.5rem;
 }
-.bg{
+.bg {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   right: 0;
   height: 8rem;
   overflow: hidden;
   filter: blur(16px);
 }
-.bg img{
+.bg img {
   width: 100%;
 }
 .header_left {
@@ -146,7 +149,7 @@ header {
   float: left;
   margin-top: 0.8rem;
   position: absolute;
-  top: .3rem;
+  top: 0.3rem;
   left: 7rem;
 }
 .header_right h3 {
@@ -161,7 +164,7 @@ header {
   justify-content: space-between;
 }
 .content_body {
- height:30rem;
+  height: 30rem;
 }
 .content_body_left {
   background: #ededed;
@@ -171,7 +174,7 @@ header {
   height: 31.2rem;
   overflow: scroll;
 }
-.content_body_left::-webkit-scrollbar{
+.content_body_left::-webkit-scrollbar {
   display: none;
 }
 .content_body_left li {
@@ -190,17 +193,17 @@ header {
   height: 31.2rem;
   overflow: scroll;
 }
-.content_body_right::-webkit-scrollbar{
+.content_body_right::-webkit-scrollbar {
   display: none;
 }
 .head {
   background: #ededed;
   color: #666;
 }
-.head_top{
+.head_top {
   height: 2.5rem;
   line-height: 2.5rem;
-  padding-left: .6rem;
+  padding-left: 0.6rem;
 }
 .head_strong {
   color: #666;

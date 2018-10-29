@@ -51,18 +51,63 @@ export default {
   data: () => ({
     data6: [],
     data6b: [],
-    value5: 3.7
+    data6c:[],
+    value5: 3.7,
+    id:"",
+    suoyouxinxi:[],
+    sbdata:[],
+    data:[],
   }),
   // 设置属性,便于监听这个属性是否更新
-  props:["cli"],
+  props:["cli","cli2"],
   watch:{
     cli(news,olds){
       this.data6=this.data6b
-      console.log(olds)
-      console.log(news)
+      this.id=news.id
       this.data6 = this.data6.filter(function(val){
-       return  val.category == news;
+       return  val.category == news.el;
       })
+     
+    },
+     cli2(news2,olds2){
+        news2.forEach((element) => {
+          this.sbdata.push(element)
+          // console.log("傻逼数据2"+this.sbdata)
+        
+        this.data6.forEach(function(val){
+        //  console.log(val);
+         val.supports.forEach(function(bl){
+           console.log(bl);
+           this.data6 = this.data6.filter(function(el){
+              return el.bl.name==element;
+           })
+          })
+        })
+       });
+      },
+    id(){
+      var _this = this;
+    var api6 =
+      "https://elm.cangdu.org/shopping/restaurants";
+
+    this.$http.get(api6,{
+        params: {
+         latitude:31.22967,
+         longitude:121.4762,
+         limit:100,
+         order_by:_this.id
+        }
+      }).then(function(data){
+        //关闭加载提示
+        // loadingInstance1.close();
+        // 成功后的回调
+        console.log("成功了....");
+        //展示所有商店名
+        console.log(data);
+        _this.data6 = data.data;
+        console.log(_this.data6);
+        _this.data6b=data.data
+      });
     }
   },
   created() {
@@ -76,7 +121,7 @@ export default {
          latitude:31.22967,
          longitude:121.4762,
          limit:100,
-         order_by:5
+         order_by:_this.id
         }
       }).then(function(data){
         //关闭加载提示
@@ -88,6 +133,9 @@ export default {
         _this.data6 = data.data;
         console.log(_this.data6);
         _this.data6b=data.data
+    
+        _this.suoyouxinxi=_this.data6b[0].supports[1].name
+        console.log("所有信息"+_this.suoyouxinxi)
       });
   },
   // methods:{
