@@ -70,27 +70,35 @@ export default {
      
     },
      cli2(news2,olds2){
+       var _this=this
+       var arrId=[]
+       var storeMsg=[]
         news2.forEach((element) => {
           this.sbdata.push(element)
           // console.log("傻逼数据2"+this.sbdata)
-        
-        this.data6.forEach(function(val){
-        //  console.log(val);
-         val.supports.forEach(function(bl){
-           console.log(bl);
-           this.data6 = this.data6.filter(function(el){
-              return el.bl.name==element;
-           })
+         
+          console.log(arrId)
+          arrId.forEach(function(value){
+            storeMsg.push(_this.data6[value])
           })
-        })
+          console.log(storeMsg)
        });
+        _this.data6.forEach((value,index)=>{
+            for(var items of value.supports){
+              if (items.name == element){
+                  arrId.push(index)
+              }
+            }
+          })
+      },
+      data6(news){
+        console.log(news)
       },
     id(){
       var _this = this;
-    var api6 =
-      "https://elm.cangdu.org/shopping/restaurants";
+      var api6 ="https://elm.cangdu.org/shopping/restaurants";
 
-    this.$http.get(api6,{
+     this.$http.get(api6,{
         params: {
          latitude:31.22967,
          longitude:121.4762,
@@ -129,7 +137,6 @@ export default {
         // 成功后的回调
         console.log("成功了....");
         //展示所有商店名
-        console.log(data);
         _this.data6 = data.data;
         console.log(_this.data6);
         _this.data6b=data.data
@@ -138,11 +145,6 @@ export default {
         console.log("所有信息"+_this.suoyouxinxi)
       });
   },
-  // methods:{
-  //   btns(el){
-  //     el
-  //   }
-  // }
 };
 </script>
 <style scoped>
