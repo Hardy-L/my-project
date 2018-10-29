@@ -22,6 +22,8 @@ import Infointegral from '../components/elecontent/lyq/info-integral'
 import Infomembers from '../components/elecontent/lyq/info-members'
 import Myorder from '../components/elecontent/lyq/myorder'
 import Myorder_two from '../components/elecontent/lyq/myorder-two'
+import Shops from "../components/elm/shops.vue";
+import Shopsafe from "../components/elm/shopsafe.vue";
 Vue.use(Router)
 
 export default new Router({
@@ -109,6 +111,15 @@ export default new Router({
     }, {
       path: '/myorder',
       component: Myorder
+    },
+    {
+      path:'/shops',
+      component:Shops
+    },{
+      path:'/shopsafe',
+      component:Shopsafe
     }
+      
+
   ]
 })
