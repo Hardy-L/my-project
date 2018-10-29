@@ -2,7 +2,7 @@
  <div class="shopsafe">
         <!-- 食品监督公示详情头部 -->
   <header>
-      <span><router-link to="/shops">&lt;</router-link></span>
+      <span @click="$router.back(-1)">&lt;</span>
       <span>食品监督安全公示</span>
   </header>
    

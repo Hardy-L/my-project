@@ -14,12 +14,13 @@
           搜索历史
       </div>
       <ul class="details">
-        <router-link to="/Aaa">
         <li v-for="item in datas" :key="item.id">
+          <router-link :to="{path:'/Aaa',query:{address:item.address}}">
           <h4>{{item.name}}</h4>
           <p>{{item.address}}</p>
-        </li>
         </router-link>
+        </li>
+       
       </ul>
   </div>
 </template>
@@ -139,5 +140,9 @@ header a {
   margin-left:1rem; 
   font-size: .8rem;
   padding: 1%
+}
+.details  a {
+  text-emphasis: none;
+  color: #333;
 }
 </style>

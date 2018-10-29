@@ -6,7 +6,7 @@
  <router-link to="/seatch"  class="el-icon-search"></router-link>
    </div>
    <div class="location">
-     <span>定位地址</span>
+     <span><router-link to="/home">{{this.$route.query.address}}</router-link></span>
    </div>
    <!--<i class="el-icon-search"></i>-->
    
@@ -48,8 +48,7 @@ export default {
   data: () => ({
     data: []
   }),
-  mounted() {
-  },
+  mounted() {},
   created() {
     // 接口  5
     var api5 = "https://elm.cangdu.org/v2/index_entry";
@@ -98,7 +97,16 @@ export default {
   color: white;
   line-height: 3rem;
   float: left;
-  margin-left: 6.7rem;
+  margin-left: 4.5rem;
+  text-align: center;
+  width: 8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.location span a{
+  text-emphasis: none;
+  color: white;
 }
 /*登录注册*/
 .top-right span {

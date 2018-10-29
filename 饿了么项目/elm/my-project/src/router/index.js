@@ -62,6 +62,7 @@ export default new Router({
     },
     {
       path: "/Aaa",
+      name:'Aaa',
       component: Aaa
     },
     {
