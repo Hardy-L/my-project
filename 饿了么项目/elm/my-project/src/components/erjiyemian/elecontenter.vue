@@ -1,13 +1,13 @@
 <template>
     <div class="warp">
        <div class="title">
-           <titleaaa/>
+           <titleaaa :title="$route.params.value"></titleaaa>
        </div>
        <div class="down">
-           <pulldown :cli="updaMsg"/>
+           <pulldown :cli="updaMsg" :cli2="updaMsg2"/>
        </div>
        <div class="content">
-           <merchantlist :cli="cont"/>
+           <merchantlist :cli="cont" :cli2="aaa"/>
        </div>
         <div class="buttom">
            <wode/>
@@ -29,8 +29,17 @@ import wode from "@/components/elecontent/wode"
     data(){
         return {
             // 随意写的数字,用于让子组件监听到更新
-            cont:""
+            cont:{},
+            // 路由
+            rout:"",
+            getId:1,
+            ogg:"快餐便当/简餐",
+            aaa:"",
         }
+    },
+    created(){
+        var a = this.$route.params.value
+        this.rout = a
     },
     components:{
         titleaaa,
@@ -40,7 +49,24 @@ import wode from "@/components/elecontent/wode"
     },
     methods:{
         updaMsg(el){
-            this.cont=el
+            console.log(typeof el)
+            if (typeof el == "number"){
+                this.getId = el
+            }else{
+                this.ogg=el
+            }
+
+
+            var a ={
+                el:this.ogg,
+                id:this.getId
+            }
+            this.cont=a
+            console.log("aaa"+a)
+        },
+        updaMsg2(lc){
+            console.log(lc+"qqqqqqqqqqqqqqqqq")
+            this.aaa=lc;
         }
     }
    } 

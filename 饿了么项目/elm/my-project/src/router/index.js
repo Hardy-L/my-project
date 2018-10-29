@@ -36,6 +36,7 @@ export default new Router({
       component: Home
     },{
       path:'/elecontenter',
+      name:'elecontenter',
       component:elecontenter
     },
     {
@@ -67,7 +68,7 @@ export default new Router({
     },
     {
       path: "/myele",
-      // name: "myele",
+      name: "myele",
       component: myele
     },
     {

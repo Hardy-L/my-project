@@ -18,7 +18,7 @@ S<template>
         </div>
 
          <div class="info_user">
-           <p>登录/注册</p>
+           <p>{{login}}</p>
          <p>
            <img src="../../assets/手机.png" alt="">
           <span>暂无绑定手机号</span>
@@ -141,11 +141,23 @@ import Login from "./lyq/login";
 import Cleal from "./lyq/cleal";
 import Clealy from "./lyq/clealy";
 import Clealj from "./lyq/clealj";
-import wode from '../elecontent/wode'
+import wode from "../elecontent/wode";
 export default {
   name: "myele",
-  components:{
+  data() {
+    return {
+      login:"",
+      username: "",
+      password: "",
+      captcha_code: ""
+    };
+  },
+  components: {
     wode
+  },
+  created() {
+    this.login=this.$store.state.username;
+    this.login=this.$store.state.password;
   }
 };
 </script >
