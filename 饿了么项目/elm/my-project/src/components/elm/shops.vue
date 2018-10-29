@@ -2,11 +2,7 @@
     <div class="shops">
         <!-- 导航栏 -->
         <header>
-<<<<<<< HEAD
           <span class="el-icon-arrow-left"  @click="$router.back(-1)"></span>
-=======
-            <span @click="$router.back(-1)">&lt;</span>
->>>>>>> 273c422a8e2ef7dfc52fe6489cc9448755781359
             <span>商家详情</span>
         </header>
         <!-- 活动与属性页 -->
