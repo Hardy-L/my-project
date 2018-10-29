@@ -34,6 +34,7 @@ export default new Router({
       component: Home
     },{
       path:'/elecontenter',
+      name:'elecontenter',
       component:elecontenter
     },
     {
