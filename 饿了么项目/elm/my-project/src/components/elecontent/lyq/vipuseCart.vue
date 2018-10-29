@@ -1,21 +1,20 @@
 <template>
-    <div class="info-data">
+    <div class="vipuseCart">
      <!-- 头部 -->
       <div class="hand">
         <!-- 返回 -->
   <span class="el-icon-arrow-left" @click="$router.back(-1)"></span>
     <div class="title_head">  
-      <span class="title_text">我的订单</span>
+      <span class="title_text">兑换会员</span>
     </div>
     </div>
-    <wode></wode>
     </div>
 </template>
 
 <script>
 import wode from "../wode";
 export default {
-  name: "info_data",
+  name: "vipuseCart",
   components: {
     wode
   }
