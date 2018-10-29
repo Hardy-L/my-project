@@ -19,36 +19,59 @@
     
  </div>
  <div class="merchant">
-  <div v-for="(item,index) in data" :key="index" class="merchant-single">
-
-    <div v-if="index<8" class="left">
+  
+    <!-- slides -->
+  
+   <swiper  ref="mySwiper" >
+    <!-- <div v-if="index<8" class="left"> -->
+      <swiper-slide>
+        <div v-for="item in data" :key="item.id" class="merchant-single">
       <router-link :to="{name:'elecontenter',params:{value:item.title} }">
       <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
       <p class="wenzi">{{item.title}}</p>
       </router-link>
-    </div> 
+        </div>
+    </swiper-slide>
+    <!-- </div>  -->
   
-     <div v-else class="right">
+     <!-- <div v-else class="right"> -->
+       <swiper-slide>
+      <div v-for="item in data2" :key="item.id" class="merchant-single">
       <router-link :to="{name:'elecontenter',params:{value:item.title} }">
       <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
-      {{item.title}}
+      <p class="wenzi">{{item.title}}</p>
       </router-link>
-    </div>
+         </div>
+    </swiper-slide>
+    <!-- </div> -->
+</swiper>
+
   </div>
+   
   </div>
-</div> 
+   
 
    <!-- <merchantlist></merchantlist> -->
    <!-- <router-view></router-view> -->
 </template>
 <script>
 import elecontenter from "@/components/erjiyemian/elecontenter";
+import 'swiper/dist/css/swiper.css'
+
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+
+
 export default {
   // name: "elecontent"
   data: () => ({
-    data: []
+    data: [],
+    data2:[]
   }),
   mounted() {
+  },
+  components: {
+    swiper,
+    swiperSlide
   },
   created() {
     // 接口  5
@@ -65,7 +88,12 @@ export default {
       // console.log("成功了....");
       //展示所有商店名
       // console.log(data);
-      _this.data = data.data;
+      // _this.data = data.data;
+      // _this.data2 = data.data
+      _this.data = data.data.splice(0,8)
+      _this.data2= data.data.splice(0,8)
+      console.log(_this.data)
+      console.log(_this.data2)
       // console.log(_this.data);
     });
   }
@@ -114,7 +142,7 @@ export default {
   margin: 0 2%;
   width: 20%;
   height: 5rem;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   float: left;
   text-align: center;
 }
@@ -124,4 +152,6 @@ export default {
 .wenzi {
   color: gray;
 }
+
+
 </style>
