@@ -1,24 +1,19 @@
 <template>
-    <div class="info-data">
+    <div class="useCart">
      <!-- 头部 -->
       <div class="hand">
         <!-- 返回 -->
   <span class="el-icon-arrow-left" @click="$router.back(-1)"></span>
     <div class="title_head">  
-      <span class="title_text">我的订单</span>
+      <span class="title_text">兑换红包</span>
     </div>
     </div>
-    <wode></wode>
     </div>
 </template>
 
 <script>
-import wode from "../wode";
 export default {
-  name: "info_data",
-  components: {
-    wode
-  }
+  name: "useCart"
 };
 </script>
 
@@ -32,7 +27,7 @@ p,
 span {
   font-family: Helvetica Neue, Tahoma, Arial;
 }
-.info-data {
+.useCart {
   background-color: rgb(236, 236, 236);
 }
 .hand {

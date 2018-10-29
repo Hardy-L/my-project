@@ -4,5 +4,6 @@ export default{
    username:"",
    password:"",
    src:"",
-   captcha_code:""
+   captcha_code:"",
+   bool:false
 }

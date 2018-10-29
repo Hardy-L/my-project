@@ -22,8 +22,21 @@ import Infointegral from '../components/elecontent/lyq/info-integral'
 import Infomembers from '../components/elecontent/lyq/info-members'
 import Myorder from '../components/elecontent/lyq/myorder'
 import Myorder_two from '../components/elecontent/lyq/myorder-two'
+import Myorder_text from '../components/elecontent/lyq/myorder_text'
+/*账户信息 */
+import Login_account from '../components/elecontent/lyq/login_account'
+import Account_newaddress from '../components/elecontent/lyq/account_newaddress'
+import Account_username from '../components/elecontent/lyq/account_username'
+import Account_loginpassword from '../components/elecontent/lyq/account_loginpassword'
+import Account_editoraddress from '../components/elecontent/lyq/account_editoraddress'
+import VipDescription from '../components/elecontent/lyq/vipDescription'
+import VipinvoiceRecord from '../components/elecontent/lyq/vipinvoiceRecord'
+import VipuseCart from '../components/elecontent/lyq/vipuseCart'
+import Payment from '../components/elecontent/lyq/payment'
+import useCart from '../components/elecontent/lyq/useCart'
 import Shops from "../components/elm/shops.vue";
 import Shopsafe from "../components/elm/shopsafe.vue";
+// >>>>>>> 84b04fe8ec37ef69eea6705845d13c4d565668bb
 Vue.use(Router)
 
 export default new Router({
@@ -34,17 +47,17 @@ export default new Router({
     {
       path: '/home',
       component: Home
-    },{
-      path:'/elecontenter',
-      name:'elecontenter',
-      component:elecontenter
+    }, {
+      path: '/elecontenter',
+      component: elecontenter,
+      name:'elecontenter'
     },
     {
       path: '/huntsite/:id?',
       component: Huntsite
     }, {
       path: '/store/:id?',
-      name:'store',
+      name: 'store',
       component: Store
     },
     {
@@ -112,6 +125,40 @@ export default new Router({
     }, {
       path: '/myorder',
       component: Myorder
+    }, {
+      path: "/login_account",
+      component: Login_account
+    }, {
+      path: "/account_newaddress",
+      component: Account_newaddress
+    }, {
+      path: "/account_username",
+      component: Account_username
+    }, {
+      path: "/account_loginpassword",
+      component: Account_loginpassword
+    },{
+      path:"/account_editoraddress",
+      component:Account_editoraddress
+    },{
+      path:'/vipuseCart',
+      component:VipuseCart
+    },{
+      path:'/vipDescription',
+      component:VipDescription
+    },{
+      path:'/vipinvoiceRecord',
+      component:VipinvoiceRecord
+    },{
+      path:"/myorder_text",
+      component:Myorder_text,
+      name:"Myorder_text"
+    },{
+      path:"/payment",
+      component:Payment
+    },{
+      path:"/useCart",
+      component:useCart
     },
     {
       path:'/shops',
@@ -120,7 +167,6 @@ export default new Router({
       path:'/shopsafe',
       component:Shopsafe
     }
-      
 
   ]
 })

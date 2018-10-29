@@ -4,13 +4,12 @@ S<template>
       <!-- hand-->
       <div class="hand">
         <!-- 返回 -->
-  <router-link class="el-icon-arrow-left" to="/Aaa"></router-link>
-    <div class="title_head">  
+<span class="el-icon-arrow-left" @click="$router.back(-1)"></span>    <div class="title_head">  
       <span class="title_text">我的</span>
     </div>
     </div>
     <!-- 登录注册 -->
-    <router-link to="/login">
+    <router-link :to="goudan">
      <div class="login">
        <div class="log">
         <div class="log_img">
@@ -18,7 +17,7 @@ S<template>
         </div>
 
          <div class="info_user">
-           <p>{{login}}</p>
+           <p>{{username}}</p>
          <p>
            <img src="../../assets/手机.png" alt="">
           <span>暂无绑定手机号</span>
@@ -149,15 +148,23 @@ export default {
       login:"",
       username: "",
       password: "",
-      captcha_code: ""
+      captcha_code: "",
+      defaultusername:"登录/注册",
+      goudan:""
     };
   },
   components: {
     wode
   },
   created() {
-    this.login=this.$store.state.username;
-    this.login=this.$store.state.password;
+    console.log(this.$store.state.bool)
+    if(this.$store.state.bool==false){
+      this.username = this.defaultusername;
+      this.goudan = "/login";
+    }else{
+      this.username = this.$store.state.usermsg.username
+       this.goudan = "/login_account";
+    }
   }
 };
 </script >
@@ -237,7 +244,7 @@ span {
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
-  margin: 0.2rem 2rem 0.4rem 0.2rem;
+  margin: 0.2rem 3rem 0.4rem 0.2rem;
 }
 
 .log p span {
