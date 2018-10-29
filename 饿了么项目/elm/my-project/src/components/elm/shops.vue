@@ -2,7 +2,7 @@
     <div class="shops">
         <!-- 导航栏 -->
         <header>
-          <router-link to="/store"><span>&lt;</span></router-link>
+            <span @click="$router.back(-1)">&lt;</span>
             <span>商家详情</span>
         </header>
         <!-- 活动与属性页 -->
