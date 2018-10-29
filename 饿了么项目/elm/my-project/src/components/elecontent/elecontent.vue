@@ -22,7 +22,6 @@
   <div v-for="(item,index) in data" :key="index" class="merchant-single">
 
     <div v-if="index<8" class="left">
-      <router-link to="/elecontenter">
       <router-link :to="{name:'elecontenter',params:{value:item.title} }">
       <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
       <p class="wenzi">{{item.title}}</p>
@@ -30,7 +29,6 @@
     </div> 
   
      <div v-else class="right">
-      <router-link to="/elecontenter">
       <router-link :to="{name:'elecontenter',params:{value:item.title} }">
       <img :src="'https://fuss10.elemecdn.com'+item.image_url" alt="">
       {{item.title}}

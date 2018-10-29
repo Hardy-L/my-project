@@ -78,9 +78,9 @@ export default {
         //  console.log(val);
          val.supports.forEach(function(bl){
            console.log(bl);
-          //  this.data6 = this.data6.filter(function(el){
-          //     return el.val.name==element;
-          //  })
+           this.data6 = this.data6.filter(function(el){
+              return el.bl.name==element;
+           })
           })
         })
        });
