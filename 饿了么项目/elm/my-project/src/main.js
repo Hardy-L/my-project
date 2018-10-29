@@ -23,6 +23,13 @@ Vue.config.productionTip = false;
 // 引入store模块
 import store from "./store"
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+
+
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
