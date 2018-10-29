@@ -16,7 +16,7 @@ export default {
   }),
   created() {
     // 接口 6
-    var api6 = "https://elm.cangdu.org/shopping/restaurants";
+    var api6 = "/api/shopping/restaurants";
     var _this = this;
     this.$http.get(api6).then(data => {
       //关闭加载提示

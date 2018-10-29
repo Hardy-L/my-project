@@ -31,7 +31,7 @@ export default {
     data: []
   }),
   created() {
-    let api = "https://elm.cangdu.org/v1/cities?type=guess";
+    let api = "/api/v1/cities?type=guess";
     this.$http.get(api).then(res => {
       this.data = res.data;
     });

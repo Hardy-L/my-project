@@ -49,10 +49,7 @@ export default new Router({
       component: Home
     }, {
       path: '/elecontenter',
-      component: elecontenter
-
-    },{
-      path:'/elecontenter',
+      component: elecontenter,
       name:'elecontenter'
     },
     {
