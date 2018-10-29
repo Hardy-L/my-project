@@ -51,7 +51,7 @@ export default {
   mounted() {},
   created() {
     // 接口  5
-    var api5 = "https://elm.cangdu.org/v2/index_entry";
+    var api5 = "/api/v2/index_entry";
     var _this = this;
     this.$http.get(api5).then(data => {
       // params: {

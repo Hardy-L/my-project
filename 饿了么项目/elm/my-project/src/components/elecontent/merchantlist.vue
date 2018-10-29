@@ -51,87 +51,103 @@ export default {
   data: () => ({
     data6: [],
     data6b: [],
-    data6c:[],
+    data6c: [],
     value5: 3.7,
-    id:"",
-    suoyouxinxi:[],
-    sbdata:[],
-    data:[],
+    id: "",
+    suoyouxinxi: [],
+    sbdata: '',
+    data: [],
+    aaa:[]
   }),
   // 设置属性,便于监听这个属性是否更新
-  props:["cli","cli2"],
-  watch:{
-    cli(news,olds){
-      this.data6=this.data6b
-      this.id=news.id
-      this.data6 = this.data6.filter(function(val){
-       return  val.category == news.el;
-      })
-     
-    },
-     cli2(news2,olds2){
-       var _this=this
-       var arrId=[]
-       var storeMsg=[]
-        news2.forEach((element) => {
-          this.sbdata.push(element)
-          // console.log("傻逼数据2"+this.sbdata)
-         
-          console.log(arrId)
-          arrId.forEach(function(value){
-            storeMsg.push(_this.data6[value])
-          })
-          console.log(storeMsg)
-       });
-        _this.data6.forEach((value,index)=>{
-            for(var items of value.supports){
-              if (items.name == element){
-                  arrId.push(index)
-              }
-            }
-          })
-      },
-      data6(news){
-        console.log(news)
-      },
-    id(){
-      var _this = this;
-      var api6 ="https://elm.cangdu.org/shopping/restaurants";
-
-     this.$http.get(api6,{
-        params: {
-         latitude:31.22967,
-         longitude:121.4762,
-         limit:100,
-         order_by:_this.id
-        }
-      }).then(function(data){
-        //关闭加载提示
-        // loadingInstance1.close();
-        // 成功后的回调
-        console.log("成功了....");
-        //展示所有商店名
-        console.log(data);
-        _this.data6 = data.data;
-        console.log(_this.data6);
-        _this.data6b=data.data
+  props: ["cli", "cli2"],
+  watch: {
+    cli(news, olds) {
+      this.data6 = this.data6b;
+      this.id = news.id;
+      this.data6 = this.data6.filter(function(val) {
+        return val.category == news.el;
       });
+    },
+    cli2(news2, olds2) {
+      var _this = this;
+      var arrId = [];
+      var storeMsg = [];
+      var newArr;
+       // 所有数据
+      _this.data6.forEach((value, index) => {
+        // console.log(value)
+        for (var items of value.supports) {
+          // console.log(items)
+            news2.forEach(element => {
+
+          if (items.name ==  element) {
+            // console.log(123)
+            //  console.log(this.sbdata)
+            arrId.push(index);
+           
+             
+           }
+            
+             
+          });
+       
+        }  
+          newArr=Array.from(new Set(arrId));
+         console.log(newArr)
+      });
+      newArr.forEach(function(value) {
+            storeMsg.push(_this.data6[value]);
+             });
+        console.log(storeMsg)
+        _this.data6=storeMsg;
+      
+    },
+    data6(news) {
+      console.log(news);
+    },
+    id() {
+      var _this = this;
+      var api6 = "https://elm.cangdu.org/shopping/restaurants";
+
+      this.$http
+        .get(api6, {
+          params: {
+            latitude: 31.22967,
+            longitude: 121.4762,
+            limit: 100,
+            order_by: _this.id
+          }
+        })
+        .then(function(data) {
+          //关闭加载提示
+          // loadingInstance1.close();
+          // 成功后的回调
+          console.log("成功了....");
+          //展示所有商店名
+          console.log(data);
+          _this.data6 = data.data;
+          
+          console.log(_this.data6);
+          _this.data6b = data.data;
+        });
     }
   },
   created() {
     // 接口 6
     var _this = this;
-    var api6 =
-      "https://elm.cangdu.org/shopping/restaurants";
+    var api6 = "https://elm.cangdu.org/shopping/restaurants";
 
-    this.$http.get(api6,{
+    this.$http
+      .get(api6, {
         params: {
-         latitude:31.22967,
-         longitude:121.4762,
-         limit:100,
-         order_by:_this.id
+          latitude: 31.22967,
+          longitude: 121.4762,
+          limit: 20,
+          order_by: _this.id
         }
-      }).then(function(data){
+      })
+      .then(function(data) {
         //关闭加载提示
         // loadingInstance1.close();
         // 成功后的回调
@@ -139,119 +155,115 @@ export default {
         //展示所有商店名
         _this.data6 = data.data;
         console.log(_this.data6);
-        _this.data6b=data.data
-    
-        _this.suoyouxinxi=_this.data6b[0].supports[1].name
-        console.log("所有信息"+_this.suoyouxinxi)
+        _this.data6b = data.data;
+        
+        _this.suoyouxinxi = _this.data6b[0].supports[1].name;
+        console.log("所有信息" + _this.suoyouxinxi);
       });
-  },
+  }
 };
 </script>
 <style scoped>
-.flex{
+.flex {
   overflow: hidden;
   /* border:1px solid red; */
 }
-.merchant-list{
-margin: 0.8rem 0.8rem 0 0.4rem;
+.merchant-list {
+  margin: 0.8rem 0.8rem 0 0.4rem;
 }
-.flex-left{
+.flex-left {
   float: left;
   width: 20%;
   padding: 1%;
   /* border:1px solid blue; */
 }
-.flex-right{
+.flex-right {
   float: right;
   width: 76%;
- 
 }
-.mutual{
- overflow: hidden;
- /* border:1px solid blueviolet; */
+.mutual {
+  overflow: hidden;
+  /* border:1px solid blueviolet; */
 }
-.flex-right-top-left{
+.flex-right-top-left {
   float: left;
 }
-.flex-right-top-right{
+.flex-right-top-right {
   float: right;
   color: gray;
-font-size: 0.1rem;
+  font-size: 0.1rem;
 }
-.pinpai{
-color: black;
-/* border: 1px solid black; */
-background-color: yellow;
-font-size: 0.1rem;
-border-radius: 0.3rem;
-padding: 0 0.3rem;
-margin: 0 0.8rem 0 0;
+.pinpai {
+  color: black;
+  /* border: 1px solid black; */
+  background-color: yellow;
+  font-size: 0.1rem;
+  border-radius: 0.3rem;
+  padding: 0 0.3rem;
+  margin: 0 0.8rem 0 0;
 }
-.shoppingname{
+.shoppingname {
   color: black;
   font-size: 0.5em;
 }
-.flex-right-content{
+.flex-right-content {
   margin: 0.3rem 0;
 }
-flex-right-content-left{
-   float: left;
+flex-right-content-left {
+  float: left;
 }
-flex-right-content-right{
-   float: right;
+flex-right-content-right {
+  float: right;
 }
-.star{
-   float: left;
+.star {
+  float: left;
 }
-.yueshou{
-  float:left;
+.yueshou {
+  float: left;
   color: rgb(68, 65, 65);
   font-size: 0.06em;
 }
 .fengniao {
-background-color: rgba(0, 26, 255, 0.952);
-color: white;
-font-size: 0.06rem;
+  background-color: rgba(0, 26, 255, 0.952);
+  color: white;
+  font-size: 0.06rem;
 }
 .zhunshi {
-border: 0.1rem solid rgba(0, 17, 255, 0.884);
-color: rgba(0, 26, 255, 0.952);
-font-size: 0.06rem;
+  border: 0.1rem solid rgba(0, 17, 255, 0.884);
+  color: rgba(0, 26, 255, 0.952);
+  font-size: 0.06rem;
 }
-.fujin{
-  margin:0.4rem;
+.fujin {
+  margin: 0.4rem;
   font-size: 1rem;
   color: gray;
 }
-.flex-right-content-left{
+.flex-right-content-left {
   float: left;
   color: rgb(68, 65, 65);
-font-size: 0.06rem;
+  font-size: 0.06rem;
 }
-.flex-right-content-right{
+.flex-right-content-right {
   float: right;
 }
 .gongli {
-color: rgb(68, 65, 65);
-font-size: 0.06rem;
+  color: rgb(68, 65, 65);
+  font-size: 0.06rem;
 }
-.time{
-color: rgba(0, 26, 255, 0.952);
-font-size: 0.06rem;
+.time {
+  color: rgba(0, 26, 255, 0.952);
+  font-size: 0.06rem;
 }
 </style>
 <style>
-  <style>
-  .el-rate__item{
-    width: 0.001rem;
-    
-
-  }
-  .el-rate__icon{
-    font-size: .001rem;
-    margin: 0 ;
-  }
-  .el-rate__text{ 
-    font-size: 0.001rem;
-  }
+<style > .el-rate__item {
+  width: 0.001rem;
+}
+.el-rate__icon {
+  font-size: 0.001rem;
+  margin: 0;
+}
+.el-rate__text {
+  font-size: 0.001rem;
+}
 </style>

@@ -16,7 +16,7 @@ export default {
     data: []
   }),
   created() {
-    let api = "https://elm.cangdu.org/v1/cities?type=hot";
+    let api = "/api/v1/cities?type=hot";
     //promise写法
     this.$http.get(api).then(res => {
     //   console.log(res.data);
