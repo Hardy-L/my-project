@@ -99,7 +99,10 @@
          </div>
         
      </div>
-      <div class="queding"><button class="clickbtn" @click="quedingbtn">确定</button></div>
+      <div class="queding">
+        <button class="clickbtn2" @click="qingkbtn">清空</button>
+        <button class="clickbtn" @click="quedingbtn">确定</button>
+        </div>
  </div>
  </div>
 <!-- ---------------------------------- -->
@@ -258,6 +261,15 @@ export default {
       this.value2 = false;
       this.value3 = false;
       this.value4 = false;
+    },
+    qingkbtn(){
+     this.valuehe[0].valueb=true;
+     this.valuehe[1].valueb=true;
+     this.valuehe[2].valueb=true;
+     this.valuehe[3].valueb=true;
+     this.valuehe[4].valueb=true;
+     this.valuehe[5].valueb=true;
+     this.blname=null;
     }
   },
   watch: {

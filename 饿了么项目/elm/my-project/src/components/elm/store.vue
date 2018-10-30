@@ -20,11 +20,11 @@
             mode="horizontal"
             menu-trigger="click"
              @select="handleSelect">
-             <el-menu-item index="1">商品</el-menu-item>
-             <el-menu-item index="2">评价</el-menu-item>
+             <el-menu-item index="1" @click="click1">商品</el-menu-item>
+             <el-menu-item index="2" @click="click2">评价</el-menu-item>
              </el-menu>
        </div>
-       <div class="content_body" >
+       <div class="content_body" v-show="clic1">
          <!-- 左边部分 -->
           <div class="content_body_left">
             <ul  id="menu" v-for="(item,index) in data16" :key="index" >
@@ -55,6 +55,74 @@
             </section>
           </div>
        </div>
+       <div class="content-right" v-show="clic2">
+         <div class="content-right-top">
+           <ul class="content-right-top-left">
+             <li>
+               <span>{{pingfen}}</span>
+               <span>综合评价</span>
+               <span>高于周边商家{{gaoyu}}%</span>
+             </li>
+           </ul>
+           <ul class="content-right-top-right">
+             <li>
+               <div> <span>服务态度</span> <span>
+                 <el-rate
+                     v-model="fuwu"
+                     disabled
+                     show-score
+                     text-color="#ff9900"
+                     score-template="{value}">
+                </el-rate>
+                 </span> </div>
+                
+              <div> <span>菜品评价</span> <span>
+                 <el-rate
+                     v-model="caipin"
+                     disabled
+                     show-score
+                     text-color="#ff9900"
+                     score-template="{value}">
+                </el-rate>
+                 </span>  </div>
+               <div><span>送达时间 </span><span>分钟</span></div>
+             </li>
+           </ul>
+         </div>
+         <div class="content-right-bottom">
+          <ul class="content-right-bottom-top">
+            <li v-for="item in data19" :key="item.id"> <span >{{item.name}}({{item.count}})</span></li>
+          </ul>
+           <ul class="content-right-bottom-bottom">
+              <li v-for="(item,index) in data17" :key="index"> <span ></span>
+               <span>
+                 <div>{{item.username}}</div>
+                 <div>
+                <span> <el-rate
+                  v-model="a"
+                  disabled
+                  text-color="#ff9900"
+                  score-template="{value}">
+                </el-rate></span>
+                  <span>准时送达</span>
+                 </div>
+                 <div v-if="index==0">
+                  <span><img :src="'https://fuss10.elemecdn.com/'+img1+'.jpeg'" alt="">
+                  </span><span><img :src="'https://fuss10.elemecdn.com/'+img2+'.jpeg'" alt=""></span>
+                 </div>
+                  <div v-else-if="index==1">
+                  <span><img :src="'https://fuss10.elemecdn.com/'+img3+'.jpeg'" alt=""></span>
+                 </div>
+                 <div v-else></div>
+                 <div> </div>
+                 </span> 
+                 <div v-for=" (aaa ,index) in item.item_ratings" :key="index">
+               <span>{{aaa.food_name}}</span>
+                 </div>
+               </li>
+           </ul>
+         </div>
+       </div>
     </div>  
 </template>
 <script>
@@ -65,22 +133,61 @@ export default {
       activeIndex: "1",
       data16: [],
       facevalue: "0",
-      datas: []
+      datas: [],
+      clic1:true,
+      clic2:false,
+      data19:[],
+      data6:[],
+      data18:[],
+      data17:[],
+      pingfen:"",
+      fuwu:5,
+      caipin:5,
+      gaoyu:"",
+      a:5,
+      img1:"",
+      img2:"",
+      img3:"",
     };
   },
   created() {
     var _this = this;
     // 接口16
-    let api =
-      "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
-      this.$route.params.id;
+    let api ="api/shopping/v2/menu?restaurant_id=" +this.$route.params.id;
     this.$http.get(api).then(res => {
       _this.data16 = res.data;
     });
-    let url =
-      "https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
+    let url ="api/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
       _this.datas = data11.data;
+    });
+    //接口19
+    let api19="https://elm.cangdu.org/ugc/v2/restaurants/"+this.$route.params.id+"/ratings/tags";
+    this.$http.get(api19).then(data19=>{
+      _this.data19 = data19.data;
+      // console.log(data19.data.name)
+    });
+    // 接口18
+    let api18="https://elm.cangdu.org/ugc/v2/restaurants/"+this.$route.params.id+"/ratings/scores";
+    this.$http.get(api18).then(data18=>{
+      _this.data18=data18.data
+      this.pingfen=parseInt(data18.data.food_score*10)/10
+      this.fuwu=parseInt(data18.data.overall_score*10)/10
+      this.caipin=parseInt(data18.data.service_score*10)/10
+      this.gaoyu=parseInt(data18.data.compare_rating*100)
+      // console.log(this.pingfen+"aaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    })
+    // 接口17 
+    let api17="https://elm.cangdu.org/ugc/v2/restaurants/"+this.$route.params.id+"/ratings";
+     this.$http.get(api17).then(data17=>{
+      _this.data17 = data17.data;
+      // console.log(data19.data.name)
+      this.img1= _this.data17[0].item_ratings[0].image_hash
+      this.img2=_this.data17[0].item_ratings[1].image_hash
+      this.img3=_this.data17[1].item_ratings[1].image_hash
+      console.log(this.img1)
+      console.log(this.img2)
+      console.log(this.img3)
     });
   },
   methods: {
@@ -88,7 +195,16 @@ export default {
     menu(id) {
       this.facevalue = id;
     },
-  }
+    click1(){
+      this.clic1=true;
+      this.clic2=!this.clic1
+    },
+    click2(){
+      this.clic2=!this.clic2;
+       this.clic1=!this.clic2
+    }
+  },
+  
 };
 </script>
 <style scoped>
@@ -234,5 +350,8 @@ header {
 .stop_right p {
   padding: 1rem 0;
   color: #999;
+}
+img{
+  width:3rem;
 }
 </style>
