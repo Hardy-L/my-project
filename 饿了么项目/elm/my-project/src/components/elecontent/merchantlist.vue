@@ -168,7 +168,7 @@ export default {
 }
 .flex-left {
   float: left;
-  width: 20%;
+  width: 4rem;
   padding: 1%;
 }
 .flex-right {
@@ -190,24 +190,18 @@ export default {
   color: #333;
   /* border: 1px solid black; */
   background-color: #ffd930;
-  font-size: 0.1rem;
+  font-size: .1rem;
   border-radius: 0.3rem;
   padding: 0 0.3rem;
   margin: 0 0.8rem 0 0;
 }
 .shoppingname {
   color: #333;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 .flex-right-content {
   margin: 0.6rem 0;
-}
-flex-right-content-left {
-  float: left;
-}
-flex-right-content-right {
-  float: right;
 }
 .star {
   float: left;
@@ -215,7 +209,8 @@ flex-right-content-right {
 .yueshou {
   float: left;
   color: #666;
-  font-size: 0.06em;
+  font-size: .8rem;
+  margin-left: .3rem;
 }
 .fengniao {
   background-color:#3190e8;
@@ -235,19 +230,25 @@ flex-right-content-right {
 .flex-right-content-left {
   float: left;
   color:#666;
-  font-size: 0.06rem;
+  font-size: .8rem;
 }
 .flex-right-content-right {
   float: right;
 }
 .gongli {
   color:#666;
-  font-size: 0.06rem;
-  margin-left: .4rem;
+  font-size: .6rem;
+  /* margin-left: 4rem; */
+  /* border: 1px solid red; */
+}
+.flex-right-tocontentp-right {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: flex-end;
 }
 .time {
-  color: rgba(0, 26, 255, 0.952);
-  font-size: 0.06rem;
+  color: #3190e8;
+  font-size: .6rem;
 }
 </style>
 <style>
