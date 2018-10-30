@@ -160,6 +160,8 @@ export default {
 }
 .flex {
   overflow: hidden;
+  border-bottom: 1px solid #f1f1f1;
+  padding: .5rem 0;
 }
 .merchant-list {
   margin: 0.8rem 0.8rem 0 0.4rem;
@@ -185,20 +187,21 @@ export default {
   font-size: 0.1rem;
 }
 .pinpai {
-  color: black;
+  color: #333;
   /* border: 1px solid black; */
-  background-color: yellow;
+  background-color: #ffd930;
   font-size: 0.1rem;
   border-radius: 0.3rem;
   padding: 0 0.3rem;
   margin: 0 0.8rem 0 0;
 }
 .shoppingname {
-  color: black;
-  font-size: 0.5em;
+  color: #333;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 .flex-right-content {
-  margin: 0.3rem 0;
+  margin: 0.6rem 0;
 }
 flex-right-content-left {
   float: left;
@@ -211,17 +214,17 @@ flex-right-content-right {
 }
 .yueshou {
   float: left;
-  color: rgb(68, 65, 65);
+  color: #666;
   font-size: 0.06em;
 }
 .fengniao {
-  background-color: rgba(0, 26, 255, 0.952);
+  background-color:#3190e8;
   color: white;
   font-size: 0.06rem;
 }
 .zhunshi {
-  border: 0.1rem solid rgba(0, 17, 255, 0.884);
-  color: rgba(0, 26, 255, 0.952);
+  border: 0.1rem solid #3190e8;
+  color: #3190e8;
   font-size: 0.06rem;
 }
 .fujin {
@@ -231,15 +234,16 @@ flex-right-content-right {
 }
 .flex-right-content-left {
   float: left;
-  color: rgb(68, 65, 65);
+  color:#666;
   font-size: 0.06rem;
 }
 .flex-right-content-right {
   float: right;
 }
 .gongli {
-  color: rgb(68, 65, 65);
+  color:#666;
   font-size: 0.06rem;
+  margin-left: .4rem;
 }
 .time {
   color: rgba(0, 26, 255, 0.952);
@@ -249,7 +253,7 @@ flex-right-content-right {
 <style>
 /* 星星评分 */
 <style > .el-rate__item {
-  width: 0.001rem;
+  width: 0.4rem;
 }
 .el-rate__icon {
   font-size: 0.001rem;

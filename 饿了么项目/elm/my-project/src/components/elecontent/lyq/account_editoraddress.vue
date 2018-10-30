@@ -8,6 +8,14 @@
       <span class="title_text">编辑地址</span>
     </div>
     </div>
+    <div class="addlist">
+      <ul>
+        <li>
+        <p>蓝鸥科技·郑州</p>
+        <p>18796352269</p>
+        </li>
+      </ul>
+    </div>
     <div class="profile-1reTe">
             <ul>
                  <router-link  to="/account_newaddress">
@@ -71,6 +79,17 @@ span {
   color: rgb(84, 79, 79);
   line-height: 3rem;
   float: right;
+}
+.addlist{
+  background: #eaf39b;
+  height:3.5rem;
+  margin-top: 0.5rem;
+}
+.addlist p{
+  width: 100%;
+  float: left;
+  line-height: 1.5rem;
+  margin-left: 0.7rem;
 }
 .profile-1reTe {
   background-color: #fff;

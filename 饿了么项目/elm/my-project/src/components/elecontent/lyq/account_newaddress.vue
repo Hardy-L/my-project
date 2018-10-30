@@ -44,7 +44,36 @@
 
 <script>
 export default {
-  name: "account_editoraddress"
+  name: "account_editoraddress",
+  data() {
+    return {
+      user_id: "",
+      address: "",
+      address_detail: "",
+      name: "",
+      phone: "",
+      tag: "",
+      poi_type: ""
+    };
+  },
+  created() {
+    let api28 = "https://elm.cangdu.org/v1/users/"+this.$store.state.usermsg.user_id+"/addresses/";
+    this.$http({
+      method:"post",
+      url:api,
+      data:{
+      address: "",
+      address_detail: "",
+      name: "",
+      phone: "",
+      tag: "",
+      poi_type: ""
+      },
+      withCredentials: true 
+    }).then(res=>{
+
+    })
+  }
 };
 </script>
 

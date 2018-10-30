@@ -86,7 +86,6 @@ export default {
   methods: {
     reng() {
       this.$emit("clk");
-      // alert("231");
     },
     restart() {
       this.ended = !this.ended;

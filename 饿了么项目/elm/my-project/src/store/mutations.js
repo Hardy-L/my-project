@@ -3,7 +3,11 @@ export default {
   changeusermsg(state, value) {
     state.usermsg = value;
   },
-  qufan(state,reg){
+  qufan(state, reg) {
     state.bool = reg;
+  },
+  clear(state) {
+    state.usermsg = "";
+      state.bool = false
   }
 }
