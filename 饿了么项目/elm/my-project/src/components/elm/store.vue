@@ -11,7 +11,7 @@
                 <p>{{datas.promotion_info}}</p>
             </div>
             <router-link to="/Aaa"> <b class="return">&lt;</b></router-link>
-            <router-link to="/shops"> <b class="next">&gt;</b></router-link>
+            <router-link :to="{name:'shops',params:{id:datas.id}}"> <b class="next">&gt;</b></router-link>
        </header>
        <div class="content">
            <el-menu 
@@ -44,7 +44,15 @@
            <!-- 右边店铺详情 -->
             <section class="stop" v-for="(stores,key) in value.foods" :key="key">
                  <div class="stop_left">
+                   <router-link 
+                   :to="{path:'/deta',
+                   query:{image_path:stores.image_path,
+                   name:stores.name,
+                   description:stores.description,
+                   tips:stores.tips
+                   }}">
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
+                 </router-link>
                  </div>
                  <div class="stop_right">
                      <h3>{{stores.name}}</h3>
@@ -119,8 +127,8 @@
                  </div>
                  <div v-else></div>
                  
-                 <div v-for=" (aaa ,index) in item.item_ratings" :key="index">
-               <span>{{aaa.food_name}}</span>
+                 <div v-for=" (aaa ,index) in item.item_ratings" :key="index" class="shop">
+               <p >{{aaa.food_name}}</p>
                  </div>
                </li>
            </ul>
@@ -136,62 +144,71 @@ export default {
       activeIndex: "1",
       data16: [],
       facevalue: "0",
-      value:'0',
+      value: "0",
       datas: [],
-      clic1:true,
-      clic2:false,
-      data19:[],
-      data6:[],
-      data18:[],
-      data17:[],
-      pingfen:"",
-      fuwu:5,
-      caipin:5,
-      gaoyu:"",
-      a:5,
-      img1:"",
-      img2:"",
-      img3:"",
+      clic1: true,
+      clic2: false,
+      data19: [],
+      data6: [],
+      data18: [],
+      data17: [],
+      pingfen: "",
+      fuwu: 5,
+      caipin: 5,
+      gaoyu: "",
+      a: 5,
+      img1: "",
+      img2: "",
+      img3: ""
     };
   },
   created() {
     var _this = this;
     // 接口16
-    let api ="api/shopping/v2/menu?restaurant_id=" +this.$route.params.id;
+    let api = "api/shopping/v2/menu?restaurant_id=" + this.$route.params.id;
     this.$http.get(api).then(res => {
       _this.data16 = res.data;
     });
-    let url ="api/shopping/restaurant/" + this.$route.params.id;
+    let url = "api/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
       _this.datas = data11.data;
     });
     //接口19
-    let api19="https://elm.cangdu.org/ugc/v2/restaurants/"+this.$route.params.id+"/ratings/tags";
-    this.$http.get(api19).then(data19=>{
+    let api19 =
+      "https://elm.cangdu.org/ugc/v2/restaurants/" +
+      this.$route.params.id +
+      "/ratings/tags";
+    this.$http.get(api19).then(data19 => {
       _this.data19 = data19.data;
       // console.log(data19.data.name)
     });
     // 接口18
-    let api18="https://elm.cangdu.org/ugc/v2/restaurants/"+this.$route.params.id+"/ratings/scores";
-    this.$http.get(api18).then(data18=>{
-      _this.data18=data18.data
-      this.pingfen=parseInt(data18.data.food_score*10)/10
-      this.fuwu=parseInt(data18.data.overall_score*10)/10
-      this.caipin=parseInt(data18.data.service_score*10)/10
-      this.gaoyu=parseInt(data18.data.compare_rating*100)
+    let api18 =
+      "https://elm.cangdu.org/ugc/v2/restaurants/" +
+      this.$route.params.id +
+      "/ratings/scores";
+    this.$http.get(api18).then(data18 => {
+      _this.data18 = data18.data;
+      this.pingfen = parseInt(data18.data.food_score * 10) / 10;
+      this.fuwu = parseInt(data18.data.overall_score * 10) / 10;
+      this.caipin = parseInt(data18.data.service_score * 10) / 10;
+      this.gaoyu = parseInt(data18.data.compare_rating * 100);
       // console.log(this.pingfen+"aaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    })
-    // 接口17 
-    let api17="https://elm.cangdu.org/ugc/v2/restaurants/"+this.$route.params.id+"/ratings";
-     this.$http.get(api17).then(data17=>{
+    });
+    // 接口17
+    let api17 =
+      "https://elm.cangdu.org/ugc/v2/restaurants/" +
+      this.$route.params.id +
+      "/ratings";
+    this.$http.get(api17).then(data17 => {
       _this.data17 = data17.data;
       // console.log(data19.data.name)
-      this.img1= _this.data17[0].item_ratings[0].image_hash
-      this.img2=_this.data17[0].item_ratings[1].image_hash
-      this.img3=_this.data17[1].item_ratings[1].image_hash
-      console.log(this.img1)
-      console.log(this.img2)
-      console.log(this.img3)
+      this.img1 = _this.data17[0].item_ratings[0].image_hash;
+      this.img2 = _this.data17[0].item_ratings[1].image_hash;
+      this.img3 = _this.data17[1].item_ratings[1].image_hash;
+      console.log(this.img1);
+      console.log(this.img2);
+      console.log(this.img3);
     });
   },
   methods: {
@@ -202,16 +219,15 @@ export default {
     active(id) {
       this.value = id;
     },
-    click1(){
-      this.clic1=true;
-      this.clic2=!this.clic1
+    click1() {
+      this.clic1 = true;
+      this.clic2 = !this.clic1;
     },
-    click2(){
-      this.clic2=!this.clic2;
-       this.clic1=!this.clic2
+    click2() {
+      this.clic2 = !this.clic2;
+      this.clic1 = !this.clic2;
     }
-  },
-  
+  }
 };
 </script>
 <style scoped>
@@ -358,56 +374,56 @@ header {
   padding: 1rem 0;
   color: #999;
 }
-.content-right-top{
+.content-right-top {
   overflow: hidden;
   /* margin-top: .5rem; */
   background: #fff;
   padding: 1rem 0;
 }
-.content-right-top-left{
+.content-right-top-left {
   /* border: 1px solid red; */
   width: 40%;
   text-align: center;
   float: left;
 }
-.content-right-top-left p:nth-child(1){
+.content-right-top-left p:nth-child(1) {
   color: #f60;
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
-.content-right-top-left p:nth-child(2){
+.content-right-top-left p:nth-child(2) {
   color: #666;
   font-size: 1rem;
-  margin-bottom: .5rem
+  margin-bottom: 0.5rem;
 }
-.content-right-top-left p:nth-child(3){
+.content-right-top-left p:nth-child(3) {
   color: #999;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
-.content-right-top-right{
+.content-right-top-right {
   float: right;
   width: 60%;
   /* border: 1px solid red; */
 }
-.pingfen{
+.pingfen {
   display: flex;
   justify-content: space-around;
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
   color: #666;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
-.sd span:nth-child(1){
+.sd span:nth-child(1) {
   color: #666;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
-.sd span:nth-child(2){
+.sd span:nth-child(2) {
   color: #999;
-  font-size: .7rem;
+  font-size: 0.7rem;
   margin-left: 1rem;
 }
-.content-right-bottom{
-  margin-top: .5rem;
+.content-right-bottom {
+  margin-top: 0.5rem;
   background: #fff;
   text-align: left;
   height: 24.3rem;
@@ -416,41 +432,52 @@ header {
 .content-right-bottom::-webkit-scrollbar {
   display: none;
 }
-.content-right-bottom-top{
+.content-right-bottom-top {
   display: flex;
   border-bottom: 1px solid #f2f2f2;
   flex-wrap: wrap;
-  margin-top: .5rem;
-  padding: .5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
 }
-.content-right-bottom-top li{
+.content-right-bottom-top li {
   background: #f5fdff;
   color: #6d7885;
-  margin: 0 .5rem .5rem .4rem;
+  margin: 0 0.5rem 0.5rem 0.4rem;
   /* padding: .3rem; */
   border: 1px solid #f5fdff;
   border-radius: 2px;
 }
-.content-right-bottom-top li:nth-child(3){
+.content-right-bottom-top li:nth-child(3) {
   background: #f5f5f5;
   color: #aaa;
 }
-.styles{
+.styles {
   background: #3190e8;
   color: white;
   border-radius: 3px;
 }
-.tops{
-  margin-top: .5rem;
+.tops {
+  margin-top: 0.5rem;
 }
-.btom{
+.btom {
   /* border: 1px solid red; */
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   display: flex;
   justify-content: flex-start;
 }
-.imags img{
- width: 3.5rem;
+.imags img {
+  width: 3.5rem;
 }
-
+.shop {
+  display: inline-block;
+  margin-left: .5rem;
+  margin-top: .3rem;
+  border: 1px solid #f1f1f1;
+}
+.shop p{ 
+  width: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 </style>

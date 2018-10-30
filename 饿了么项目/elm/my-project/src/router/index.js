@@ -36,6 +36,7 @@ import Payment from '../components/elecontent/lyq/payment'
 import useCart from '../components/elecontent/lyq/useCart'
 import Shops from "../components/elm/shops.vue";
 import Shopsafe from "../components/elm/shopsafe.vue";
+import Deta from '../components/elm/deta.vue'
 // >>>>>>> 84b04fe8ec37ef69eea6705845d13c4d565668bb
 Vue.use(Router)
 
@@ -162,11 +163,16 @@ export default new Router({
       component:useCart
     },
     {
-      path:'/shops',
+      path:'/shops/:id?',
+      name:'shops',
       component:Shops
     },{
       path:'/shopsafe',
       component:Shopsafe
+    },{
+      path:'/deta',
+      name:'deta',
+      component:Deta
     }
 
   ]

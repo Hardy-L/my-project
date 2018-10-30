@@ -9,7 +9,7 @@
     </div> 
     </div>
     <div class="content">
-      <input type="search" placeholder="请输入商家或美食名称" >
+      <input type="search" placeholder="请输入商家或美食名称" v-model="name">
       <input type="submit" value="提交" @click="submit()">
     </div>
     <div class="bottom" v-show="show">很抱歉！无搜索结果</div>
@@ -27,10 +27,17 @@ export default {
  data() {
     return {
       data:[],
-      show:false
+      show:false,
+      name:''
     }
   },
- 
+ watch:{
+    name(newvalue){
+      if(newvalue == 0){
+        this.show = false
+      }
+    }
+ },
   methods:{
     submit(){
       this.show = true;

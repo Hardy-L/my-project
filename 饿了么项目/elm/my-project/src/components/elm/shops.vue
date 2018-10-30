@@ -50,18 +50,31 @@
          <div class="merchant">
             <p>商家信息</p>
             <ul>
-              <li>吃啥啦</li>
-              <li>地址：北京市海淀区龙翔路14号</li>
-              <li>营业时间:[08:00/22:00]</li>
-              <li class="btm">营业执照<span>&gt;</span></li>
-              <li class="btm">餐饮服务许可证<span>&gt;</span></li>
+              <li>{{datas.name}}</li>
+              <li>地址：{{datas.address}}</li>
+              <li>营业时间:{{datas.opening_hours}}</li>
+              <li class="btm" >营业执照<span>&gt;</span></li>
+              <li class="btm" >餐饮服务许可证<span>&gt;</span></li>
             </ul>
          </div>
     </div>
 </template>
 <script>
 export default {
-  name: "shops"
+  name: "shops",
+  data(){
+    return {
+      datas:[]
+    }
+  },
+  created() {
+     let url ="api/shopping/restaurant/" + this.$route.params.id;
+    this.$http.get(url).then(data11 => {
+      this.datas = data11.data;
+      console.log(this.datas)
+    });
+  },
+ 
 };
 </script>
 <style scoped>
