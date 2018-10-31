@@ -11,7 +11,7 @@
                 <p>{{datas.promotion_info}}</p>
             </div>
             <router-link to="/Aaa"> <b class="return">&lt;</b></router-link>
-            <router-link to="/shops"> <b class="next">&gt;</b></router-link>
+            <router-link :to="{name:'shops',params:{id:datas.id}}"> <b class="next">&gt;</b></router-link>
        </header>
        <div class="content">
            <el-menu 
@@ -20,11 +20,11 @@
             mode="horizontal"
             menu-trigger="click"
              @select="handleSelect">
-             <el-menu-item index="1">商品</el-menu-item>
-             <el-menu-item index="2">评价</el-menu-item>
+             <el-menu-item index="1" @click="click1">商品</el-menu-item>
+             <el-menu-item index="2" @click="click2">评价</el-menu-item>
              </el-menu>
        </div>
-       <div class="content_body" >
+       <div class="content_body" v-show="clic1">
          <!-- 左边部分 -->
           <div class="content_body_left">
             <ul  id="menu" v-for="(item,index) in data16" :key="index" >
@@ -44,7 +44,15 @@
            <!-- 右边店铺详情 -->
             <section class="stop" v-for="(stores,key) in value.foods" :key="key">
                  <div class="stop_left">
+                   <router-link 
+                   :to="{path:'/deta',
+                   query:{image_path:stores.image_path,
+                   name:stores.name,
+                   description:stores.description,
+                   tips:stores.tips
+                   }}">
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
+                 </router-link>
                  </div>
                  <div class="stop_right">
                      <h3>{{stores.name}}</h3>
@@ -54,6 +62,77 @@
               </section>                 
             </section>
           </div>
+       </div>
+       <!-- 评价 -->
+       <div class="content-right" v-show="clic2">
+         <div class="content-right-top">
+           <ul class="content-right-top-left">
+             <li>
+               <p>{{pingfen}}</p>
+               <p>综合评价</p>
+               <p>高于周边商家{{gaoyu}}%</p>
+             </li>
+           </ul>
+           <ul class="content-right-top-right">
+             <li>
+               <div class="pingfen"> <span>服务态度</span> <span>
+                 <el-rate
+                     v-model="fuwu"
+                     disabled
+                     show-score
+                     text-color="#ff9900"
+                     score-template="{value}">
+                </el-rate>
+                 </span> </div>
+                
+              <div class="pingfen"> <span>菜品评价</span> <span>
+                 <el-rate
+                     v-model="caipin"
+                     disabled
+                     show-score
+                     text-color="#ff9900"
+                     score-template="{value}">
+                </el-rate>
+                 </span>  </div>
+               <div class="sd"><span>送达时间 </span><span>分钟</span></div>
+             </li>
+           </ul>
+         </div>
+         <div class="content-right-bottom">
+          <ul class="content-right-bottom-top">
+            <li v-for="(item,key) in data19" :key="key" >
+               <span @click="active(key)" :class="{styles:key==value}" >{{item.name}}({{item.count}})</span>
+            </li>
+          </ul>
+           <ul class="content-right-bottom-bottom">
+              <li v-for="(item,index) in data17" :key="index"> 
+               
+                 <div class="tops">{{item.username}}</div>
+                 <div class="btom">
+                <span> <el-rate
+                  v-model="a"
+                  disabled
+                  text-color="#ff9900"
+                  score-template="{value}">
+                </el-rate></span>
+                  <span>准时送达</span>
+                 </div>
+                 <div v-if="index==0" class="imags">
+                  <span><img :src="'https://fuss10.elemecdn.com/'+img1+'.jpeg'" alt="">
+                  </span><span><img :src="'https://fuss10.elemecdn.com/'+img2+'.jpeg'" alt=""></span>
+                 </div>
+                
+                  <div v-else-if="index==1" class="imags">
+                  <span><img :src="'https://fuss10.elemecdn.com/'+img3+'.jpeg'" alt=""></span>
+                 </div>
+                 <div v-else></div>
+                 
+                 <div v-for=" (aaa ,index) in item.item_ratings" :key="index" class="shop">
+               <p >{{aaa.food_name}}</p>
+                 </div>
+               </li>
+           </ul>
+         </div>
        </div>
     </div>  
 </template>
@@ -65,22 +144,71 @@ export default {
       activeIndex: "1",
       data16: [],
       facevalue: "0",
-      datas: []
+      value: "0",
+      datas: [],
+      clic1: true,
+      clic2: false,
+      data19: [],
+      data6: [],
+      data18: [],
+      data17: [],
+      pingfen: "",
+      fuwu: 5,
+      caipin: 5,
+      gaoyu: "",
+      a: 5,
+      img1: "",
+      img2: "",
+      img3: ""
     };
   },
   created() {
     var _this = this;
     // 接口16
-    let api =
-      "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
-      this.$route.params.id;
+    let api = "api/shopping/v2/menu?restaurant_id=" + this.$route.params.id;
     this.$http.get(api).then(res => {
       _this.data16 = res.data;
     });
-    let url =
-      "https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
+    let url = "api/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
       _this.datas = data11.data;
+    });
+    //接口19
+    let api19 =
+      "https://elm.cangdu.org/ugc/v2/restaurants/" +
+      this.$route.params.id +
+      "/ratings/tags";
+    this.$http.get(api19).then(data19 => {
+      _this.data19 = data19.data;
+      // console.log(data19.data.name)
+    });
+    // 接口18
+    let api18 =
+      "https://elm.cangdu.org/ugc/v2/restaurants/" +
+      this.$route.params.id +
+      "/ratings/scores";
+    this.$http.get(api18).then(data18 => {
+      _this.data18 = data18.data;
+      this.pingfen = parseInt(data18.data.food_score * 10) / 10;
+      this.fuwu = parseInt(data18.data.overall_score * 10) / 10;
+      this.caipin = parseInt(data18.data.service_score * 10) / 10;
+      this.gaoyu = parseInt(data18.data.compare_rating * 100);
+      // console.log(this.pingfen+"aaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    });
+    // 接口17
+    let api17 =
+      "https://elm.cangdu.org/ugc/v2/restaurants/" +
+      this.$route.params.id +
+      "/ratings";
+    this.$http.get(api17).then(data17 => {
+      _this.data17 = data17.data;
+      // console.log(data19.data.name)
+      this.img1 = _this.data17[0].item_ratings[0].image_hash;
+      this.img2 = _this.data17[0].item_ratings[1].image_hash;
+      this.img3 = _this.data17[1].item_ratings[1].image_hash;
+      console.log(this.img1);
+      console.log(this.img2);
+      console.log(this.img3);
     });
   },
   methods: {
@@ -88,6 +216,17 @@ export default {
     menu(id) {
       this.facevalue = id;
     },
+    active(id) {
+      this.value = id;
+    },
+    click1() {
+      this.clic1 = true;
+      this.clic2 = !this.clic1;
+    },
+    click2() {
+      this.clic2 = !this.clic2;
+      this.clic1 = !this.clic2;
+    }
   }
 };
 </script>
@@ -123,7 +262,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  height: 8rem;
+  height: 7rem;
   overflow: hidden;
   filter: blur(16px);
 }
@@ -234,5 +373,111 @@ header {
 .stop_right p {
   padding: 1rem 0;
   color: #999;
+}
+.content-right-top {
+  overflow: hidden;
+  /* margin-top: .5rem; */
+  background: #fff;
+  padding: 1rem 0;
+}
+.content-right-top-left {
+  /* border: 1px solid red; */
+  width: 40%;
+  text-align: center;
+  float: left;
+}
+.content-right-top-left p:nth-child(1) {
+  color: #f60;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.content-right-top-left p:nth-child(2) {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.content-right-top-left p:nth-child(3) {
+  color: #999;
+  font-size: 0.8rem;
+}
+.content-right-top-right {
+  float: right;
+  width: 60%;
+  /* border: 1px solid red; */
+}
+.pingfen {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.3rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+.sd span:nth-child(1) {
+  color: #666;
+  font-size: 0.9rem;
+}
+.sd span:nth-child(2) {
+  color: #999;
+  font-size: 0.7rem;
+  margin-left: 1rem;
+}
+.content-right-bottom {
+  margin-top: 0.5rem;
+  background: #fff;
+  text-align: left;
+  height: 24.3rem;
+  overflow: scroll;
+}
+.content-right-bottom::-webkit-scrollbar {
+  display: none;
+}
+.content-right-bottom-top {
+  display: flex;
+  border-bottom: 1px solid #f2f2f2;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}
+.content-right-bottom-top li {
+  background: #f5fdff;
+  color: #6d7885;
+  margin: 0 0.5rem 0.5rem 0.4rem;
+  /* padding: .3rem; */
+  border: 1px solid #f5fdff;
+  border-radius: 2px;
+}
+.content-right-bottom-top li:nth-child(3) {
+  background: #f5f5f5;
+  color: #aaa;
+}
+.styles {
+  background: #3190e8;
+  color: white;
+  border-radius: 3px;
+}
+.tops {
+  margin-top: 0.5rem;
+}
+.btom {
+  /* border: 1px solid red; */
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+.imags img {
+  width: 3.5rem;
+}
+.shop {
+  display: inline-block;
+  margin-left: .5rem;
+  margin-top: .3rem;
+  border: 1px solid #f1f1f1;
+}
+.shop p{ 
+  width: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>

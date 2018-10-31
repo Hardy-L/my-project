@@ -61,11 +61,11 @@
           method: 'post',
           url: api,
           withCredentials: true, // 默认的
-          data: {
-            captcha_code: this.codeNumer,
-            password: "syq1122",
-            username: "syq1122"
-          },
+            data: {
+              captcha_code: this.codeNumer,
+              password: "syq1122",
+              username: "syq1122"
+            },
 
         }).then(res => {
           alert("登陆成功");  

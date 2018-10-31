@@ -41,7 +41,7 @@ import HbHistory from '../components/elecontent/lyq/hbHistory'
 /*刘港 */
 import Shops from "../components/elm/shops.vue";
 import Shopsafe from "../components/elm/shopsafe.vue";
-
+import Deta from '../components/elm/deta.vue';
 Vue.use(Router)
 
 export default new Router({
@@ -169,7 +169,8 @@ export default new Router({
       component:useCart
     },
     {
-      path:'/shops',
+      path:'/shops/:id?',
+      name:'shops',
       component:Shops
     },{
       path:'/shopsafe',
@@ -186,6 +187,10 @@ export default new Router({
     },{
       path:"/addDetail",
       component:AddDetail
+    },{
+      path:'/deta',
+      name:'deta',
+      component:Deta
     }
 
   ]

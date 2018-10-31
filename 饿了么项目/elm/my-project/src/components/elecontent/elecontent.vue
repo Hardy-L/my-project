@@ -156,6 +156,8 @@ export default {
 .wenzi {
   color: gray;
 }
-
+.swiper-slide{
+  background: #fff;
+}
 
 </style>
