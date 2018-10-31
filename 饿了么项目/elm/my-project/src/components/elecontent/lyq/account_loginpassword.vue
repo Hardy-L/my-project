@@ -12,12 +12,12 @@
     <li class="account"><input type="text" placeholder="账号" v-model="username">
     </li>
     <li class="account">
-      <input type="password" placeholder="旧密码" v-model="password">
+      <input type="password" placeholder="旧密码" v-model="oldpassword">
     </li>
     
-    <li class="account"><input type="text" placeholder="请输入新密码" v-model="username">
+    <li class="account"><input type="text" placeholder="请输入新密码" v-model="newpassword">
     </li>
-    <li class="account"><input type="text" placeholder="请确认密码" v-model="username">
+    <li class="account"><input type="text" placeholder="请确认密码" v-model="confirmpassword">
     </li>
 
     <li class="account"><input type="text" placeholder="验证码" v-model="captcha_code">
@@ -27,20 +27,24 @@
     </li>
   </ul>
   </div>
-  <div class="login_container" >确定修改</div>
+  <div class="login_container" @click="change()">确定修改</div>
     </div>
 </template>
 
 <script>
+import login_account from "../lyq/login_account";
 export default {
   name: "account_loginpassword",
+  components: {
+    login_account
+  },
   data() {
     return {
       ended: true,
-      userInfo: [],
-      getLoginurl: "",
       username: "",
-      password: "",
+      oldpassword: "",
+      newpassword: "",
+      confirmpassword: "",
       captcha_code: "",
       img: "",
       login: ""
@@ -66,38 +70,47 @@ export default {
   methods: {
     reng() {
       this.$emit("clk");
-      // alert("231");
     },
     restart() {
       this.ended = !this.ended;
       console.log(this.ended);
     },
-    getLogin(user) {
-      const url = "https://elm.cangdu.org/v2/login";
+    getCode() {
+      const url = "https://elm.cangdu.org/v1/captchas";
+      this.$http({
+        method: "post",
+        url: url,
+        withCredentials: true // 默认false
+      }).then(res => {
+        console.log("img", res);
+        this.img = res.data.code;
+      });
+    },
+    change() {
+      const url = "https://elm.cangdu.org/v2/changepassword";
+      var _this = this;
       this.$http({
         //调用接口
-        method: "Post",
+        method: "post",
         url: url, //this指data
         // 获取信息
+        withCredentials: true,
         data: {
-          username: this.username,
-          password: this.password,
-          captcha_code: this.captcha_code
-        },
-        withCredentials: true
+          username: _this.username,
+          oldpassWord: _this.oldpassword,
+          newpassword: _this.newpassword,
+          confirmpassword: _this.confirmpassword,
+          captcha_code: _this.captcha_code
+        }
       }).then(response => {
         //接口返回数据
-        // this.userInfo=this.response.data;
         console.log("tap", response);
-        // console.log("tap", response.data.message);
-        if (response.data.status == 0) {
-          alert(response.data.message);
+        if (response.data.status) {
+          alert("更改密码成功");
+          _this.$router.push({ name: "login_account" });
         } else {
-          this.$store.commit("qufan", true);
-          this.$store.commit("changeusermsg", response.data);
-          this.username = this.$store.state.usermsg.username;
-          this.$router.push({ name: "myele" });
-          // this.$store.commit("changeusermsg",this.username);
+          alert(response.data.message);
+          _this.getCode();
         }
       });
     }

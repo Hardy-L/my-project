@@ -1,19 +1,21 @@
 <template>
-    <div class="useCart">
+    <div class="hbHistory">
      <!-- 头部 -->
       <div class="hand">
         <!-- 返回 -->
   <span class="el-icon-arrow-left" @click="$router.back(-1)"></span>
     <div class="title_head">  
-      <span class="title_text">兑换红包</span>
+      <span class="title_text">历史红包</span>
     </div>
     </div>
+    <!-- content -->
+    
     </div>
 </template>
 
 <script>
 export default {
-  name: "useCart"
+  name: "hbHistory"
 };
 </script>
 
@@ -27,7 +29,7 @@ p,
 span {
   font-family: Helvetica Neue, Tahoma, Arial;
 }
-.useCart {
+.hbHistory {
   background-color: rgb(236, 236, 236);
 }
 .hand {
@@ -55,6 +57,5 @@ span {
   color: rgb(255, 255, 255);
   font-weight: bold;
 }
-
 </style>
 

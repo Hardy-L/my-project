@@ -1,6 +1,6 @@
 // 相当于data    vuex中的数据源，我们可以通过 this.$store.state 获取我们在vuex中声明的全局变量的值。
 export default{
-   usermsg:"",
+   usermsg:{},
    username:"",
    password:"",
    src:"",
@@ -22,4 +22,9 @@ export default{
    ee:"",
    ff:"",
 
+   homeid:"",
+   price:"",
+   id:"",
+   limit:""
+// $store.state.homeid
 }

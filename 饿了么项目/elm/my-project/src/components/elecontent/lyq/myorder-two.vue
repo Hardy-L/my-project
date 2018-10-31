@@ -14,27 +14,30 @@
            
         </div>
         <p>下载饿了么APP</p>
-        <div class="determine" @click="open">下载</div>
+        <div class="determine" @click="vanish()">下载</div>
     </div>
+     <!-- 弹框 -->
+    <div class="tip_text_container" v-show="!van"><div class="tip_icon">
+      <span>!</span> 
+      </div> 
+      <p class="tip_text">IOS用户请前往AppStore下载</p> <div class="confrim"  @click="vanish()">确认</div>
+      </div>
     </div>
 </template>
 
 <script>
 export default {
   name: "myorder_two",
-  methods: {
-    open() {
-      this.$alert("IOS用户请前往AppStore下载","",  {
-        confirmButtonText: "确定",
-        callback: action => {
-          this.$message({
-            type: "info",
-            message: `action: ${action}`
-          });
-        }
-      });
+  data(){
+    return{
+      van:true
     }
-  }
+  },
+  methods: {
+    vanish(){
+      this.van = !this.van
+    }
+}
 };
 </script>
 
@@ -103,6 +106,65 @@ span {
   line-height: 2.5rem;
   border-radius: 0.2rem;
   margin-top: 0.5rem;
+}
+/*弹框*/
+.tip_text_container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.tip_text_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10rem;
+  margin-left: -9rem;
+  width: 12rem;
+  animation: tipMove 0.4s;
+  background-color: #fff;
+  padding: 2rem 3rem 0;
+  border: 1px;
+  border-radius: 0.25rem;
+}
+.tip_text_container .tip_icon {
+  width: 4rem;
+  height: 4rem;
+  border: 0.15rem solid #f8cb86;
+  border-radius: 50%;
+  text-align: center;
+}
+.tip_text_container .tip_text {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 0.9rem;
+  text-align: center;
+  margin-top: 0.8rem;
+  padding: 0 0.4rem;
+}
+
+.tip_text_container .tip_icon span {
+  font-size: 4rem;
+  line-height: 4rem;
+  color: #f8cb86;
+}
+.tip_text_container .confrim {
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 0.8rem;
+  background-color: #4cd964;
+  width: 18rem;
+  height: 2.5rem;
+  text-align: center;
+  line-height: 2.5rem;
+  border: 1px;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 </style>
 

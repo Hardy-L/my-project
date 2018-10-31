@@ -8,6 +8,8 @@
       <span class="title_text">购买记录</span>
     </div>
     </div>
+    <section data-v-028681ee="" class="invoice_contianer"><img  src="../../../assets/无积分记录.png"> 
+    <p data-v-028681ee="">没有购买记录</p></section>
     </div>
 </template>
 
@@ -55,6 +57,24 @@ span {
   font-size: 1.1rem;
   color: rgb(255, 255, 255);
   font-weight: bold;
+}
+.invoice_contianer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.invoice_contianer img {
+    width: 11rem;
+    height: 7rem;
+    margin-top: 5rem;
+}
+.invoice_contianer p {
+    font-size: 1rem;
+    color: #999;
+    margin-top: .8rem;
 }
 </style>
 

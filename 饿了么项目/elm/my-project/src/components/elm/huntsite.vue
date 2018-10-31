@@ -36,14 +36,15 @@ export default {
     };
   },
   created() {
-    this.id = this.$route.params.id;
+   
     let api = "https://elm.cangdu.org/v1/cities/" + this.$route.params.id;
     this.$http.get(api).then(res => {
       this.data = res.data;
     });
   },
   methods: {
-    submit() {
+    submit() { 
+      this.id = this.$route.params.id;
       let url =
         "https://elm.cangdu.org/v1/pois?city_id=" +
         this.id +
@@ -52,6 +53,8 @@ export default {
       this.$http.get(url).then(res => {
         console.log(res.data);
         this.datas = res.data;
+        this.$store.commit("cityid", this.id);
+        console.log('id',this.id);
       });
     }
   }
@@ -59,7 +62,7 @@ export default {
 </script>
  <style scoped>
 .huntsite {
-  background:#f5f5f5;
+  background: #f5f5f5;
   width: 100%;
   margin-top: 3rem;
 }
@@ -81,7 +84,7 @@ header a {
   text-decoration: none;
   color: white;
   margin: 0 3%;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 .huntsite_contet {
   text-align: center;
@@ -119,29 +122,29 @@ header a {
 .details {
   position: absolute;
   left: 0;
-  top:9.3rem;
+  top: 9.3rem;
   width: 100%;
   border-top: 1px solid #e4e4e4;
 }
 .details li {
   background-color: #fff;
   height: 3.5rem;
-  padding-top: .6rem;
+  padding-top: 0.6rem;
   color: #333;
   border-bottom: 1px solid #e4e4e4;
 }
-.details p{
+.details p {
   margin-left: 1rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: #999;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
-.details h4{
-  margin-left:1rem; 
-  font-size: .8rem;
-  padding: 1%
+.details h4 {
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  padding: 1%;
 }
-.details  a {
+.details a {
   text-emphasis: none;
   color: #333;
 }
