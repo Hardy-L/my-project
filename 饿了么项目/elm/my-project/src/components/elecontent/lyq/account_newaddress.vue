@@ -1,5 +1,5 @@
 <template>
-    <div class="account_editoraddress">
+    <div class="account_newaddress">
      <!-- 头部 -->
       <div class="hand">
         <!-- 返回 -->
@@ -7,72 +7,98 @@
 <div class="title_head">  
       <span class="title_text">新增地址</span>
     </div>
+    
     </div>
     <div class="profile-1reTe">
             <ul>
             <li>
                 <div class="myorder-div">
-                <input type="text" placeholder="请填写你的姓名">
+                <input v-model="name" type="text" placeholder="请填写你的姓名">
                 </div>
                 </li>
 
                 <li>
-                <div class="myorder-div">
-                <input type="text" placeholder="小区/写字楼/学校等">
+                
+                <div class="myorder-div"> <router-link to="/addDetail">
+                <!-- <input v-model="this.$route.query.address" type="text" placeholder="小区/写字楼/学校等" > -->
+                   <input v-model="address" type="text" placeholder="小区/写字楼/学校等" >
+                 </router-link>
                 </div>
                 </li>
                 <li>
                 <div class="myorder-div">
-                <input type="text" placeholder="请填写能够联系到您的手机号">
+                <input v-model="address_detail" type="text" placeholder="请填写详细送餐地址">
                 </div>
                 </li>
                 <li>
                 <div class="myorder-div">
-                <input type="text" placeholder="备用联系电话（选填）">
+                <input v-model="phone" type="text" placeholder="请填写能够联系到您的手机号">
                 </div>
                 </li>
                 <li>
                 <div class="myorder-div">
-                <input type="text" placeholder="请填写你的姓名">
+                <input v-model="phone_bk" type="text" placeholder="备用联系电话（选填）">
                 </div>
                 </li>
             </ul>
             </div>
-            <div class="login_container" >新增地址</div>
+            <div class="login_container" @click="newadd()">新增地址</div>
     </div>
 </template>
 
 <script>
+import account_editoraddress from "../lyq/account_editoraddress";
 export default {
-  name: "account_editoraddress",
+  name: "account_newaddress",
   data() {
     return {
       user_id: "",
-      address: "",
+      address: this.$route.query.address,
       address_detail: "",
+      // geohash: "3454",
       name: "",
       phone: "",
-      tag: "",
-      poi_type: ""
+      // tag: "43",
+      // sex: "1",
+      phone_bk: "2998"
+      // tag_type: "2"
     };
   },
-  created() {
-    let api28 = "https://elm.cangdu.org/v1/users/"+this.$store.state.usermsg.user_id+"/addresses/";
-    this.$http({
-      method:"post",
-      url:api,
-      data:{
-      address: "",
-      address_detail: "",
-      name: "",
-      phone: "",
-      tag: "",
-      poi_type: ""
-      },
-      withCredentials: true 
-    }).then(res=>{
-
-    })
+  components: {
+    account_editoraddress
+  },
+  methods: {
+    newadd() {
+      let api28 =
+        "https://elm.cangdu.org/v1/users/" +
+        this.$store.state.usermsg.user_id +
+        "/addresses/";
+      this.$http({
+        method: "post",
+        url: api28,
+        data: {
+          user_id: this.user_id,
+          address: this.address,
+          address_detail: "454",
+          geohash: "354",
+          name: this.name,
+          phone: this.phone,
+          tag: "efrd",
+          sex: "1",
+          phone_bk: this.phone_bk,
+          tag_type: "215654"
+        },
+        withCredentials: true
+      }).then(res => {
+        console.log(res);
+        if (res.data.status) {
+          alert(res.data.success);
+          this.$router.push({ name: "account_editoraddress" });
+        } else {
+          alert(res.data.message);
+        }
+      });
+    }
   }
 };
 </script>
@@ -114,16 +140,17 @@ span {
 }
 .profile-1reTe {
   background-color: #fff;
-  width: 100%;
+  /* width: 100%; */
   margin: 0.6rem 0;
 }
 .profile-1reTe ul li {
   height: 3rem;
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
 }
 .myorder-div {
-  width: 9rem;
+  /* width: 9rem; */
+  width: 90%;
   height: 3rem;
   float: left;
   text-align: center;
@@ -132,18 +159,20 @@ span {
 /*表单*/
 ul li {
   height: 3.1rem;
-  width: 100%;
+  /* width: 100%; */
   line-height: 3.1rem;
 }
-.myorder-div input[type="text"] {
+.myorder-div input {
   display: block;
-  width: 22rem;
+  /* width: 22rem; */
+  width: 100%;
   font-size: 0.9rem;
-  margin: 0.4rem 0.4rem;
+  margin: 0.4rem 4%;
   padding: 0.5rem 0.3rem;
   background: #f0efef;
   border: 1px solid #ddd;
-  border-radius: 0.4rem;
+  /* border-radius: 0.4rem; */
+  /* margin: 0 auto; */
 }
 /* 确认button*/
 .login_container {

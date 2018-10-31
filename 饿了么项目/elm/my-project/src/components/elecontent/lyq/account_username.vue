@@ -18,21 +18,24 @@
 </template>
 
 <script>
+import login_account from "../lyq/login_account";
 export default {
   name: "account_username",
-  data(){
-    return{
-      name:this.$store.state.usermsg.username
-    }
+  components: {
+    login_account
   },
-  methods:{
-    edit(){
-      console.log(this.$store.state.usermsg.username);
+  data() {
+    return {
+      name: this.$store.state.usermsg.username
+    };
+  },
+  methods: {
+    edit() {
+      // console.log(this.$store.state.usermsg.username);
       this.$store.state.usermsg.username = this.name;
-      // this.$router.push({name:'login_account'})
+      this.$router.push({ name: "login_account" });
     }
   }
-
 };
 </script>
 

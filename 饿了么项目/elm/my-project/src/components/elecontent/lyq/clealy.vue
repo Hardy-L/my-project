@@ -9,40 +9,77 @@
     </div>  
       <!-- content -->
       
-    <div class="category_title"><span  class="choosed">红包</span> <span class="">商家代金券</span></div>
-    <div class="hongbao_container">
-      <header class="hongbao_title"><div  class="total_number">有 
-        <span >3</span> 个红包即将到期
-                          </div> <div class="hongbao_description"> <a href="#/benefit/hbDescription" class="hongbao_detail">红包说明</a></div></header>
+    <div class="category_title">
+      <span class="choosed">红包</span> 
+      <span class="">商家代金券</span>
+      </div>
 
-    <ul  class="hongbao_list_ul"><li class="hongbao_list_li">
-      <section class="list_item"><div  class="list_item_left">
-        <span >¥</span> <span >1</span>
-     <span >.</span>
-      <span >0</span> 
-      <p>满 20 元可用</p>
+    <div class="hongbao_container">
+    <header class="hongbao_title">
+      <div class="total_number">
+    有<span >3</span>个红包即将到期</div>
+    <div class="hongbao_description"> 
+    <a href="#/benefit/hbDescription" class="hongbao_detail">红包说明</a>
+    </div>
+    </header>
+
+    <ul class="hongbao_list_ul">
+      <li class="hongbao_list_li" v-for="item in arr" :key="item.id">
+      <div class="list_item">
+      <div class="list_item_left">
+      <span>¥</span> 
+      <span>1</span>
+      <span>.</span>
+      <span>0</span> 
+      <p>满 <span>20</span> 元可用</p>
       </div> 
+
       <div class="list_item_right">
-        <h4 >分享红包</h4> 
-        <p >2017-05-23到期</p> 
-        <p >限收货手机号为 13681711254</p>
-        </div> <div  class="time_left">剩3日</div>
-        </section> 
-        
-        </li><li class="hongbao_list_li"><section  class="list_item"><div  class="list_item_left"><span >¥</span> <span >2</span> <span>.</span> <span>0</span> <p >满 40 元可用</p></div> <div class="list_item_right"><h4>分享红包</h4> <p>2017-05-23到期</p> <p >限收货手机号为 13681711254</p></div> <div class="time_left">剩3日</div></section> <!----></li><li class="hongbao_list_li"><section  class="list_item"><div class="list_item_left"><span>¥</span> <span>4</span> <span >.</span> <span >5</span> <p >满 30 元可用</p></div> <div  class="list_item_right"><h4 >分享红包</h4> <p >2017-05-23到期</p> <p >限收货手机号为 13681711254</p></div> <div class="time_left">剩3日</div></section> <footer class="list_item_footer"><p>限品类：快餐便当、特色菜系、小吃夜宵、甜品饮品、异国料理</p></footer></li></ul>
+        <h4>{{item.name}}</h4> 
+        <p>{{item.end_date}}</p> 
+        <p>限收货手机号为 {{item.phone}}</p>
+        </div> <div class="time_left">剩3日</div>
+        </div> 
+        </li>
+        </ul>
         </div>
-        <a href="#/benefit/hbHistory" class="history_hongbao"><span  class="check_history">查看历史红包></span> </a>
-        <footer  class="hongbao_footer"><a  href="#/benefit/exchange" class="hongbao_style" style="border-right: 1px solid rgb(245, 245, 245);">
-                          兑换红包
-                      </a> <a  href="#/benefit/commend" class="hongbao_style">
-                          推荐有奖
-                      </a></footer>
+
+
+          <router-link to="/hbHistory" class="history_hongbao">
+          <span class="check_history">
+          查看历史红包>
+          </span>
+          </router-link>
+
+
+        <footer class="hongbao_footer">
+        <router-link class="hongbao_style" to="/exchange" style="border-right: 1px solid rgb(245, 245, 245);">兑换红包</router-link>
+  <router-link class="hongbao_style" to="/commend">推荐有奖</router-link>
+         </footer>
     </div>
 </template>
 
 <script>
 export default {
-  name: "clealy"
+  name: "clealy",
+  data() {
+    return {
+      user_id:"",
+      limit:"",
+      offset:"",
+      arr:[]
+    }
+  },
+  created(){
+    var user_id = this.$store.state.usermsg.user_id
+    // console.log(this.$store.state.id)
+    let api34 = "https://elm.cangdu.org/promotion/v2/users/"+user_id+"/hongbaos?limit=20&offset=0";
+    this.$http.get(api34).then(res => {
+      console.log("res", res);
+      this.arr = res.data;
+      this.$store.commit("lm", this.arr.length);
+    });
+  }
 };
 </script>
 
@@ -111,7 +148,7 @@ span {
   -ms-flex-pack: justify;
   justify-content: space-between;
   font-size: 0.5rem;
-  line-height: 2rem;
+  line-height: 2.7rem;
 }
 .hongbao_description {
   display: -ms-flexbox;
@@ -119,10 +156,25 @@ span {
   -ms-flex-align: center;
   align-items: center;
 }
+.hongbao_container .hongbao_title .total_number {
+  color: #666;
+  margin-left: 1.1rem;
+  font-size: 0.8rem;
+}
+.hongbao_container .hongbao_title .total_number span {
+  color: #ff5340;
+  font-size: 0.8rem;
+}
+.hongbao_description .hongbao_detail {
+  color: #3190e8;
+  font-size: 0.8rem;
+  margin-right: 1.2rem;
+}
 .hongbao_container .hongbao_list_ul .hongbao_list_li {
+  width: 90%;
   background: #fff;
   background-size: 0.5rem 0.2rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem auto;
   border-radius: 0.25rem;
   padding-top: 0.5rem;
   border-top: 0.3rem dashed red;
@@ -176,7 +228,7 @@ span {
   .list_item
   .list_item_left
   p {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: #999;
 }
 .hongbao_container
@@ -203,12 +255,14 @@ span {
   .list_item_right
   p {
   list-style-type: disc;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #999;
 }
 .hongbao_container .hongbao_list_ul .hongbao_list_li .list_item .time_left {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #ff5340;
+  font-weight: 700;
+  margin-right: 0.5rem;
 }
 .hongbao_container .hongbao_list_ul .hongbao_list_li .list_item_footer {
   background-color: #f9f9f9;

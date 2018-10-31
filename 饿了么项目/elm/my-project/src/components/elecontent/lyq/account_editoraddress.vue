@@ -10,9 +10,9 @@
     </div>
     <div class="addlist">
       <ul>
-        <li>
-        <p>蓝鸥科技·郑州</p>
-        <p>18796352269</p>
+        <li @click="shousuo()" v-for="item in data" :key="item.id">
+        <h4>{{item.address}}</h4>
+        <p>{{item.phone}}</p>
         </li>
       </ul>
     </div>
@@ -33,7 +33,28 @@
 
 <script>
 export default {
-  name: "account_editoraddress"
+  name: "account_editoraddress",
+  data(){
+    return{
+      data:[],
+      site:"zhengzhou",
+      phone:"123"
+    }
+  },
+  methods: {
+    shousuo(){
+      let api = "https://elm.cangdu.org/v1/users/"+ this.$store.state.usermsg.id +"/addresses";
+        this.$http.get(api).then(res => {
+          this.data=res.data
+            console.log(this.data)
+            if(res.data.status){
+              alert("添加成功")
+              
+
+            }
+    });
+    }
+   }
 };
 </script>
 
@@ -47,7 +68,7 @@ p,
 span {
   font-family: Helvetica Neue, Tahoma, Arial;
 }
-.editoraddress {
+.account_editoraddress {
   background-color: rgb(236, 236, 236);
 }
 .hand {

@@ -49,8 +49,8 @@
        <p>账号绑定</p>
         <div class="profile-1reTe">
         <ul>
-        <li>
-            <div class="myorder-div">
+        <li @click="vanish()">
+       <div class="myorder-div">
                 <img src="../../../assets/蓝手机.png" alt="">
                <span>手机</span>
             </div>
@@ -75,6 +75,13 @@
     <router-link :to="goudan">
     <div class="login_container" @click="exit()">退出登录</div>
     </router-link>
+    <!-- 弹框 -->
+    <div class="tip_text_container" v-show="!van"><div class="tip_icon">
+      <span>!</span> 
+      </div> 
+      <p class="tip_text">请在手机APP中打开</p> <div class="confrim"  @click="vanish()">确认</div>
+      </div>
+      
     </div>
 </template>
 
@@ -85,11 +92,15 @@ export default {
     return {
       username: (this.username = this.$store.state.usermsg.username),
       imageUrl: "",
-      goudan: ""
+      goudan: "",
+      van:true
     };
   },
   created() {},
   methods: {
+    vanish(){
+      this.van = !this.van
+    },
     exit() {
       let api26 = "https://elm.cangdu.org/v2/signout";
       this.$http.get(api26).then(data => {
@@ -98,15 +109,15 @@ export default {
         if (data.data.status == 1) {
           // this.goudan = "/myele";
           this.$store.commit("clear");
-          this.$router.push({name:"myele"})
+          this.$router.push({name:"myele"});
         } else {
           this.goudan = "/login_account";
           alert(data.data.message);
         }
       });
     }
+  },
   }
-};
 </script>
 
 <style scoped>
@@ -229,6 +240,65 @@ span {
   width: 1.2rem;
   float: left;
   margin: 0.8rem 0rem 0rem 0.5rem;
+}
+/*弹框*/
+.tip_text_container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.tip_text_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10rem;
+  margin-left: -9rem;
+  width: 12rem;
+  animation: tipMove 0.4s;
+  background-color: #fff;
+  padding: 2rem 3rem 0;
+  border: 1px;
+  border-radius: 0.25rem;
+}
+.tip_text_container .tip_icon {
+  width: 4rem;
+  height: 4rem;
+  border: 0.15rem solid #f8cb86;
+  border-radius: 50%;
+  text-align: center;
+}
+.tip_text_container .tip_text {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 0.9rem;
+  text-align: center;
+  margin-top: 0.8rem;
+  padding: 0 0.4rem;
+}
+
+.tip_text_container .tip_icon span {
+  font-size: 4rem;
+  line-height: 4rem;
+  color: #f8cb86;
+}
+.tip_text_container .confrim {
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 0.8rem;
+  background-color: #4cd964;
+  width: 18rem;
+  height: 2.5rem;
+  text-align: center;
+  line-height: 2.5rem;
+  border: 1px;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 </style>
 
