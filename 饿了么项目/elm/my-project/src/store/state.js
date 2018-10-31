@@ -5,5 +5,21 @@ export default{
    password:"",
    src:"",
    captcha_code:"",
-   bool:false
+   bool:false,
+   bbb:"",
+   datahe:[],
+   // 点击获取到的当前对象
+   dqdata:[],
+   // 钱数
+   qian:"",
+   // 把选择的对象存入数组
+   xzdata:[],
+   num:0,
+   aa:"",
+   bb:"",
+   cc:"",
+   dd:"",
+   ee:"",
+   ff:"",
+
 }
