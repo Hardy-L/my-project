@@ -173,9 +173,7 @@ header span:nth-child(2) {
 }
 .merchant p{
   height: 2.65rem;
-  line-height: 2.65
-  
-  rem;
+  line-height: 2.65rem;
   font-size: 1.3rem;
   padding-left: .5rem;
   border-bottom: 1px solid #f1f1f1;

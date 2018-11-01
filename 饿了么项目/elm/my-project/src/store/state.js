@@ -5,5 +5,6 @@ export default{
    password:"",
    src:"",
    captcha_code:"",
-   bool:false
+   bool:false,
+   sousuo:""
 }
