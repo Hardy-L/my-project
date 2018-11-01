@@ -15,12 +15,7 @@ export default{
    // 把选择的对象存入数组
    xzdata:[],
    num:0,
-   aa:"",
-   bb:"",
-   cc:"",
-   dd:"",
-   ee:"",
-   ff:"",
+
 
    homeid:"",
    price:"",
