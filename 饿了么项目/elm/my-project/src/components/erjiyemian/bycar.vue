@@ -12,13 +12,12 @@
                         <p>{{k.specfoods[0].name}}</p>
                         <!-- <p>默认</p> -->
                         <p>{{k.specfoods[0].price}}￥</p>
-
-                      <div class="right">
-                        <span @click="jiangou(dd,ee,ff)">
+                      <div>
+                            <span @click="jiangou2(k.specfoods[0].food_id)">
                       <img src="@/assets/减号.png" alt="" class="gouwu1">
                       </span>
                       <span> {{k.specfoods[0].count}}</span>
-                       <span @click="jiagou(aa,bb,cc)">
+                       <span @click="jiagou2(k.specfoods[0].food_id)">
                       
                       <img src="@/assets/加购物车.png" alt="" class="gouwu1">
                     </span>
@@ -39,7 +38,7 @@
            </span>
            <span class="qisong">
                <div v-show = "show>0">还差¥{{show}}元起送</div>
-               <div v-show = "show<=0">去结算</div>
+               <router-link v-show = "show<=0" to="/orderfrom">去结算</router-link>
            </span>
         </div>
 </template>
@@ -53,31 +52,13 @@ export default {
   },
   computed: {
     arrs() {
-      return this.$store.state.xzdata.filter(num => num.specfoods[0].count > 0);
+      return this.$store.state.xzdata;
     },
     show() {
       return 20 - this.$store.state.num;
     },
     data16() {
       return this.$store.state.datahe;
-    },
-    aa() {
-      return this.$store.state.aa;
-    },
-    bb() {
-      return this.$store.state.bb;
-    },
-    cc() {
-      return this.$store.state.cc;
-    },
-    dd() {
-      return this.$store.state.dd;
-    },
-    ee() {
-      return this.$store.state.ee;
-    },
-    ff() {
-      return this.$store.state.ff;
     }
   },
   created() {},
@@ -85,19 +66,11 @@ export default {
     dianji() {
       this.aaa = !this.aaa;
     },
-    jiagou(aaa, bbb, ccc) {
-      console.log(ccc);
-      this.$store.commit("add", { aa: aaa, bb: bbb, cc: ccc });
+    jiagou2(id) {
+      this.$store.commit("jiagou2", id);
     },
-    jiangou(aaa, bbb, cishu) {
-      if (cishu == 0) {
-        return;
-      } else {
-        this.$store.commit("app", { aa: aaa, bb: bbb });
-      }
-    },
-    empty(){
-
+    jiangou2(id) {
+      this.$store.commit("jiangou2", id);
     }
   }
 };

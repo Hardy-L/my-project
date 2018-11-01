@@ -152,7 +152,11 @@ export default {
         _this.suoyouxinxi = _this.data6b[0].supports[1].name;
         // console.log("所有信息" + _this.suoyouxinxi);
       });
-  }
+  },
+  // created(){
+  //   // this.$store.commit("getcgid",mls.id)
+  //   // console.log(mls.id)
+  // }
 };
 </script>
 <style scoped>
