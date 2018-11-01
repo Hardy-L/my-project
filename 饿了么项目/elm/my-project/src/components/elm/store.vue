@@ -42,7 +42,13 @@
                <span class="head_span">{{value.description}}</span>
              </div>
            <!-- 右边店铺详情 -->
-            <section class="stop" v-for="(stores,key) in value.foods" :key="key">
+           
+
+
+
+
+
+            <section class="stop" v-for="(stores,index) in value.foods" :key="index">
                  <div class="stop_left">
                    <router-link 
                    :to="{path:'/deta',
@@ -58,9 +64,28 @@
                      <h3>{{stores.name}}</h3>
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
-                 </div> 
-              </section>                 
+                    <section >
+                     <span> ¥{{stores.specfoods[0].price}}起</span>
+                      <span @click="jiangou(value.id,stores.specfoods[0].food_id,stores.specfoods[0].count)">
+                      <img src="@/assets/减号.png" alt="" class="gouwu">
+                      </span><span> {{stores.specfoods[0].count}}</span>
+                       <span @click="jiagou(value.id,stores.specfoods[0].food_id,stores)">
+                      
+                      <img src="@/assets/加购物车.png" alt="" class="gouwu">
+                    </span>
+                      </section>
+                   
+                 </div>   
+              </section>   
+
+
+
+
+
+
+
             </section>
+            
           </div>
        </div>
        <!-- 评价 -->
@@ -134,15 +159,20 @@
            </ul>
          </div>
        </div>
+       <div class="bottom">
+       <bycar/>
+       </div>
     </div>  
 </template>
 <script>
+import Vue from "vue";
+import bycar from "@/components/erjiyemian/bycar";
 export default {
   name: "store",
   data() {
     return {
       activeIndex: "1",
-      data16: [],
+      // data16: [],
       facevalue: "0",
       value: "0",
       datas: [],
@@ -159,15 +189,33 @@ export default {
       a: 5,
       img1: "",
       img2: "",
-      img3: ""
+      img3: "",
+      qianshu: 0,
+      cishu: 0,
+      datahe: [],
+      c: 0,
+      clidata: {}
     };
+  },
+  computed: {
+    data16() {
+      return this.$store.state.datahe;
+    }
   },
   created() {
     var _this = this;
     // 接口16
+    // let api ="api/shopping/v2/menu?restaurant_id=" +this.$route.params.id;
+    // let api = "api/shopping/v2/menu?restaurant_id=1";
     let api = "api/shopping/v2/menu?restaurant_id=" + this.$route.params.id;
     this.$http.get(api).then(res => {
-      _this.data16 = res.data;
+      // _this.data16 = res.data;
+      for (let i = 0; i < res.data.length; i++) {
+        for (let ii = 0; ii < res.data[i].foods.length; ii++) {
+          Vue.set(res.data[i].foods[ii].specfoods[0], "count", 0);
+        }
+      }
+      this.$store.commit("getdatahe", res.data);
     });
     let url = "api/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
@@ -206,18 +254,12 @@ export default {
       this.img1 = _this.data17[0].item_ratings[0].image_hash;
       this.img2 = _this.data17[0].item_ratings[1].image_hash;
       this.img3 = _this.data17[1].item_ratings[1].image_hash;
-      console.log(this.img1);
-      console.log(this.img2);
-      console.log(this.img3);
     });
   },
   methods: {
     handleSelect(key, keyPath) {},
     menu(id) {
       this.facevalue = id;
-    },
-    active(id) {
-      this.value = id;
     },
     click1() {
       this.clic1 = true;
@@ -226,7 +268,23 @@ export default {
     click2() {
       this.clic2 = !this.clic2;
       this.clic1 = !this.clic2;
+    },
+    
+       jiagou(aaa,bbb,ccc) {
+         console.log(ccc)
+         this.$store.commit("add",{aa:aaa,bb:bbb,cc:ccc})
+    },
+    jiangou(aaa, bbb,cishu,jine) {
+      if(cishu==0){
+        return
+      }else{
+        this.$store.commit("app", {aa:aaa,bb:bbb,cs:cishu,je:jine});
+      }
+      
     }
+  },
+  components: {
+    bycar
   }
 };
 </script>
@@ -352,7 +410,7 @@ header {
 }
 
 .stop {
-  height: 6.6rem;
+  height: 6.8rem;
   overflow: hidden;
   background: #fff;
   border-bottom: 1px solid #e4e4e4;
@@ -374,6 +432,17 @@ header {
   padding: 1rem 0;
   color: #999;
 }
+img {
+  width: 3rem;
+}
+.gouwu {
+  width: 1.2rem;
+}
+.bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;}
 .content-right-top {
   overflow: hidden;
   /* margin-top: .5rem; */

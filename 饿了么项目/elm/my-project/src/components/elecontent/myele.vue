@@ -46,7 +46,7 @@ S<template>
          <router-link to="/clealy">
         <li>
           <p>
-            <span>0</span>
+            <span>{{shuliang}}</span>
             <b>个</b>
             </p>
           <p>我的优惠</p>
@@ -150,7 +150,8 @@ export default {
       password: "",
       captcha_code: "",
       defaultusername:"登录/注册",
-      goudan:""
+      goudan:"",
+      shuliang:""
     };
   },
   components: {
@@ -164,6 +165,8 @@ export default {
     }else{
       this.username = this.$store.state.usermsg.username
        this.goudan = "/login_account";
+       this.shuliang = this.$store.state.limit;
+       console.log(this.shuliang);
     }
   }
 };

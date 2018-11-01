@@ -25,9 +25,10 @@
 
     </li>
     <li class="account"><input type="text" placeholder="验证码" v-model="captcha_code">
-    <img style="width:4.5rem" :src="img" alt="">
+    <p @click="reng()" style="float:right">换一张</p>
+    <img style="width:4.5rem;border:.1rem solid #666;float:right;margin-top:.5rem" :src="img" alt="">
     <!-- <span class="sp1">看不清</span><br> -->
-    <p @click="reng()">换一张</p>
+    
     </li>
   </ul>
   </div>
@@ -63,7 +64,8 @@ export default {
       password: "",
       captcha_code: "",
       img: "",
-      login: ""
+      login: "",
+      user_id:""
     };
   },
   created() {
@@ -91,7 +93,19 @@ export default {
       this.ended = !this.ended;
       console.log(this.ended);
     },
+    getCode() {
+      const url = "https://elm.cangdu.org/v1/captchas";
+      this.$http({
+        method: "post",
+        url: url,
+        withCredentials: true // 默认false
+      }).then(res => {
+        console.log("img", res);
+        this.img = res.data.code;
+      });
+    },
     getLogin(username) {
+      var _this = this
       const url = "https://elm.cangdu.org/v2/login";
       this.$http({
         //调用接口
@@ -101,21 +115,26 @@ export default {
         data: {
           username: this.username,
           password: this.password,
-          captcha_code: this.captcha_code
+          captcha_code: this.captcha_code,
+          user_id:this.user_id
         },
         withCredentials: true
       }).then(response => {
         //接口返回数据
         // this.userInfo=this.response.data;
-        console.log("tap", response);
+        // console.log(response);
         // console.log("tap", response.data.message);
         if (response.data.status == 0) {
           alert(response.data.message);
+          this.getCode();
         } else {
+          _this.user_id = response.data.user_id
           this.$store.commit("qufan", true);
           this.$store.commit("changeusermsg", response.data);
+          this.$store.commit("idok",_this.user_id)
           this.username = this.$store.state.usermsg.username;
           this.$router.push({ name: "myele" });
+
           // this.$store.commit("changeusermsg",this.username);
         }
       });
@@ -211,12 +230,14 @@ ul li {
   width: 2rem;
   height: 0.7rem;
   padding: 0 0.2rem;
-  border: 1px;
+  /* border: 1px solid #555; */
   border-radius: 0.5rem;
   position: relative;
-  top: -1.8rem;
-  left: 19rem;
+  top: 1.2rem;
+  /* left: 19rem; */
   transition: all 0.3s;
+  float: right;
+  margin-right: 0.4rem;
 }
 .bright {
   background-color: #11a522;

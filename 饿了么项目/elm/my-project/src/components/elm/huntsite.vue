@@ -73,6 +73,8 @@ export default {
       this.$http.get(url).then(res => {
         // console.log(res.data);
         this.datas = res.data;
+        this.$store.commit("cityid", this.id);
+        console.log('id',this.id);
       });
     },
     loc(id) {

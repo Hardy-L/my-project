@@ -9,7 +9,7 @@
     </div>
     </div>
     <!-- content -->
-    <p>为账户{{username}}购买会员</p>
+    <p style="line-height:1.7rem">为账户{{username}}购买会员</p>
     <div class="profile-1reTe">
         <ul>
           <router-link to="/vipDescription">
@@ -127,7 +127,7 @@ span {
 .info-members p {
   font-size: 0.8rem;
   color: #666;
-  line-height: 2rem;
+  /* line-height: 1rem; */
 }
 
 .hand {
