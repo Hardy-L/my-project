@@ -66,11 +66,10 @@
                      <strong>{{stores.tips}}</strong>
                     <section >
                      <span> ¥{{stores.specfoods[0].price}}起</span>
-                      <span @click="jiangou(value.id,stores.specfoods[0].food_id,stores.specfoods[0].count)">
-                      <img src="@/assets/减号.png" alt="" class="gouwu">
-                      </span><span> {{stores.specfoods[0].count}}</span>
-                       <span @click="jiagou(value.id,stores.specfoods[0].food_id,stores)">
-                      
+                      <span @click="jiangou(stores.specfoods[0])">
+                      <img src="@/assets/减号.png" alt="" class="gouwu" v-if="stores.specfoods[0].count >0">
+                      </span><span v-if="stores.specfoods[0].count >0"> {{stores.specfoods[0].count}}</span>
+                       <span @click="jiagou(stores.specfoods[0])">
                       <img src="@/assets/加购物车.png" alt="" class="gouwu">
                     </span>
                       </section>
@@ -162,7 +161,7 @@
        <div class="bottom">
        <bycar/>
        </div>
-    </div>  
+    </div>
 </template>
 <script>
 import Vue from "vue";
@@ -273,17 +272,11 @@ export default {
       this.clic1 = !this.clic2;
     },
     
-       jiagou(aaa,bbb,ccc) {
-         console.log(ccc)
-         this.$store.commit("add",{aa:aaa,bb:bbb,cc:ccc})
+    jiagou(aaa) {
+         this.$store.commit("add",aaa)
     },
-    jiangou(aaa, bbb,cishu,jine) {
-      if(cishu==0){
-        return
-      }else{
-        this.$store.commit("app", {aa:aaa,bb:bbb,cs:cishu,je:jine});
-      }
-      
+    jiangou(aaa) {
+        this.$store.commit("app", aaa);
     },
     // this.$store.commit("getid",{this.$route.params.id})
   },

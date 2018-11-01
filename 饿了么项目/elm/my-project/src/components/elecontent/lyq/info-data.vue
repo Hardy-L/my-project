@@ -3,7 +3,8 @@
      <!-- 头部 -->
       <div class="hand">
         <!-- 返回 -->
-  <span class="el-icon-arrow-left" @click="$router.back(-1)"></span>
+        <router-link to="/Aaa"  class="el-icon-search"></router-link>
+  <!-- <span class="el-icon-arrow-left" @click="$router.back(-1)"></span> -->
     <div class="title_head">  
       <span class="title_text">我的订单</span>
     </div>
@@ -18,8 +19,8 @@
                     <p class="order_status">
                             支付成功
            </p></header> <section class="order_basket">
-           <p class="order_name ellipsis">{{item.name}}{{item.specfoods[0].count}}-{{item.specs_name}}</p>
-         <p class="order_amount">{{item.specfoods[0].price*item.specfoods[0].count}}</p></section></section>
+           <p class="order_name ellipsis">{{item.name}}{{item.count}}-{{item.specs_name}}</p>
+         <p class="order_amount">{{item.price*item.count}}</p></section></section>
           <div class="order_again"><span class="buy_again">再来一单</span></div></section></li></ul>
     <wode></wode>
     </div>
@@ -57,7 +58,7 @@ span {
   background-color: #3190e8;
   border-bottom: 0.01rem ridge rgb(201, 187, 187);
 }
-.el-icon-arrow-left {
+/* .el-icon-arrow-left {
   float: left;
   line-height: 3rem;
   text-decoration-line: none;
@@ -65,7 +66,7 @@ span {
   color: #fff;
   font-size: 1.2rem;
   margin-left: 0.4rem;
-}
+} */
 .title_head {
   width: 50%;
   height: 2.8rem;

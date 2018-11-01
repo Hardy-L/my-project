@@ -3,7 +3,8 @@
  <div>
  <div class="head">
    <div class="top-left">
- <router-link to="/seatch"  class="el-icon-search"></router-link>
+ <!-- <router-link to="/seatch"  class="el-icon-search"></router-link> -->
+ <span class="el-icon-arrow-left" @click="$router.back(-1)"></span>
    </div>
    <div class="location">
      <span><router-link to="/home">确认订单</router-link></span>
@@ -19,17 +20,17 @@
  
 
  <!-- 添加收货地址 -->
- <div></div>
+ <div class="dizhi"><span>请添加一个收货地址</span><span>></span></div>
  <!-- 送达时间 -->
- <div v-for="(item,index) in data11" :key="index">
-   <span>尽快送达</span>
+ <!-- <div v-for="(item,index) in data11" :key="index" class="songda">
+   <span >尽快送达</span>
    <span>预计{{$item.order_lead_time}}后</span>
    <span>蜂鸟专送</span>
- </div>
+ </div> -->
  <!-- 支付方式(红包) -->
  <div>
-   <div>
-     <span>支付方式</span> <span>在线支付</span> 
+   <div class="zhifu">
+     <span class="zhifuleft">支付方式</span> <span class="zhifufight">在线支付</span> <span class="xiangyou">></span> 
    
    </div>
    <div>
@@ -44,9 +45,9 @@
 
        </div>
        <div>
-         <span>{{item.specfoods[0].name}}</span>
-         <span>{{item.specfoods[0].count}}</span>
-         <span>{{item.specfoods[0].price}}</span>
+         <span>{{item.name}}</span>
+         <span>{{item.count}}</span>
+         <span>{{item.price}}</span>
          </div>
          <div>
            <span>订单{{$store.state.num}} </span>
@@ -157,5 +158,25 @@ export default {
 .swiper-slide{
   background: #fff;
 }
-
+el-icon-arrow-left {
+  float: left;
+  line-height: 3rem;
+  text-decoration-line: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-left: 0.4rem;
+}
+.dizhi{
+  padding: 0.5rem 2rem;
+}
+/* .songda{
+  padding: 0.5rem 2rem;
+} */
+.zhifu{
+  padding:0.4rem 1rem;
+}
+.zhifuright{
+  padding-right: 0.2rem;
+}
 </style>

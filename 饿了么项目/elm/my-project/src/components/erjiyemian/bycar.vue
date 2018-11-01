@@ -6,18 +6,18 @@
                 <ul v-show="aaa" class="show">
                   <div class="header">
                     <p>购物车</p>
-                    <p @click="empty()">清空</p>
+                    <p @click="empty">清空</p>
                   </div>
                     <li v-for="(k,index) in arrs" :key="index" style="color:white" v-show="arrs">
-                        <p>{{k.specfoods[0].name}}</p>
+                        <p>{{k.name}}</p>
                         <!-- <p>默认</p> -->
-                        <p>{{k.specfoods[0].price}}￥</p>
+                        <p>{{k.price}}￥</p>
                       <div>
-                            <span @click="jiangou2(k.specfoods[0].food_id)">
+                            <span @click="jiangou2(k)">
                       <img src="@/assets/减号.png" alt="" class="gouwu1">
                       </span>
-                      <span> {{k.specfoods[0].count}}</span>
-                       <span @click="jiagou2(k.specfoods[0].food_id)">
+                      <span> {{k.count}}</span>
+                       <span @click="jiagou2(k)">
                       
                       <img src="@/assets/加购物车.png" alt="" class="gouwu1">
                     </span>
@@ -55,11 +55,12 @@ export default {
       return this.$store.state.xzdata;
     },
     show() {
-      return 20 - this.$store.state.num;
+      return  20-this.$store.state.num;
     },
     data16() {
       return this.$store.state.datahe;
-    }
+    },
+    
   },
   created() {},
   methods: {
@@ -67,10 +68,14 @@ export default {
       this.aaa = !this.aaa;
     },
     jiagou2(id) {
-      this.$store.commit("jiagou2", id);
+      console.log(id)
+      this.$store.commit("add",id)
     },
     jiangou2(id) {
-      this.$store.commit("jiangou2", id);
+      this.$store.commit("app", id);
+    },
+    empty(){
+      this.$store.commit("qingkong");
     }
   }
 };
