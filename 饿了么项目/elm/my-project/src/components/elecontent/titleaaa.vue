@@ -1,7 +1,7 @@
 <template>
 <!--导航栏-->
 <div class="head">
-   <router-link class="fanhui" to="/Aaa"> &lt;</router-link>
+   <router-link class="fanhui" to="/Aaa"><span class="el-icon-arrow-left"></span></router-link>
    <!-- <p class="log-in"></p> -->
    <!-- <router-link class="fanhui" to="/Aaa"> &it; </router-link> -->
    <!-- <i class="el-icon-search"></i> -->
@@ -59,5 +59,14 @@ p{
   height: 1rem;
   float: right;
   margin-right: 9rem;
+}
+.el-icon-arrow-left {
+  float: left;
+  line-height: 3rem;
+  text-decoration-line: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-left: 0.4rem;
 }
 </style>

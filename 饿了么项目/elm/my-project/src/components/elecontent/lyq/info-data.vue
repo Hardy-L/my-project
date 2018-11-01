@@ -8,11 +8,19 @@
       <span class="title_text">我的订单</span>
     </div>
     </div>
-    <ul class="order_list_ul"><li class="order_list_li"><img src="//elm.cangdu.org/img/16677606b8719449.jpg" class="restaurant_image"> <section class="order_item_right"><section><header class="order_item_right_header"><section class="order_header"><h4><span class="ellipsis">吃啥啦 </span></h4> <p class="order_time">2018-10-30 11:25</p></section> <p class="order_status">  等待支付 </p></header> <section class="order_basket"><p class="order_name ellipsis">qq-默认 等2件商品</p> <p class="order_amount">¥26395.00</p></section></section> <div class="order_again"><div class="page"><span class="rem_time" style="color: orange; border-width: 1px; border-style: solid; border-color: orange;">
-	       去支付(还剩12分14秒)
-        </span> <!----></div></div></section></li><li class="order_list_li"><img src="//elm.cangdu.org/img/166868e0e1719687.jpg" class="restaurant_image"> <section class="order_item_right"><section><header class="order_item_right_header"><section class="order_header"><h4><span class="ellipsis">京客隆123 </span></h4> <p class="order_time">2018-10-29 12:28</p></section> <p class="order_status">
-                            支付超时
-                        </p></header> <section class="order_basket"><p class="order_name ellipsis">西瓜丸子1-默认</p> <p class="order_amount">¥26193.00</p></section></section> <div class="order_again"><span class="buy_again">再来一单</span></div></section></li></ul>
+    <ul class="order_list_ul">
+        <li class="order_list_li" v-for="(item,index) in arrs" :key="index">
+            <img src="'elm.cangdu.org/img/'+item.image_path" class="restaurant_image"> 
+            <section class="order_item_right">
+                <section><header class="order_item_right_header">
+                    <section class="order_header"><h4><span class="ellipsis">{{item.name }}</span></h4> 
+                    <p class="order_time">{{item.server_utc}}</p></section> 
+                    <p class="order_status">
+                            支付成功
+           </p></header> <section class="order_basket">
+           <p class="order_name ellipsis">{{item.name}}{{item.specfoods[0].count}}-{{item.specs_name}}</p>
+         <p class="order_amount">{{item.specfoods[0].price*item.specfoods[0].count}}</p></section></section>
+          <div class="order_again"><span class="buy_again">再来一单</span></div></section></li></ul>
     <wode></wode>
     </div>
 </template>
@@ -23,7 +31,11 @@ export default {
   name: "info_data",
   components: {
     wode
+  },computed:{
+  arrs(){
+    return this.$store.state.xzdata
   }
+}
 };
 </script>
 
