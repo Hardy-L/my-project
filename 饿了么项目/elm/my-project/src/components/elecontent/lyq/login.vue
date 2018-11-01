@@ -134,8 +134,7 @@ export default {
           this.$store.commit("idok",_this.user_id)
           this.username = this.$store.state.usermsg.username;
           this.$router.push({ name: "myele" });
-
-          // this.$store.commit("changeusermsg",this.username);
+          localStorage.setItem("loginid",JSON.stringify(this.data),_this.username)
         }
       });
     }

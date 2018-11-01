@@ -153,6 +153,7 @@
        <bycar/>
        </div>  
     </div>  
+  </div>    
 </template>
 <script>
 import Vue from "vue";
@@ -263,22 +264,18 @@ export default {
       this.clic1 = !this.clic2;
     },
     
-       jiagou(aaa,bbb,ccc) {
-         console.log(ccc)
-         this.$store.commit("add",{aa:aaa,bb:bbb,cc:ccc})
+    jiagou(aaa) {
+         this.$store.commit("add",aaa)
     },
-    jiangou(aaa, bbb,cishu,jine) {
-      if(cishu==0){
-        return
-      }else{
-        this.$store.commit("app", {aa:aaa,bb:bbb,cs:cishu,je:jine});
-      }
-      
-    }
+    jiangou(aaa) {
+        this.$store.commit("app", aaa);
+    },
+    // this.$store.commit("getid",{this.$route.params.id})
   },
   components: {
     bycar
-  }
+  },
+ 
 };
 </script>
 <style scoped>
