@@ -57,7 +57,8 @@ export default {
     suoyouxinxi: [],
     sbdata: "",
     data: [],
-    aaa: []
+    aaa: [],
+    Arr:[]
   }),
   // 设置属性,便于监听这个属性是否更新
   props: ["cli", "cli2"],
@@ -142,14 +143,14 @@ export default {
         //关闭加载提示
         // loadingInstance1.close();
         // 成功后的回调
-        console.log("成功了....");
+        // console.log("成功了....");
         //展示所有商店名
         _this.data6 = data.data;
-        console.log(_this.data6);
+        // console.log(_this.data6);
         _this.data6b = data.data;
 
         _this.suoyouxinxi = _this.data6b[0].supports[1].name;
-        console.log("所有信息" + _this.suoyouxinxi);
+        // console.log("所有信息" + _this.suoyouxinxi);
       });
   }
 };

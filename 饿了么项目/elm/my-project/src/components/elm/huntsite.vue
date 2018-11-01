@@ -95,7 +95,7 @@ export default {
   }
 };
 </script>
- <style scoped>
+<style scoped>
 .huntsite {
   background: #f5f5f5;
   width: 100%;

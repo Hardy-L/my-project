@@ -95,16 +95,18 @@ export default {
 }
 .top-left {
   float: left;
-  /* border:0.1rem solid red; */
   font-size: 1.6rem;
   padding: 0.3rem;
+  line-height: 2.2rem;
 }
 .top-right {
-  float: right;
   font-size: 1rem;
-  line-height: 2rem;
-  padding: 0.5rem;
+  line-height: 3rem;
   color: #ffffff;
+}
+.log-in{
+  overflow: hidden;
+  padding-left: 3.3rem;
 }
 .location span {
   color: white;

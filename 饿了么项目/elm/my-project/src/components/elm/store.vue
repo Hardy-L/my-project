@@ -261,6 +261,9 @@ export default {
     menu(id) {
       this.facevalue = id;
     },
+    active(id){
+      this.value = id;
+    },
     click1() {
       this.clic1 = true;
       this.clic2 = !this.clic1;
