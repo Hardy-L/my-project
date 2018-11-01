@@ -146,12 +146,13 @@ export default {
         // console.log("成功了....");
         //展示所有商店名
         _this.data6 = data.data;
-        // console.log(_this.data6);
+        console.log(_this.data6);
         _this.data6b = data.data;
 
         _this.suoyouxinxi = _this.data6b[0].supports[1].name;
         // console.log("所有信息" + _this.suoyouxinxi);
       });
+
   },
   // created(){
   //   // this.$store.commit("getcgid",mls.id)

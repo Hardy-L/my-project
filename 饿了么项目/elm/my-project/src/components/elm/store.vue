@@ -284,11 +284,13 @@ export default {
         this.$store.commit("app", {aa:aaa,bb:bbb,cs:cishu,je:jine});
       }
       
-    }
+    },
+    // this.$store.commit("getid",{this.$route.params.id})
   },
   components: {
     bycar
-  }
+  },
+ 
 };
 </script>
 <style scoped>
