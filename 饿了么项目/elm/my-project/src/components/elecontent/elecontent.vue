@@ -6,7 +6,9 @@
  <router-link to="/seatch"  class="el-icon-search"></router-link>
    </div>
    <div class="location">
-     <span><router-link to="/home">{{this.$route.query.address}}</router-link></span>
+     <router-link to="/home">
+      <span v-for="item in data3" :key="item.id">{{item.address}}</span>
+     </router-link>
    </div>
    <!--<i class="el-icon-search"></i>-->
    
@@ -65,7 +67,8 @@ export default {
   // name: "elecontent"
   data: () => ({
     data: [],
-    data2:[]
+    data2:[],
+    data3:[]
   }),
   mounted() {},
   created() {
@@ -73,24 +76,10 @@ export default {
     var api5 = "/api/v2/index_entry";
     var _this = this;
     this.$http.get(api5).then(data => {
-      // params: {
-      //     shopid: this.id
-      //   }
-      // console.log(shopid)
-      //关闭加载提示
-      // loadingInstance1.close();
-      // 成功后的回调
-      // console.log("成功了....");
-      //展示所有商店名
-      // console.log(data);
-      // _this.data = data.data;
-      // _this.data2 = data.data
       _this.data = data.data.splice(0,8)
       _this.data2= data.data.splice(0,8)
-      console.log(_this.data)
-      console.log(_this.data2)
-      // console.log(_this.data);
     });
+     this.data3 = JSON.parse(localStorage.getItem("obj"));
   }
 };
 //组件内的每一个this对象,都是Vue的孩子
@@ -121,8 +110,7 @@ export default {
   color: white;
   line-height: 3rem;
   float: left;
-  margin-left: 4.5rem;
-  text-align: center;
+  margin-left: 4.3rem;
   width: 8rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -143,6 +131,7 @@ export default {
   width: 100%;
 }
 .merchant-single {
+  font-size: .9rem;
   margin: 0 2%;
   width: 20%;
   height: 5rem;
@@ -151,7 +140,7 @@ export default {
   text-align: center;
 }
 .merchant-single img {
-  width: 75%;
+  width: 3.7rem;
 }
 .wenzi {
   color: gray;

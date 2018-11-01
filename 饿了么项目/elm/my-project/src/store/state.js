@@ -6,6 +6,7 @@ export default{
    src:"",
    captcha_code:"",
    bool:false,
+   sousuo:"",
    bbb:"",
    datahe:[],
    // 点击获取到的当前对象

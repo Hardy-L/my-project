@@ -9,7 +9,10 @@ export default {
   },
   clear(state) {
     state.usermsg = "";
-      state.bool = false
+    state.bool = false
+  },
+  changesousuo(state, value) {
+    state.sousuo = value;
   },
   changebbb(state,value){
     state.bbb = value;
