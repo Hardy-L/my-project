@@ -8,9 +8,8 @@
     </div>
     </div>  
       <!-- content -->
-      
     <div class="category_title">
-      <span class="choosed">红包</span> 
+      <span class="choosed" :class="{xian:ended}">红包</span> 
       <span class="">商家代金券</span>
       </div>
 
@@ -67,7 +66,8 @@ export default {
       user_id:"",
       limit:"",
       offset:"",
-      arr:[]
+      arr:[],
+      ended:false
     }
   },
   created(){

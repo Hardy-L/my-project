@@ -16,9 +16,7 @@
                 <input v-model="name" type="text" placeholder="请填写你的姓名">
                 </div>
                 </li>
-
                 <li>
-                
                 <div class="myorder-div"> <router-link to="/addDetail">
                 <!-- <input v-model="this.$route.query.address" type="text" placeholder="小区/写字楼/学校等" > -->
                    <input v-model="address" type="text" placeholder="小区/写字楼/学校等" >
@@ -60,7 +58,7 @@ export default {
       phone: "",
       // tag: "43",
       // sex: "1",
-      phone_bk: "2998"
+      phone_bk: ""
       // tag_type: "2"
     };
   },
@@ -91,11 +89,46 @@ export default {
         withCredentials: true
       }).then(res => {
         console.log(res);
-        if (res.data.status) {
-          alert(res.data.success);
-          this.$router.push({ name: "account_editoraddress" });
+        var address_detail = this.address_detail;
+        var address = this.address;
+        var name = this.name;
+        var phone = this.phone;
+        var phone_bk = this.phone_bk;
+        if (
+          address_detail == "" ||
+          address_detail == undefined ||
+          address_detail == null ||
+          address == "" ||
+          address == undefined ||
+          address == null ||
+          name == "" ||
+          name == undefined ||
+          name == null ||
+          phone == "" ||
+          phone == undefined ||
+          phone == null
+        ) {
+          alert("输入值不能为空");
+          return;
         } else {
-          alert(res.data.message);
+          var s = /^([\u4e00-\u9fa5|\w]){2,7}$/; //名字和地址
+          var r = /^1[3|5|7|8|9][0-9]{9}$/; //手机号判断
+          var q = s.test(address_detail);
+          var w = s.test(address);
+          var e = s.test(name);
+          var t = r.test(phone);
+          var y = r.test(phone_bk);
+          if (q == false||w ==false||e==false||t==false) {
+            alert("格式有误,请重新输入");
+            return;
+          } else {
+            if (res.data.status) {
+              alert(res.data.success);
+              this.$router.push({ name: "account_editoraddress" });
+            } else {
+              alert(res.data.message);
+            }
+          }
         }
       });
     }

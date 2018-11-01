@@ -7,54 +7,78 @@
 <div class="title_head">  
       <span class="title_text">编辑地址</span>
     </div>
+    <div class="title_right">  
+      <span class="title_text" @click="dianji()">{{bianji}}</span>
+    </div>
     </div>
     <div class="addlist">
       <ul>
-        <li @click="shousuo()" v-for="item in data" :key="item.id">
-        <h4>{{item.address}}</h4>
-        <p>{{item.phone}}</p>
+        <li v-for="(item,index) in data" :key="index">
+        <div>
+          <h4>{{item.address}}</h4>
+        <p><span>{{item.phone}}</span></p>
+        <p>{{item.id}}</p>
+        </div>
+        <span style="float:right;line-height:3rem;"  v-show="edd"  @click="delt(item.id,index)">X</span>
         </li>
-      </ul>
-    </div>
-    <div class="profile-1reTe">
-            <ul>
-                 <router-link  to="/account_newaddress">
-            <li>
+
+        <router-link  to="/account_newaddress">
+            <li style="width: 100%;background:#fff">
                 <div class="myorder-div">
                 <span>新增地址</span>
                 </div>
                 <span class="el-icon-arrow-right" id="arrow-right"></span>
                 </li>
                 </router-link>
-            </ul>
-            </div>
+      </ul>
+    </div>
+  
     </div>
 </template>
 
 <script>
 export default {
   name: "account_editoraddress",
-  data(){
-    return{
-      data:[],
-      site:"zhengzhou",
-      phone:"123"
-    }
+  data() {
+    return {
+      data: [],
+      bianji: "编辑",
+      address_id: "",
+      edd: true
+    };
+  },
+  created() {
+    let api28 =
+      "https://elm.cangdu.org/v1/users/" +
+      this.$store.state.usermsg.id +
+      "/addresses";
+    this.$http.get(api28).then(res => {
+      this.data = res.data;
+      console.log("api28", this.data);
+      if (res.data.status) {
+        alert("添加成功");
+        localStorage.setItem("dddata", JSON.stringify(this.data));
+      }
+    });
   },
   methods: {
-    shousuo(){
-      let api = "https://elm.cangdu.org/v1/users/"+ this.$store.state.usermsg.id +"/addresses";
-        this.$http.get(api).then(res => {
-          this.data=res.data
-            console.log(this.data)
-            if(res.data.status){
-              alert("添加成功")
-              
-
-            }
-    });
+    dianji() {
+      this.bianji = "完成";
+      this.edd = !this.edd;
+    },
+    delt(q, w) {
+      let api29 =
+        "https://elm.cangdu.org/v1/users/" +
+        this.$store.state.usermsg.id +
+        "/addresses/" +
+        q +
+        "";
+      this.$http.delete(api29).then(res => {
+        console.log(res.data);
+        this.data.splice(w,1);
+      });
     }
-   }
+  }
 };
 </script>
 
@@ -75,6 +99,8 @@ span {
   text-align: center;
   background-color: #3190e8;
   border-bottom: 0.01rem ridge rgb(201, 187, 187);
+  display: flex;
+  justify-content: space-between;
 }
 .el-icon-arrow-left {
   float: left;
@@ -86,9 +112,12 @@ span {
   margin-left: 0.4rem;
 }
 .title_head {
-  width: 50%;
   height: 2.8rem;
-  margin: 0 auto;
+  line-height: 3rem;
+  margin-left: 2.2rem;
+}
+.title_right {
+  width: 5rem;
   line-height: 3rem;
 }
 .title_text {
@@ -100,40 +129,44 @@ span {
   color: rgb(84, 79, 79);
   line-height: 3rem;
   float: right;
+  margin: 0 0.4rem;
 }
-.addlist{
-  background: #eaf39b;
-  height:3.5rem;
+.addlist {
+  /* background: #eaf39b; */
+  height: 3.5rem;
   margin-top: 0.5rem;
 }
-.addlist p{
-  width: 100%;
-  float: left;
-  line-height: 1.5rem;
-  margin-left: 0.7rem;
+.addlist ul li {
+  border-bottom: 1px solid #d9d9d9;
+  padding: 0.4rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
-.profile-1reTe {
-  background-color: #fff;
-  width: 100%;
-  margin: 0.6rem 0;
+ul > li:nth-child(1) {
+  background: #fff8c3;
 }
-.profile-1reTe ul li {
-  height: 3rem;
-  width: 100%;
-  border-top: 0.01rem solid rgb(218, 198, 198);
-  border-bottom: 0.01rem solid rgb(218, 198, 198);
+.address li p {
+  line-height: 0.9rem;
+  font-size: 0.8rem;
+  color: #333;
+}
+.addlist p span {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #333;
 }
 .myorder-div {
   width: 9rem;
   height: 3rem;
-  border: 1rem soliid red;
   float: left;
 }
 
 .myorder-div span {
   display: inline-block;
   color: rgb(29, 29, 28);
-  font-size:1.2rem;
+  font-size: 1.2rem;
   line-height: 3rem;
   margin-left: 0.5rem;
 }
