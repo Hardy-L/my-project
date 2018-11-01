@@ -80,7 +80,6 @@ export default {
       _this.data2= data.data.splice(0,8)
     });
      this.data3 = JSON.parse(localStorage.getItem("obj"));
-     
   }
 };
 //组件内的每一个this对象,都是Vue的孩子

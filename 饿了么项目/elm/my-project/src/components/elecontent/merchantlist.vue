@@ -6,7 +6,7 @@
        <div class="merchant-list">
         <p v-for="mls in data6" :key="mls.id" class="merchant-list-single">
          
-          <router-link :to="{name:'store',params:{id:mls.id}}"><!-- btns(mls.id) -->
+          <router-link :to="{name:'store',params:{id:mls.id}}">
               <div class="flex">
                 <img :src="'https://elm.cangdu.org/img/'+mls.image_path" alt="" class="flex-left">
                 <div class="flex-right">

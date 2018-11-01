@@ -42,12 +42,6 @@
                <span class="head_span">{{value.description}}</span>
              </div>
            <!-- 右边店铺详情 -->
-           
-
-
-
-
-
             <section class="stop" v-for="(stores,index) in value.foods" :key="index">
                  <div class="stop_left">
                    <router-link 
@@ -55,7 +49,8 @@
                    query:{image_path:stores.image_path,
                    name:stores.name,
                    description:stores.description,
-                   tips:stores.tips
+                   tips:stores.tips,
+                   id:datas.id
                    }}">
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
                  </router-link>
@@ -64,8 +59,9 @@
                      <h3>{{stores.name}}</h3>
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
-                    <section >
-                     <span> ¥{{stores.specfoods[0].price}}起</span>
+                    <section class="sections" >
+                     <span> ¥{{stores.specfoods[0].price}}</span>
+                     <div class="sections_right">
                       <span @click="jiangou(value.id,stores.specfoods[0].food_id,stores.specfoods[0].count)">
                       <img src="@/assets/减号.png" alt="" class="gouwu">
                       </span><span> {{stores.specfoods[0].count}}</span>
@@ -73,20 +69,14 @@
                       
                       <img src="@/assets/加购物车.png" alt="" class="gouwu">
                     </span>
+                      </div>
                       </section>
                    
                  </div>   
               </section>   
-
-
-
-
-
-
-
             </section>
-            
           </div>
+         
        </div>
        <!-- 评价 -->
        <div class="content-right" v-show="clic2">
@@ -159,9 +149,9 @@
            </ul>
          </div>
        </div>
-       <div class="bottom">
+      <div class="bottom">
        <bycar/>
-       </div>
+       </div>  
     </div>  
 </template>
 <script>
@@ -298,9 +288,10 @@ a {
 }
 .store {
   background: #ededed;
+  height: 100%;
 }
 header {
-  height: 6.6rem;
+  height: 6.4rem;
   overflow: hidden;
 }
 .return {
@@ -354,7 +345,7 @@ header {
   margin-bottom: 0.6rem;
 }
 .header_right p {
-  font-size: 1rem;
+  font-size: .9rem;
   margin: 0.5rem 0;
 }
 .el-menu-demo {
@@ -362,15 +353,17 @@ header {
   justify-content: space-between;
 }
 .content_body {
-  height: 30rem;
+  border: 1px solid black;
+  overflow: hidden;
 }
 .content_body_left {
   background: #ededed;
   font-size: 1.2rem;
   float: left;
-  width: 25%;
-  height: 31.2rem;
+  width: 24%;
+  height: 30rem;
   overflow: scroll;
+  border: 1px solid red;
 }
 .content_body_left::-webkit-scrollbar {
   display: none;
@@ -387,9 +380,10 @@ header {
 }
 .content_body_right {
   float: left;
-  width: 75%;
-  height: 31.2rem;
+  width: 73%;
+  height: 30rem;
   overflow: scroll;
+  border: 1px solid red;
 }
 .content_body_right::-webkit-scrollbar {
   display: none;
@@ -413,39 +407,50 @@ header {
 }
 
 .stop {
-  height: 6.8rem;
+  height: 7rem;
   overflow: hidden;
   background: #fff;
   border-bottom: 1px solid #e4e4e4;
   z-index: 100;
 }
 .stop_left img {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 3.4rem;
+  height: 3.4rem;
   float: left;
   margin: 1rem;
   margin-top: 1.6rem;
 }
 .stop_right {
   float: left;
-  margin-top: 1rem;
+  margin-top: .6rem;
   font-size: 0.85rem;
 }
 .stop_right p {
-  padding: 1rem 0;
+  padding: .8rem 0;
   color: #999;
 }
+.sections{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: .3rem;
+}
+.sections span:nth-child(1){
+  color: #f60;
+  font-size: 1rem;
+}
+.sections_right{
+  margin-left: 6rem;
+}
 img {
-  width: 3rem;
+  width: 3.5rem;
 }
 .gouwu {
   width: 1.2rem;
 }
 .bottom {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;}
+  width: 100%;
+}
 .content-right-top {
   overflow: hidden;
   /* margin-top: .5rem; */

@@ -92,5 +92,5 @@ export default {
   // 获取餐馆id
   getcgid(state,getid){
     state.cgid=getid
-  }
+  },
 }
