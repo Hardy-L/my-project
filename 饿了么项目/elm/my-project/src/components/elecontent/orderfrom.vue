@@ -48,7 +48,9 @@ export default {
    var  api31="https://elm.cangdu.org/bos/v2/users/"+this.$store.state.usermsg.id +"/orders"
    this.$http.get(api31).then(data31=>{
      this.data31=data31.data
-   })
+   });
+   var api11="https://elm.cangdu.org/shopping/restaurant/";
+   
   }
 };
 </script>

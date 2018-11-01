@@ -88,5 +88,9 @@ export default {
       numm += state.xzdata[i].specfoods[0].price*state.xzdata[i].specfoods[0].count
     }
     state.num =numm
+  },
+  // 获取餐馆id
+  getcgid(state,getid){
+    state.cgid=getid
   }
 }
