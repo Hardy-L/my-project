@@ -206,7 +206,7 @@ span {
   border: 1rem soliid red;
 }
 .apply_vip_buy_right{
-    border: .025rem solid #f60;
+    border: .05rem solid #f60;
     border-radius: .2rem;
     line-height: 1.2rem;
     height: 1.2rem;

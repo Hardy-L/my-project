@@ -104,14 +104,10 @@ span {
     font-weight: 700;
 }
 .Binding b, .Binding p {
-    font-size: .5rem;
-    color: #aaa;
-    line-height: .8rem;
-}
-.Binding b, .Binding p {
-    font-size: .5rem;
-    color: #aaa;
-    line-height: .8rem;
+  margin-top: 0.3rem;
+    font-size:0.75rem;
+    color: #aaaaaa;
+    line-height: 0.8rem;
 }
 </style>
 

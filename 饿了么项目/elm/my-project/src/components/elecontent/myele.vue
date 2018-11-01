@@ -163,7 +163,9 @@ export default {
       this.username = this.defaultusername;
       this.goudan = "/login";
     }else{
+    //  var data = localStorage.getItem("data")
       this.username = this.$store.state.usermsg.username
+      // this.username = data;
        this.goudan = "/login_account";
        this.shuliang = this.$store.state.limit;
        console.log(this.shuliang);
