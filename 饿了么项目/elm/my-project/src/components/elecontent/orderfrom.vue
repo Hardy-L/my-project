@@ -22,11 +22,18 @@
  <!-- 添加收货地址 -->
  <div class="dizhi"><span>请添加一个收货地址</span><span>></span></div>
  <!-- 送达时间 -->
- <!-- <div v-for="(item,index) in data11" :key="index" class="songda">
-   <span >尽快送达</span>
-   <span>预计{{$item.order_lead_time}}后</span>
-   <span>蜂鸟专送</span>
- </div> -->
+ <div class="songda">
+   <div class="sdsj">送达时间</div>
+   
+   <div class="sd-right">
+     <span class="jink">
+       尽快送达
+     </span>
+     <span class="yuji">预计20分钟后</span>
+     <div class="fengniao">蜂鸟专送</div>
+     </div>
+  
+ </div>
  <!-- 支付方式(红包) -->
  <div>
    <div class="zhifu">
@@ -66,7 +73,7 @@
 
 
 export default {
-  // name: "elecontent"
+  name: "elecontent",
   data: () => ({
     data11: [],
     data31:[]
@@ -77,16 +84,16 @@ export default {
   }
   },
   created() {
-    //接口31
-   var  api31="https://elm.cangdu.org/bos/v2/users/"+this.$store.state.usermsg.id +"/orders"
-   this.$http.get(api31).then((data31)=>{
-     this.data31=data31.data
-   });
-  //  接口11
-   var api11="https://elm.cangdu.org/shopping/restaurant/"+this.$store.state.cgid;
-   this.$http.get(api11).then((data11)=>{
-     this.data11=data11.data
-   });
+  //   //接口31
+  //  var  api31="https://elm.cangdu.org/bos/v2/users/"+this.$store.state.usermsg.id +"/orders"
+  //  this.$http.get(api31).then((data31)=>{
+  //    this.data31=data31.data
+  //  });
+  // //  接口11
+  //  var api11="https://elm.cangdu.org/shopping/restaurant/"+this.$store.state.cgid;
+  //  this.$http.get(api11).then((data11)=>{
+  //    this.data11 = data11.data
+  //  });
    
   },
   computed:{
@@ -167,16 +174,58 @@ el-icon-arrow-left {
   font-size: 1.2rem;
   margin-left: 0.4rem;
 }
+/*添加地址*/ 
 .dizhi{
-  padding: 0.5rem 2rem;
+  padding: 2rem 0.5rem;
+  background-color: #fff;
+  font-size: 1.5rem;
 }
-/* .songda{
-  padding: 0.5rem 2rem;
-} */
+.songda{
+  /* border: 1px solid red; */
+  height:5rem;
+  /* line-height: 5rem; */
+  background-color: #fff;
+  font-size: 1rem;
+  border-top:0.4rem solid  gray; 
+  border-bottom:0.4rem solid  gray; 
+  overflow: hidden;
+}
+.sdsj{
+  font-size: 2.3rem;
+  /* 字体加粗 */
+  font-weight:700;
+  float: left;
+  line-height: 5rem;
+}
 .zhifu{
   padding:0.4rem 1rem;
 }
 .zhifuright{
   padding-right: 0.2rem;
+  padding:0.2rem;
+}
+.jink{
+    color: #3190e8;
+    font-size: 1rem;
+}
+.yuji{
+  color: #3190e8;
+  font-size: 1rem;
+  border-left:0.2rem solid #3190e8;
+  margin-left:0.8rem; 
+  padding-left:0.8rem;
+}
+.fengniao{
+  background-color: #3190e8;
+  color: white;
+  margin-top:0.5rem;
+  /* border: 1px solid red; */
+  margin-left:8rem;
+}
+.sd-right{
+  padding:1.5rem 0;
+  /* border:1px solid red; */
+  float:right; 
+  /* line-height: 5rem; */
 }
 </style>
