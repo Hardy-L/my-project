@@ -13,13 +13,13 @@
      <div class="login">
        <div class="log">
         <div class="log_img">
-           <img src="../../assets/头像.png" alt="">
+           <img src="../../assets/touxiang.png" alt="">
         </div>
 
          <div class="info_user">
            <p>{{username}}</p>
          <p>
-           <img src="../../assets/手机.png" alt="">
+           <img src="../../assets/shouji.png" alt="">
           <span>暂无绑定手机号</span>
            </p> 
          </div>
@@ -71,7 +71,7 @@
     <ul>
        <router-link to="/info_data">
           <li>
-            <img src="../../assets/列表.png" alt="">
+            <img src="../../assets/liebiao.png" alt="">
             <div class="myorder-div">
                <span>我的订单</span>
             </div>
@@ -81,7 +81,7 @@
            <!-- 积分商城 -->
            <router-link to="/info_integral">
             <li>
-            <img src="../../assets/积分.png" alt="">
+            <img src="../../assets/jifen.png" alt="">
             <div class="myorder-div">
                <span>积分商城</span>
             </div>
@@ -91,7 +91,7 @@
             <!-- 会员卡 -->
             <router-link to="/info_members">
             <li>
-            <img src="../../assets/90-皇冠.png" alt="">
+            <img src="../../assets/huangguan.png" alt="">
             <div class="myorder-div">
                <span>饿了么会员卡</span>
             </div>
@@ -107,7 +107,7 @@
       <ul>
         <router-link to="/myorder">
         <li>
-            <img src="../../assets/服务中心.png" alt="">
+            <img src="../../assets/fuwu.png" alt="">
             <div class="myorder-div">
                <span>服务中心</span>
             </div>

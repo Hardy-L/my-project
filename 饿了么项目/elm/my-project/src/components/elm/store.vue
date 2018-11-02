@@ -1,5 +1,6 @@
 <template>
     <div class="store">
+      <!-- 头部 -->
        <header>
             <div class="bg"><img :src="'//elm.cangdu.org/img/'+datas.image_path" alt=""></div>
             <div class="header_left">
@@ -24,6 +25,7 @@
              <el-menu-item index="2" @click="click2">评价</el-menu-item>
              </el-menu>
        </div>
+       <!-- 商品 -->
        <div class="content_body" v-show="clic1">
          <!-- 左边部分 -->
           <div class="content_body_left">
@@ -42,12 +44,6 @@
                <span class="head_span">{{value.description}}</span>
              </div>
            <!-- 右边店铺详情 -->
-           
-
-
-
-
-
             <section class="stop" v-for="(stores,index) in value.foods" :key="index">
                  <div class="stop_left">
                    <router-link 
@@ -55,7 +51,8 @@
                    query:{image_path:stores.image_path,
                    name:stores.name,
                    description:stores.description,
-                   tips:stores.tips
+                   tips:stores.tips,
+                   id:datas.id
                    }}">
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
                  </router-link>
@@ -64,27 +61,23 @@
                      <h3>{{stores.name}}</h3>
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
-                    <section >
-                     <span> ¥{{stores.specfoods[0].price}}起</span>
+                     <!-- 价格 -->
+                    <section class="jiage">
+                     <span class="span1"> ¥{{stores.specfoods[0].price}}起</span>
+                     <!-- 加入购物车 -->
+                      <div class="jiajian">
                       <span @click="jiangou(stores.specfoods[0])">
                       <img src="@/assets/减号.png" alt="" class="gouwu" v-if="stores.specfoods[0].count >0">
                       </span><span v-if="stores.specfoods[0].count >0"> {{stores.specfoods[0].count}}</span>
                        <span @click="jiagou(stores.specfoods[0])">
                       <img src="@/assets/加购物车.png" alt="" class="gouwu">
                     </span>
+                    </div>
                       </section>
                    
                  </div>   
               </section>   
-
-
-
-
-
-
-
-            </section>
-            
+            </section>         
           </div>
        </div>
        <!-- 评价 -->
@@ -406,41 +399,61 @@ header {
   color: #999;
   font-size: 0.8rem;
 }
-
+/* 店铺详情 */
 .stop {
-  height: 6.8rem;
+  height: 7rem;
   overflow: hidden;
   background: #fff;
   border-bottom: 1px solid #e4e4e4;
   z-index: 100;
+  /* border:1px solid red; */
 }
 .stop_left img {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 3.5rem;
+  height: 3.5rem;
   float: left;
   margin: 1rem;
   margin-top: 1.6rem;
 }
 .stop_right {
   float: left;
-  margin-top: 1rem;
+  margin-top: .8rem;
   font-size: 0.85rem;
+  /* border: 1px solid red; */
 }
 .stop_right p {
-  padding: 1rem 0;
+  padding: .6rem 0;
   color: #999;
+  /* border: 1px solid red; */
 }
-img {
-  width: 3rem;
+.jiage{
+  margin-top: .5rem;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+.span1{
+  color: #f60;
+  width: 4.5rem;
+  font-size: 1.1rem;
+}
+.jiajian{
+  /* border: 1px solid black; */
+  width: 4rem;
+  margin-left: 2rem;
+}
+ /* 加减图标 */
 .gouwu {
   width: 1.2rem;
 }
+ /* 底部购物车 */
 .bottom {
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;}
+  width: 100%;
+}
 .content-right-top {
   overflow: hidden;
   /* margin-top: .5rem; */

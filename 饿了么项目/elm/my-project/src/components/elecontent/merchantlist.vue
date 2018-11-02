@@ -6,7 +6,7 @@
        <div class="merchant-list">
         <p v-for="mls in data6" :key="mls.id" class="merchant-list-single">
          
-          <router-link :to="{name:'store',params:{id:mls.id}}"><!-- btns(mls.id) -->
+          <router-link :to="{name:'store',params:{id:mls.id}}">
               <div class="flex">
                 <img :src="'https://elm.cangdu.org/img/'+mls.image_path" alt="" class="flex-left">
                 <div class="flex-right">
@@ -46,6 +46,8 @@
              </div>
 </template>
 <script>
+// element UI
+import {Loading} from 'element-ui';
 export default {
   name: "merchantlist",
   data: () => ({
@@ -125,7 +127,11 @@ export default {
         });
     }
   },
+
   created() {
+      let loadingInstance1 = Loading.service({
+      fullscreen: true
+    });
     // 接口 6
     var _this = this;
     var api6 = "https://elm.cangdu.org/shopping/restaurants";
@@ -140,13 +146,14 @@ export default {
         }
       })
       .then(function(data) {
+        
         //关闭加载提示
-        // loadingInstance1.close();
+        loadingInstance1.close();
         // 成功后的回调
         // console.log("成功了....");
         //展示所有商店名
         _this.data6 = data.data;
-        console.log(_this.data6);
+        // console.log(_this.data6);
         _this.data6b = data.data;
 
         _this.suoyouxinxi = _this.data6b[0].supports[1].name;
