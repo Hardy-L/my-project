@@ -175,6 +175,7 @@ span {
   align-items: center;
   height: 3rem;
   width: 100%;
+  font-size:0.9rem;
   border-bottom: 0.01rem solid rgb(218, 198, 198);
 }
 .right {
@@ -204,6 +205,7 @@ span {
 .spanp {
   height: 4rem;
   border: 1rem soliid red;
+  font-size:0.7rem;
 }
 .apply_vip_buy_right{
     border: .05rem solid #f60;

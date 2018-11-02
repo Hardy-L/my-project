@@ -36,7 +36,17 @@ export default {
   arrs(){
     return this.$store.state.xzdata
   }
-}
+},
+created() {
+    var botchoice = {
+        waimai: false,
+        sousuo: false,
+        dingdan: true,
+        mine: false
+      };
+      this.$store.commit("changebotchoice", botchoice);
+
+},
 };
 </script>
 

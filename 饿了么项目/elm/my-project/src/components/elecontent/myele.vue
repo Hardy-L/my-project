@@ -117,7 +117,7 @@
             
             <router-link to="/myorder_two">
             <li>
-            <img src="../../assets/饿了么.png" alt="">
+            <img src="../../assets/elmlogo.jpg" alt="">
             <div class="myorder-div">
                <span>下载饿了么APP</span>
             </div>
@@ -151,7 +151,8 @@ export default {
       captcha_code: "",
       defaultusername:"登录/注册",
       goudan:"",
-      shuliang:""
+      shuliang:"0",
+      arr:[]
     };
   },
   components: {
@@ -163,14 +164,24 @@ export default {
       this.username = this.defaultusername;
       this.goudan = "/login";
     }else{
-    //  var data = localStorage.getItem("data")
-      this.username = this.$store.state.usermsg.username
-      // this.username = data;
+      // this.arr = JSON.parse(localStorage.getItem('loginid'));
+      // console.log(this.arr.username)
+      this.username = this.$store.state.usermsg.username;
+      // this.username = this.arr.username
        this.goudan = "/login_account";
        this.shuliang = this.$store.state.limit;
        console.log(this.shuliang);
     }
+     var botchoice = {
+      waimai: false,
+      sousuo: false,
+      dingdan: false,
+      mine: true
+    };
+    this.$store.commit("changebotchoice", botchoice);
+
   }
+
 };
 </script >
 
@@ -326,6 +337,7 @@ span {
 .el-icon-arrow-right#arrow-right {
   color: rgb(84, 79, 79);
   line-height: 2.6rem;
+      font-size: 1.1rem;
 }
 .profile-1reTe {
   background-color: #fff;
@@ -347,6 +359,7 @@ span {
   display: inline-block;
   color: rgb(84, 79, 79);
   line-height: 2.2rem;
+  font-size: 1.1rem;
 }
 .profile-1reTe ul li img {
   width: 1.2rem;

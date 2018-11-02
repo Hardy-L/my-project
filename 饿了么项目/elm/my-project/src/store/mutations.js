@@ -68,5 +68,9 @@ export default {
         ii--;
         state.num=0
     };
-  }
+  },
+  changebotchoice(state, value) {
+    state.botchoice = value;
+  },
+
 }

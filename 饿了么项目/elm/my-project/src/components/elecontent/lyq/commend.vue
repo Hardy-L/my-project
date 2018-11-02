@@ -33,14 +33,14 @@
 <script>
 export default {
   name: "commend",
-  data(){
-    return{
-      van:true
-    }
+  data() {
+    return {
+      van: true
+    };
   },
-  methods:{
-    vanish(){
-      this.van = !this.van
+  methods: {
+    vanish() {
+      this.van = !this.van;
     }
   }
 };
@@ -85,70 +85,74 @@ span {
   font-weight: bold;
 }
 .invite_firend {
-    display: -ms-flexbox;
-    display: flex;
-    padding: 1rem 0;
-    background-color: #fff;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem 0;
+  background-color: #fff;
 }
 .invite_firend .invite_firend_style {
-    -ms-flex: 1;
-    flex: 1;
-    text-align: center;
-    margin:1rem 0;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
+  margin: 1rem 0;
 }
 .invite_firend .invite_firend_style img {
-    width: 3.5rem;
-    height: 3.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 .invite_firend .invite_firend_style p {
-    font-size: .8rem;
-    color: #333;
+  font-size: 0.8rem;
+  color: #333;
 }
 .invite_num {
-    display: -ms-flexbox;
-    display: flex;
-    margin-top: 1rem;
-    font-size: .5rem;
-    color: #666;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1rem;
+  font-size: 0.5rem;
+  color: #666;
 }
 .invite_num .invite_num_style {
-    -ms-flex: 1;
-    flex: 1;
-    text-align: center;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
 }
 .invite_num .invite_num_style p {
-    color: #666;
+  color: #666;
+  font-size: 0.8rem;
 }
 .invite_num .invite_num_style span {
-    font-size: .8rem;
-    color: #ff5633;
-    font-weight: 700;
+  font-size: 0.8rem;
+  color: #ff5633;
+  font-weight: 700;
 }
 .invite_num .invite_people {
-    border-left: .025rem solid #ddd;
+  border-left: 0.025rem solid #ddd;
 }
 .invite_num .invite_people span {
-    font-size: .8rem;
-    color: #666;
-    font-weight: 700;
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 700;
 }
-.page p, .page span {
-    font-family: Helvetica Neue,Tahoma,Arial;
+.page p,
+.page span {
+  font-family: Helvetica Neue, Tahoma, Arial;
 }
-.incom_tips, .income_detail {
-    text-align: center;
-    margin-top: 1rem;
+.incom_tips,
+.income_detail {
+  text-align: center;
+  margin-top: 1rem;
 }
 .incom_tips img {
-    width: 2rem;
-    height: 2.2rem;
+  width: 2rem;
+  height: 2.2rem;
 }
 .incom_tips p {
-    font-size: .8rem;
-    color: #999;
+  font-size: 0.8rem;
+  color: #999;
 }
-.page p, .page span[data-v-1859df90] {
-    font-family: Helvetica Neue,Tahoma,Arial;
+.page p,
+.page span {
+  font-family: Helvetica Neue, Tahoma, Arial;
 }
 /*弹框*/
 .tip_text_container {
