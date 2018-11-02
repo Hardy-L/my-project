@@ -25,10 +25,11 @@
 
     </li>
     <li class="account"><input type="text" placeholder="验证码" v-model="captcha_code">
-    <p @click="reng()" style="float:right">换一张</p>
-    <p>看不清</p>
-    <img style="width:4.5rem;border:.1rem solid #666;float:right;margin-top:.5rem" :src="img" alt="">
-    <br>
+    <div  style="float:right">
+      <p @click="reng()">换一张</p>
+    <!-- <p>看不清</p> -->
+    <img style="width:4.5rem;border:.1rem solid #666;margin-top:.5rem" :src="img" alt="">
+    </div>
     
     </li>
   </ul>
@@ -135,12 +136,9 @@ export default {
           this.$store.commit("idok", _this.user_id);
           this.username = this.$store.state.usermsg.username;
           this.$router.push({ name: "myele" });
-          localStorage.setItem(
-            "loginid",
-            JSON.stringify(this.data),
-            _this.username
-          );
+          localStorage.setItem("loginid", JSON.stringify(response.data));
         }
+        console.log("lalal",response.data);
       });
     }
   }
@@ -214,13 +212,11 @@ ul li {
 }
 .account input[type="text"],
 .account input[type="password"] {
-  /* -web-kit-appearance: none;
-  -moz-appearance: none; */
   outline: 0;
   height: 2.5em;
   width: 12rem;
-  padding: 0rem 1.3rem;
-  /* border: 1px solid #f1f1f1; */
+  padding: 0rem 1rem;
+  /* border: 1px solid #cc3d3d; */
   font-size: 1rem;
   font-weight: 400;
   color: #666;

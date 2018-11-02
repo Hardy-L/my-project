@@ -109,5 +109,8 @@ span {
   font-weight: 400;
   font-family: Microsoft Yahei;
 }
+ul li{
+  font-size: 0.75rem;
+}
 </style>
 

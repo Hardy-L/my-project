@@ -185,6 +185,7 @@ h4 {
   justify-content: space-between;
   align-items: center;
   padding: 0rem 0.2rem;
+  font-size:0.8rem;
   border-top: 0.00023rem solid #f5f5f5;
 }
 .issue li span {
