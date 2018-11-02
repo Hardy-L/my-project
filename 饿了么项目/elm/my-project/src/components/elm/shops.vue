@@ -44,7 +44,8 @@
               </div>
           </a>
           </router-link>
-          <div class="messages"></div>
+          <div class="messages">
+          </div>
          </div>
          <!-- 商家信息 -->
          <div class="merchant">
@@ -71,7 +72,7 @@ export default {
      let url ="api/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
       this.datas = data11.data;
-      console.log(this.datas)
+      console.log("aa",this.datas)
     });
   },
  
@@ -162,8 +163,13 @@ header span:nth-child(2) {
 }
 .messages{
   height: 5rem;
-  border-top: .5px solid #f1f1f1;
-  border-bottom: .5px solid #f1f1f1;
+  /* border-top: .5px solid #f1f1f1; */
+  /* border-bottom: .5px solid #f1f1f1; */
+  border:1px solid red;
+}
+.messages img{
+  width: 3rem;
+  margin: 1rem 0 0 2rem;
 }
  /* 商家信息 */
 .merchant{
