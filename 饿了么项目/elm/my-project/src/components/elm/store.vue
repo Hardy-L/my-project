@@ -339,6 +339,7 @@ header {
 }
 .header_right h3 {
   margin-bottom: 0.6rem;
+  font-size: .8rem;
 }
 .header_right p {
   font-size: 1rem;
