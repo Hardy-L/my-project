@@ -42,6 +42,15 @@ export default {
     submit() {
       this.show = true;
     }
+  },
+  created() {
+    var botchoice = {
+      waimai: false,
+      sousuo: true,
+      dingdan: false,
+      mine: false
+    };
+    this.$store.commit("changebotchoice", botchoice);
   }
 };
 </script>
@@ -82,7 +91,7 @@ span {
   height: 2.8rem;
   margin: 0 auto;
   line-height: 3rem;
-   /* border: 1px solid red; */
+  /* border: 1px solid red; */
 }
 .title_text {
   font-size: 1.1rem;
@@ -99,26 +108,26 @@ span {
 }
 .content input:nth-child(1) {
   flex: 4;
-  border:.2rem solid #e4e4e4;
+  border: 0.2rem solid #e4e4e4;
   font-size: 0.65rem;
   color: #333;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   background-color: #f2f2f2;
   font-weight: 700;
-  padding: 0 .3rem;
+  padding: 0 0.3rem;
   /* border: 1px solid red; */
   height: 2rem;
 }
 .content input:nth-child(2) {
   flex: 1;
-  border: .2rem solid #3190e8;
+  border: 0.2rem solid #3190e8;
   margin-left: 0.2rem;
   font-size: 0.65rem;
   color: #fff;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   background-color: #3190e8;
   font-weight: 700;
-  padding: 0 .2rem;
+  padding: 0 0.2rem;
 }
 .bottom {
   margin: 0 auto;

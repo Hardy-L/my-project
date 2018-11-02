@@ -170,7 +170,16 @@ export default {
        this.shuliang = this.$store.state.limit;
        console.log(this.shuliang);
     }
+     var botchoice = {
+      waimai: false,
+      sousuo: false,
+      dingdan: false,
+      mine: true
+    };
+    this.$store.commit("changebotchoice", botchoice);
+
   }
+
 };
 </script >
 

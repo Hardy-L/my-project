@@ -21,6 +21,13 @@ export default{
    id:"",
    limit:"",
    // 餐馆id
-   cgid:""
+   cgid:"",
+   botchoice: {
+      waimai: Boolean,
+      sousuo: Boolean,
+      dingdan: Boolean,
+      mine: Boolean
+    },
+  
 // $store.state.homeid
 }

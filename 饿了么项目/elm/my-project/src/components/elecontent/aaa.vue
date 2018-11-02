@@ -14,7 +14,7 @@
 </div>
 </template>
 <script>
-   //引入外卖页面
+//引入外卖页面
 import elecontent from "@/components/elecontent/elecontent";
 // 引入搜索页面
 import seatch from "@/components/elecontent/seatch";
@@ -25,7 +25,7 @@ import myele from "@/components/elecontent/myele";
 // 商家页面
 import merchantlist from "@/components/elecontent/merchantlist";
 // 引入我的页面
-import wode from "@/components/elecontent/wode"
+import wode from "@/components/elecontent/wode";
 export default {
   name: "aaa",
   components: {
@@ -35,9 +35,17 @@ export default {
     myele,
     merchantlist,
     wode
+  },
+  created() {
+    var botchoice = {
+      waimai: true,
+      sousuo: false,
+      dingdan: false,
+      mine: false
+    };
+    this.$store.commit("changebotchoice", botchoice);
   }
 };
 </script>
 <style scoped>
-    
 </style>
