@@ -17,8 +17,12 @@
     <header class="hongbao_title">
       <div class="total_number">
     有<span >3</span>个红包即将到期</div>
-    <div class="hongbao_description"> 
-    <a href="#/benefit/hbDescription" class="hongbao_detail">红包说明</a>
+    <div class="hongbao_description">
+      <img style="width: 0.8rem;margin-right: 0.1rem;" src="../../../assets/wenhao.png" alt="">
+      <router-link to="/vipDescription" class="hongbao_detail">
+      红包说明
+      </router-link> 
+   
     </div>
     </header>
 
@@ -63,17 +67,20 @@ export default {
   name: "clealy",
   data() {
     return {
-      user_id:"",
-      limit:"",
-      offset:"",
-      arr:[],
-      ended:false
-    }
+      user_id: "",
+      limit: "",
+      offset: "",
+      arr: [],
+      ended: false
+    };
   },
-  created(){
-    var user_id = this.$store.state.usermsg.user_id
+  created() {
+    var user_id = this.$store.state.usermsg.user_id;
     // console.log(this.$store.state.id)
-    let api34 = "https://elm.cangdu.org/promotion/v2/users/"+user_id+"/hongbaos?limit=20&offset=0";
+    let api34 =
+      "https://elm.cangdu.org/promotion/v2/users/" +
+      user_id +
+      "/hongbaos?limit=20&offset=0";
     this.$http.get(api34).then(res => {
       console.log("res", res);
       this.arr = res.data;

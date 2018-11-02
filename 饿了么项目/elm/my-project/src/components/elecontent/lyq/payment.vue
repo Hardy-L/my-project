@@ -19,19 +19,19 @@
             <div class="pay_way_list">
 <div class="pay_item">
 <div class="pay_icon_contaienr">
-<img style="width:3rem" src="../../../assets/支付宝.png" alt="">
+<img style="width:3rem" src="../../../assets/zhifubao.png" alt="">
   <span>支付宝</span></div> 
     
-    <img class="choose_icon" src="../../../assets/选中.png" alt="">
+    <img class="choose_icon" src="../../../assets/xuanzhong.png" alt="">
     </div>
     
      <div class="pay_item">
 
        <div class="pay_icon_contaienr"> 
-    <img style="width:3rem" src="../../../assets/微信logo.png" alt=""> 
+    <img style="width:3rem" src="../../../assets/weixin.png" alt=""> 
     <span>微信</span>
     </div> 
-    <img class="choose_icon" src="../../../assets/选中.png" alt="">
+    <img class="choose_icon" src="../../../assets/xuanzhong(1).png" alt="">
     </div>
     </div>
     <p class="determine">确认支付</p>

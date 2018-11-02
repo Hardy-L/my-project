@@ -46,6 +46,8 @@
              </div>
 </template>
 <script>
+// element UI
+import {Loading} from 'element-ui';
 export default {
   name: "merchantlist",
   data: () => ({
@@ -125,7 +127,11 @@ export default {
         });
     }
   },
+
   created() {
+      let loadingInstance1 = Loading.service({
+      fullscreen: true
+    });
     // 接口 6
     var _this = this;
     var api6 = "https://elm.cangdu.org/shopping/restaurants";
@@ -140,8 +146,9 @@ export default {
         }
       })
       .then(function(data) {
+        
         //关闭加载提示
-        // loadingInstance1.close();
+        loadingInstance1.close();
         // 成功后的回调
         // console.log("成功了....");
         //展示所有商店名

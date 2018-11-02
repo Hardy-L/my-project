@@ -19,7 +19,7 @@
             <div class="span">
           
           <span style="line-height:5rem" class="el-icon-arrow-right" id="arrow-right"></span>
-          <img src="../../../assets/头像.png" alt="">
+          <img src="../../../assets/touxiang.png" alt="">
           </div>
           </li>
             
@@ -51,7 +51,7 @@
         <ul>
         <li @click="vanish()">
        <div class="myorder-div">
-                <img src="../../../assets/蓝手机.png" alt="">
+                <img src="../../../assets/lanshouji.png" alt="">
                <span>手机</span>
             </div>
             <span class="el-icon-arrow-right" id="arrow-right"></span>
