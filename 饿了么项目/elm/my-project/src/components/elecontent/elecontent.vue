@@ -88,9 +88,12 @@ export default {
   width: 100%;
   height: 3rem;
   background-color: #3190e8;
-  /* border: 1px solid red; */
   display: flex;
   justify-content: space-around;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
 }
 .top-left {
   font-size: 1.6rem;
