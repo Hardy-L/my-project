@@ -107,8 +107,8 @@ export default {
       this.$http
         .get(api6, {
           params: {
-            latitude: 31.22967,
-            longitude: 121.4762,
+            latitude: localStorage.latitude,
+            longitude: localStorage.longitude,
             limit: 100,
             order_by: _this.id
           }
@@ -139,8 +139,8 @@ export default {
     this.$http
       .get(api6, {
         params: {
-          latitude: 31.22967,
-          longitude: 121.4762,
+          latitude: localStorage.latitude,
+          longitude: localStorage.longitude,
           limit: 20,
           order_by: _this.id
         }

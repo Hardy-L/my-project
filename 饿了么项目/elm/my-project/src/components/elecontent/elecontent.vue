@@ -7,18 +7,14 @@
    </div>
    <div class="location">
      <router-link to="/home">
-      <span v-for="item in data3" :key="item.id">{{item.address}}</span>
+      <span>{{data3.address}}</span>
      </router-link>
    </div>
-   <!--<i class="el-icon-search"></i>-->
-   
    <p class="log-in">
      <router-link to="/login" class="top-right">登录</router-link>
      <span class="top-right">|</span>
      <router-link to="/login" class="top-right">注册</router-link>
      </p>
-    
-    
  </div>
  <div class="merchant">
   
@@ -51,10 +47,6 @@
   </div>
    
   </div>
-   
-
-   <!-- <merchantlist></merchantlist> -->
-   <!-- <router-view></router-view> -->
 </template>
 <script>
 import elecontenter from "@/components/erjiyemian/elecontenter";
@@ -79,7 +71,12 @@ export default {
       _this.data = data.data.splice(0,8)
       _this.data2= data.data.splice(0,8)
     });
-     this.data3 = JSON.parse(localStorage.getItem("obj"));
+    //  this.data3 = JSON.parse(localStorage.getItem("obj"));
+    let api = "https://elm.cangdu.org/v2/pois/" + localStorage.geohash;
+    this.$http.get(api).then(res => {
+      this.data3 = res.data;
+      console.log(this.data3)
+    });
   }
 };
 //组件内的每一个this对象,都是Vue的孩子
@@ -91,32 +88,36 @@ export default {
   width: 100%;
   height: 3rem;
   background-color: #3190e8;
-  overflow: hidden;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-around;
 }
 .top-left {
-  float: left;
   font-size: 1.6rem;
   padding: 0.3rem;
   line-height: 2.2rem;
+  /* border: 1px solid black; */
 }
 .top-right {
   font-size: 1rem;
   line-height: 3rem;
   color: #ffffff;
+  /* border: 1px solid black; */
 }
-.log-in{
-  overflow: hidden;
-  padding-left: 3.3rem;
-}
+/* .log-in{
+  border: 1px solid red;
+} */
 .location span {
   color: white;
   line-height: 3rem;
   float: left;
-  margin-left: 4.3rem;
+  /* margin-left: 4.3rem; */
+  font-size: 1rem;
   width: 8rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  /* border: 1px solid black; */
 }
 .location span a{
   text-emphasis: none;
@@ -127,6 +128,7 @@ export default {
   color: white;
   font-size: 1rem;
   line-height: 2rem;
+
 }
 .merchant {
   padding-top: 0.5em;

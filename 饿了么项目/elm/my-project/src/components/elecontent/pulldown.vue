@@ -257,10 +257,16 @@ export default {
     quedingbtn(){
       console.log(this.blname)
       this.cli2(this.blname)
-       this.value1 = false;
+      this.value1 = false;
       this.value2 = false;
       this.value3 = false;
       this.value4 = false;
+     this.valuehe[0].valueb=true;
+     this.valuehe[1].valueb=true;
+     this.valuehe[2].valueb=true;
+     this.valuehe[3].valueb=true;
+     this.valuehe[4].valueb=true;
+     this.valuehe[5].valueb=true;
     },
     qingkbtn(){
      this.valuehe[0].valueb=true;
@@ -269,7 +275,7 @@ export default {
      this.valuehe[3].valueb=true;
      this.valuehe[4].valueb=true;
      this.valuehe[5].valueb=true;
-     this.blname=null;
+    //  this.blname=null;
     }
   },
   watch: {
@@ -320,6 +326,7 @@ export default {
   text-align: center;
   padding: 0.3rem 0;
   margin: 0.6rem 0;
+  font-size: 1rem;
 }
 .down {
   background-color: #fff;
@@ -385,9 +392,9 @@ export default {
 }
 .paixu{
   width:200%;
-  padding: 1.3rem;
-  font-size: 1rem;
-  /* border:0.2rem solid red; */
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  border-bottom:0.2rem solid white;
   background-color: #e4e4e4;
 }
 .paixu2{
@@ -429,13 +436,14 @@ width: 1.5rem;
 }
 .peisong{
   margin: 1rem 0.6rem;
+  font-size: 1rem;
 }
 .tum{
   margin-left: 0.5rem;
 }
 .queding{
   width: 200%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   background-color:#e4e4e4;
   font-size: 2rem;
   /* float: right; */
@@ -443,10 +451,18 @@ width: 1.5rem;
 }
 .clickbtn{
   height: 3rem;
-  width: 46%;
+  width: 47%;
   border-radius:1rem; 
   background-color: rgb(44, 218, 116);
   float: right;
+  margin-right: 0.6rem;
+}
+.clickbtn2{
+  height: 3rem;
+  width: 47%;
+  border-radius:1rem; 
+  background-color: rgb(44, 218, 116);
+  float: left;
   margin-right: 0.6rem;
 }
 </style>

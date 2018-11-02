@@ -253,7 +253,7 @@ export default {
     menu(id) {
       this.facevalue = id;
     },
-    active(id){
+    active(id) {
       this.value = id;
     },
     click1() {
@@ -264,19 +264,18 @@ export default {
       this.clic2 = !this.clic2;
       this.clic1 = !this.clic2;
     },
-    
+
     jiagou(aaa) {
-         this.$store.commit("add",aaa)
+      this.$store.commit("add", aaa);
     },
     jiangou(aaa) {
-        this.$store.commit("app", aaa);
-    },
+      this.$store.commit("app", aaa);
+    }
     // this.$store.commit("getid",{this.$route.params.id})
   },
   components: {
     bycar
-  },
- 
+  }
 };
 </script>
 <style scoped>
@@ -417,37 +416,44 @@ header {
 }
 .stop_right {
   float: left;
-  margin-top: .8rem;
+  margin-top: 0.8rem;
   font-size: 0.85rem;
   /* border: 1px solid red; */
 }
 .stop_right p {
-  padding: .6rem 0;
+  padding: 0.6rem 0;
   color: #999;
   /* border: 1px solid red; */
 }
-.jiage{
-  margin-top: .5rem;
+.stop_right h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* border:1px solid black; */
+  width: 4rem;
+}
+.jiage {
+  margin-top: 0.5rem;
   /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.span1{
+.span1 {
   color: #f60;
   width: 4.5rem;
   font-size: 1.1rem;
 }
-.jiajian{
+.jiajian {
   /* border: 1px solid black; */
   width: 4rem;
   margin-left: 2rem;
 }
- /* 加减图标 */
+/* 加减图标 */
 .gouwu {
   width: 1.2rem;
 }
- /* 底部购物车 */
+/* 底部购物车 */
 .bottom {
   position: fixed;
   left: 0;
@@ -550,11 +556,11 @@ header {
 }
 .shop {
   display: inline-block;
-  margin-left: .5rem;
-  margin-top: .3rem;
+  margin-left: 0.5rem;
+  margin-top: 0.3rem;
   border: 1px solid #f1f1f1;
 }
-.shop p{ 
+.shop p {
   width: 4rem;
   overflow: hidden;
   text-overflow: ellipsis;
