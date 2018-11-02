@@ -51,7 +51,8 @@
                    query:{image_path:stores.image_path,
                    name:stores.name,
                    description:stores.description,
-                   tips:stores.tips
+                   tips:stores.tips,
+                   id:datas.id
                    }}">
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
                  </router-link>
