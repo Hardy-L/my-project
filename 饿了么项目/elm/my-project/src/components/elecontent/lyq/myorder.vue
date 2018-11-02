@@ -12,12 +12,12 @@
    <div class="service">
       <div class="service-serve">
           <div class="service-serve-router">
-            <img src="../../../assets/客服.png">
+            <img src="../../../assets/kefu.png">
             <span>在线客服</span>
           </div>
 
           <div class="service-serve-router">
-            <img src="../../../assets/电话.png">
+            <img src="../../../assets/phone.png">
             <span>在线客服</span>
           </div>
       </div>
@@ -29,7 +29,7 @@
           <li v-for="(k,index) in data" :key="index">
             <router-link :to="{name:'Myorder_text',params:{title:k,tapo:index}}">
            <span>{{k}}</span>
-            <img src="../../../assets/右箭头.png">
+            <img src="../../../assets/youjiantou.png">
             </router-link>
           </li>
         </ul>

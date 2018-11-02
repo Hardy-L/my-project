@@ -13,7 +13,7 @@
             <p>当前余额</p>
             <!-- 余额说明 -->
             <div class="explain">
-                <img src="../../../assets/我的余额叹号.png" alt="">
+                <img src="../../../assets/wenhao.png" alt="">
                <span>当前积分</span>
                </div>     
                <div class="sp">
@@ -32,7 +32,7 @@
 
     <p>最近30天积分记录</p>
     <div class="no_log">
-        <img src="../../../assets/无积分记录.png" alt="">
+        <img src="../../../assets/wujilu.png" alt="">
         <p>最近30天积分记录</p>
         <span>快去下单赚取大量积分吧</span>
         </div>      

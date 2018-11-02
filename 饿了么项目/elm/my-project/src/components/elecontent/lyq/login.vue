@@ -26,8 +26,9 @@
     </li>
     <li class="account"><input type="text" placeholder="验证码" v-model="captcha_code">
     <p @click="reng()" style="float:right">换一张</p>
+    <p>看不清</p>
     <img style="width:4.5rem;border:.1rem solid #666;float:right;margin-top:.5rem" :src="img" alt="">
-    <!-- <span class="sp1">看不清</span><br> -->
+    <br>
     
     </li>
   </ul>
@@ -65,7 +66,7 @@ export default {
       captcha_code: "",
       img: "",
       login: "",
-      user_id:""
+      user_id: ""
     };
   },
   created() {
@@ -105,7 +106,7 @@ export default {
       });
     },
     getLogin(username) {
-      var _this = this
+      var _this = this;
       const url = "https://elm.cangdu.org/v2/login";
       this.$http({
         //调用接口
@@ -116,7 +117,7 @@ export default {
           username: this.username,
           password: this.password,
           captcha_code: this.captcha_code,
-          user_id:this.user_id
+          user_id: this.user_id
         },
         withCredentials: true
       }).then(response => {
@@ -128,13 +129,17 @@ export default {
           alert(response.data.message);
           this.getCode();
         } else {
-          _this.user_id = response.data.user_id
+          _this.user_id = response.data.user_id;
           this.$store.commit("qufan", true);
           this.$store.commit("changeusermsg", response.data);
-          this.$store.commit("idok",_this.user_id)
+          this.$store.commit("idok", _this.user_id);
           this.username = this.$store.state.usermsg.username;
           this.$router.push({ name: "myele" });
-          localStorage.setItem("loginid",JSON.stringify(this.data),_this.username)
+          localStorage.setItem(
+            "loginid",
+            JSON.stringify(this.data),
+            _this.username
+          );
         }
       });
     }

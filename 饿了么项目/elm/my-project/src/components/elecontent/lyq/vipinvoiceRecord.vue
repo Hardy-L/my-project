@@ -8,7 +8,7 @@
       <span class="title_text">购买记录</span>
     </div>
     </div>
-    <section data-v-028681ee="" class="invoice_contianer"><img  src="../../../assets/无积分记录.png"> 
+    <section data-v-028681ee="" class="invoice_contianer"><img  src="../../../assets/wujilu.png"> 
     <p data-v-028681ee="">没有购买记录</p></section>
     </div>
 </template>

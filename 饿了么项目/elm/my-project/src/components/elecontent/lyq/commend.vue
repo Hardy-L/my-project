@@ -12,15 +12,15 @@
         <img style="width:100%" src="../../../assets/activity.png" alt="">
     </div>
     <div class="invite_firend">
-        <div @click="vanish()" class="invite_firend_style"><img  src="../../../assets/微信logo.png"> <p >邀请微信好友</p></div>
+        <div @click="vanish()" class="invite_firend_style"><img  src="../../../assets/weixin.png"> <p >邀请微信好友</p></div>
          <div class="invite_firend_style" @click="vanish()">
-             <img src="../../../assets/QQloge.png"> <p>邀请QQ好友</p></div> <div  class="invite_firend_style" @click="vanish()"><img src="../../../assets/面对面.png"><p>面对面邀请</p></div></div>
+             <img src="../../../assets/QQloge.png"> <p>邀请QQ好友</p></div> <div  class="invite_firend_style" @click="vanish()"><img src="../../../assets/mianduimian.png"><p>面对面邀请</p></div></div>
 
     <section class="invite_num"><div class="invite_num_style"><p>累计收益</p> <p><span>0</span>元</p></div> <div class="invite_num_style invite_people"><p>成功邀请</p> <p><span>0</span>人</p></div></section>
 
     <p class="income_detail">-收益明细-</p>
 
-    <section class="incom_tips"><img src="../../../assets/手机.png"> <p>还不赶紧去邀请好友</p></section>
+    <section class="incom_tips"><img src="../../../assets/phone.png"> <p>还不赶紧去邀请好友</p></section>
      <!-- 弹框 -->
     <div class="tip_text_container" v-show="!van"><div class="tip_icon">
       <span>!</span> 

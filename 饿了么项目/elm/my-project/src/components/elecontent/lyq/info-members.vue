@@ -19,14 +19,14 @@
             </div>
             <div class="right">
               <span>会员说明</span>
-            <img  src="../../../assets/右箭头.png" alt="">
+            <img  src="../../../assets/youjiantou.png" alt="">
             </div>
             </li>
           </router-link>
           
            <li style="height:6rem" >
             <div class="myorder-div">
-                <img src="../../../assets/省.png" alt="">
+                <img src="../../../assets/sheng.png" alt="">
             </div>
             <div class="spanp">
               <h4>减免配送费</h4>
@@ -38,7 +38,7 @@
 
             <li style="height:6rem" >
             <div class="myorder-div">
-                <img src="../../../assets/减免配送.png" alt="">
+                <img src="../../../assets/jianmian.png" alt="">
             </div>
             <div class="spanp">
               <h4>减免配送费</h4>
@@ -78,7 +78,7 @@
             </div>
             <div class="right">
               <span>使用卡号免密</span>
-            <img  src="../../../assets/右箭头.png" alt="">
+            <img  src="../../../assets/youjiantou.png" alt="">
             </div>
             </li>
               </router-link>
@@ -94,7 +94,7 @@
             </div>
             <div class="right">
               <span>开发票</span>
-            <img  src="../../../assets/右箭头.png" alt="">
+            <img  src="../../../assets/youjiantou.png" alt="">
             </div>
               </li>
               </router-link>

@@ -13,7 +13,7 @@
             <p>当前余额</p>
             <!-- 余额说明 -->
             <div class="explain">
-                <img src="../../../assets/我的余额叹号.png" alt="">
+                <img src="../../../assets/wenhao.png" alt="">
                <span>余额说明</span>
                </div>     
                <div class="sp">
@@ -25,7 +25,7 @@
     </div>
     <p>交易明细</p>
     <div class="no_log">
-        <img src="../../../assets/无明细记录.png" alt="">
+        <img src="../../../assets/wujilu.png" alt="">
         </div>      
 
 
