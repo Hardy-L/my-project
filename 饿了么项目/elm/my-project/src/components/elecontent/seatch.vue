@@ -8,10 +8,10 @@
       <span class="title_text">搜索</span>
     </div> 
     </div>
-    <div class="content">
+    <form class="content">
       <input type="search" placeholder="请输入商家或美食名称" v-model="name">
       <input type="submit" value="提交" @click="submit()">
-    </div>
+    </form>
     <div class="bottom" v-show="show">很抱歉！无搜索结果</div>
     <wode></wode>
     </div>
@@ -24,24 +24,24 @@ export default {
   components: {
     wode
   },
- data() {
+  data() {
     return {
-      data:[],
-      show:false,
-      name:''
-    }
+      data: [],
+      show: false,
+      name: ""
+    };
   },
- watch:{
-    name(newvalue){
-      if(newvalue == 0){
-        this.show = false
+  watch: {
+    name(newvalue) {
+      if (newvalue == 0) {
+        this.show = false;
       }
     }
- },
-  methods:{
-    submit(){
+  },
+  methods: {
+    submit() {
       this.show = true;
-    },
+    }
   }
 };
 </script>
@@ -58,6 +58,7 @@ span {
 }
 .saetch {
   background-color: rgb(236, 236, 236);
+  width: 100%;
 }
 .hand {
   text-align: center;
@@ -81,6 +82,7 @@ span {
   height: 2.8rem;
   margin: 0 auto;
   line-height: 3rem;
+   /* border: 1px solid red; */
 }
 .title_text {
   font-size: 1.1rem;
@@ -89,29 +91,34 @@ span {
 }
 .content {
   background: #fff;
-  height: 4rem;
-  line-height: 4rem;
-  /* text-align: center; */
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+  /* border: 1px solid red; */
+  box-sizing: border-box;
 }
 .content input:nth-child(1) {
-  border: 0.05rem solid #e4e4e4;
-  font-size: 0.6rem;
-  background: #f2f2f2;
+  flex: 4;
+  border:.2rem solid #e4e4e4;
+  font-size: 0.65rem;
   color: #333;
-  border-radius: 0.3rem;
-  padding: 0 1.5rem;
+  border-radius: .2rem;
+  background-color: #f2f2f2;
+  font-weight: 700;
+  padding: 0 .3rem;
+  /* border: 1px solid red; */
   height: 2rem;
-  width: 14rem;
 }
 .content input:nth-child(2) {
-  border: 0.05rem solid #3190e8;
+  flex: 1;
+  border: .2rem solid #3190e8;
   margin-left: 0.2rem;
   font-size: 0.65rem;
   color: #fff;
-  border-radius: 0.25rem;
+  border-radius: .2rem;
   background-color: #3190e8;
-  padding: 0 0.8rem;
-  height: 2rem;
+  font-weight: 700;
+  padding: 0 .2rem;
 }
 .bottom {
   margin: 0 auto;

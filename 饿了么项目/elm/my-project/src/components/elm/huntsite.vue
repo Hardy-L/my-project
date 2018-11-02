@@ -1,7 +1,7 @@
 <template>
   <div class="huntsite">
       <header>
-         <a href="#/home">&lt;</a>
+         <a href="#/home" class="el-icon-arrow-left"></a>
          <a href="#/home">{{data.name}}</a>
          <a href="#/home">切换城市</a>
       </header>
@@ -14,7 +14,7 @@
           <h4 class="bh4">搜索历史</h4>
           <ul class="bottom" v-if="show">
             <li v-for="item in arr1" :key="item.id">
-              <router-link to="/Aaa">
+              <router-link to="/Aaa" @click.native="ti(item.geohash,item.latitude,item.longitude)">
               <h4>{{item.name}}</h4>
               <p>{{item.address}}</p>
               </router-link>
@@ -24,7 +24,7 @@
       </div>
       <ul class="details">
         <li v-for="(item,index) in datas" :key="index">
-          <router-link @click.native="loc(index)" to="/Aaa">
+          <router-link @click.native="loc(index,item.geohash,item.latitude,item.longitude)" to="/Aaa">
           <h4>{{item.name}}</h4>
           <p>{{item.address}}</p>
         </router-link>
@@ -44,14 +44,14 @@ export default {
       arr1: [],
       name: "",
       id: "",
-      show:false
+      show: false
     };
   },
   created() {
-    if(!this.$store.state.sousuo){
-      this.show=false;
-    }else{
-      this.show=true;
+    if (!this.$store.state.sousuo) {
+      this.show = false;
+    } else {
+      this.show = true;
     }
     this.id = this.$route.params.id;
     let api = "https://elm.cangdu.org/v1/cities/" + this.$route.params.id;
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     submit() {
-      this.$store.commit("changesousuo",this.name)
+      this.$store.commit("changesousuo", this.name);
       let url =
         "https://elm.cangdu.org/v1/pois?city_id=" +
         this.id +
@@ -74,10 +74,10 @@ export default {
         // console.log(res.data);
         this.datas = res.data;
         this.$store.commit("cityid", this.id);
-        console.log('id',this.id);
+        console.log("id", this.id);
       });
     },
-    loc(id) {
+    loc(id, jw,lat,lon) {
       this.arr = this.arr1;
       for (var i = 0; i < this.arr.length; i++) {
         if (this.arr[i].address == this.datas[id].address) {
@@ -86,11 +86,20 @@ export default {
       }
       this.arr.push(this.datas[id]);
       localStorage.setItem("obj", JSON.stringify(this.arr));
+      localStorage.geohash = jw;
+      localStorage.latitude = lat;
+      localStorage.longitude = lon;
+
     },
     footer() {
       localStorage.clear();
       this.show = false;
-      this.$store.commit("changesousuo","")
+      this.$store.commit("changesousuo", "");
+    },
+    ti(jw,lat,lon) {
+      localStorage.geohash = jw;
+      localStorage.latitude = lat;
+      localStorage.longitude = lon;
     }
   }
 };
@@ -216,5 +225,14 @@ header a {
 .details a {
   text-emphasis: none;
   color: #333;
+}
+.el-icon-arrow-left {
+  float: left;
+  line-height: 3rem;
+  text-decoration-line: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-left: 1rem;
 }
 </style>
