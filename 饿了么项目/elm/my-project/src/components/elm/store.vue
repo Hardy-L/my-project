@@ -1,5 +1,6 @@
 <template>
     <div class="store">
+      <!-- 头部 -->
        <header>
             <div class="bg"><img :src="'//elm.cangdu.org/img/'+datas.image_path" alt=""></div>
             <div class="header_left">
@@ -24,6 +25,7 @@
              <el-menu-item index="2" @click="click2">评价</el-menu-item>
              </el-menu>
        </div>
+       <!-- 商品 -->
        <div class="content_body" v-show="clic1">
          <!-- 左边部分 -->
           <div class="content_body_left">
@@ -49,8 +51,7 @@
                    query:{image_path:stores.image_path,
                    name:stores.name,
                    description:stores.description,
-                   tips:stores.tips,
-                   id:datas.id
+                   tips:stores.tips
                    }}">
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
                  </router-link>
@@ -59,24 +60,24 @@
                      <h3>{{stores.name}}</h3>
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
-                    <section class="sections" >
-                     <span> ¥{{stores.specfoods[0].price}}</span>
-                     <div class="sections_right">
-                      <span @click="jiangou(value.id,stores.specfoods[0].food_id,stores.specfoods[0].count)">
-                      <img src="@/assets/减号.png" alt="" class="gouwu">
-                      </span><span> {{stores.specfoods[0].count}}</span>
-                       <span @click="jiagou(value.id,stores.specfoods[0].food_id,stores)">
-                      
+                     <!-- 价格 -->
+                    <section class="jiage">
+                     <span class="span1"> ¥{{stores.specfoods[0].price}}起</span>
+                     <!-- 加入购物车 -->
+                      <div class="jiajian">
+                      <span @click="jiangou(stores.specfoods[0])">
+                      <img src="@/assets/减号.png" alt="" class="gouwu" v-if="stores.specfoods[0].count >0">
+                      </span><span v-if="stores.specfoods[0].count >0"> {{stores.specfoods[0].count}}</span>
+                       <span @click="jiagou(stores.specfoods[0])">
                       <img src="@/assets/加购物车.png" alt="" class="gouwu">
                     </span>
-                      </div>
+                    </div>
                       </section>
                    
                  </div>   
               </section>   
-            </section>
+            </section>         
           </div>
-         
        </div>
        <!-- 评价 -->
        <div class="content-right" v-show="clic2">
@@ -149,11 +150,10 @@
            </ul>
          </div>
        </div>
-      <div class="bottom">
+       <div class="bottom">
        <bycar/>
-       </div>  
-    </div>  
-  </div>    
+       </div>
+    </div>
 </template>
 <script>
 import Vue from "vue";
@@ -285,10 +285,9 @@ a {
 }
 .store {
   background: #ededed;
-  height: 100%;
 }
 header {
-  height: 6.4rem;
+  height: 6.6rem;
   overflow: hidden;
 }
 .return {
@@ -342,7 +341,7 @@ header {
   margin-bottom: 0.6rem;
 }
 .header_right p {
-  font-size: .9rem;
+  font-size: 1rem;
   margin: 0.5rem 0;
 }
 .el-menu-demo {
@@ -350,17 +349,15 @@ header {
   justify-content: space-between;
 }
 .content_body {
-  border: 1px solid black;
-  overflow: hidden;
+  height: 30rem;
 }
 .content_body_left {
   background: #ededed;
   font-size: 1.2rem;
   float: left;
-  width: 24%;
-  height: 30rem;
+  width: 25%;
+  height: 31.2rem;
   overflow: scroll;
-  border: 1px solid red;
 }
 .content_body_left::-webkit-scrollbar {
   display: none;
@@ -377,10 +374,9 @@ header {
 }
 .content_body_right {
   float: left;
-  width: 73%;
-  height: 30rem;
+  width: 75%;
+  height: 31.2rem;
   overflow: scroll;
-  border: 1px solid red;
 }
 .content_body_right::-webkit-scrollbar {
   display: none;
@@ -402,50 +398,59 @@ header {
   color: #999;
   font-size: 0.8rem;
 }
-
+/* 店铺详情 */
 .stop {
   height: 7rem;
   overflow: hidden;
   background: #fff;
   border-bottom: 1px solid #e4e4e4;
   z-index: 100;
+  /* border:1px solid red; */
 }
 .stop_left img {
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   float: left;
   margin: 1rem;
   margin-top: 1.6rem;
 }
 .stop_right {
   float: left;
-  margin-top: .6rem;
+  margin-top: .8rem;
   font-size: 0.85rem;
+  /* border: 1px solid red; */
 }
 .stop_right p {
-  padding: .8rem 0;
+  padding: .6rem 0;
   color: #999;
+  /* border: 1px solid red; */
 }
-.sections{
+.jiage{
+  margin-top: .5rem;
+  /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: .3rem;
 }
-.sections span:nth-child(1){
+.span1{
   color: #f60;
-  font-size: 1rem;
+  width: 4.5rem;
+  font-size: 1.1rem;
 }
-.sections_right{
-  margin-left: 6rem;
+.jiajian{
+  /* border: 1px solid black; */
+  width: 4rem;
+  margin-left: 2rem;
 }
-img {
-  width: 3.5rem;
-}
+ /* 加减图标 */
 .gouwu {
   width: 1.2rem;
 }
+ /* 底部购物车 */
 .bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
 }
 .content-right-top {
