@@ -199,7 +199,7 @@ export default {
     // 接口16
     // let api ="api/shopping/v2/menu?restaurant_id=" +this.$route.params.id;
     // let api = "api/shopping/v2/menu?restaurant_id=1";
-    let api = "api/shopping/v2/menu?restaurant_id=" + this.$route.params.id;
+    let api = "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" + this.$route.params.id;
     this.$http.get(api).then(res => {
       // _this.data16 = res.data;
       for (let i = 0; i < res.data.length; i++) {
@@ -209,7 +209,7 @@ export default {
       }
       this.$store.commit("getdatahe", res.data);
     });
-    let url = "api/shopping/restaurant/" + this.$route.params.id;
+    let url = "https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
       _this.datas = data11.data;
     });

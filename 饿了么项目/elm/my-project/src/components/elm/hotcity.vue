@@ -16,7 +16,7 @@ export default {
     data: []
   }),
   created() {
-    let api = "/api/v1/cities?type=hot";
+    let api = "https://elm.cangdu.org/v1/cities?type=hot";
     //promise写法
     this.$http.get(api).then(res => {
     //   console.log(res.data);
@@ -25,7 +25,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .content {
   margin-top: 5%;
 }

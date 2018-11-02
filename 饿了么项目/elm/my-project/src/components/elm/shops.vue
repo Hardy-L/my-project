@@ -69,7 +69,7 @@ export default {
     }
   },
   created() {
-     let url ="api/shopping/restaurant/" + this.$route.params.id;
+     let url ="https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(url).then(data11 => {
       this.datas = data11.data;
       console.log("aa",this.datas)

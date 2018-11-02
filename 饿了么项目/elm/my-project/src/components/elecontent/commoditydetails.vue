@@ -10,7 +10,7 @@
   }),
   created() {
     // 接口  5
-    var api5 = "/api/shopping/restaurant/1";
+    var api5 = "https://elm.cangdu.org/v2/index_entry";
     var _this = this;
     this.$axios.get(api5).then(data => {
       // params: {

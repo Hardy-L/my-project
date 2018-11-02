@@ -10,15 +10,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {  //使用"/api"来代替"http://f.apiplus.c" 
-      target: 'https://elm.cangdu.org', //源地址 
-      changeOrigin: true, //改变源 
-      pathRewrite: { 
-        '^/api': '' //路径重写 
-        } 
-    } 
-    },
+    proxyTable: {},
 
 
     // Various Dev Server settings
@@ -52,7 +44,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps
