@@ -151,13 +151,13 @@ span {
   background: #f2f2f2;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .add-detail button {
   display: block;
   width: 5rem;
   background: #3199e8;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: #fff;
   border-radius: 5px;
 }
@@ -175,8 +175,9 @@ span {
   padding-top: 0.6rem;
   color: #333;
   border-bottom: 1px solid #e4e4e4;
+  font-size:1rem;
 }
-.details p {
+.details p { 
   margin-left: 1rem;
   font-size: 0.8rem;
   color: #999;
@@ -184,7 +185,7 @@ span {
 }
 .details h4 {
   margin-left: 1rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 1%;
 }
 .details a {

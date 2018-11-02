@@ -200,6 +200,7 @@ span {
 .el-icon-arrow-right#arrow-right {
   color: rgb(84, 79, 79);
   line-height: 3rem;
+  font-size: 1rem;
 }
 #reTe ul > li:nth-child(1) {
   line-height: 5rem;
@@ -223,6 +224,12 @@ span {
   width: 100%;
   border-bottom: 0.01rem solid rgb(218, 198, 198);
 }
+.profile-1reTe ul li b{
+  font-size: 1rem;
+}
+p{
+  font-size: 1rem;
+}
 .myorder-div {
   width: 9rem;
   height: 3rem;
@@ -235,6 +242,7 @@ span {
   color: rgb(84, 79, 79);
   line-height: 3rem;
   margin-left: 0.5rem;
+  font-size: 1.1rem;
 }
 .profile-1reTe ul li img {
   width: 1.2rem;

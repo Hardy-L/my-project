@@ -157,7 +157,7 @@ span {
   text-align: center;
 }
 .clealj > p {
-  font-size: 0.5 rem;
+  font-size: 0.7rem;
   color: #999;
   line-height: 2rem;
   padding-left: 0.5rem;
