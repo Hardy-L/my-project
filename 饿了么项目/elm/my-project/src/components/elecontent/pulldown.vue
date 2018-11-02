@@ -126,7 +126,7 @@
 </template>
 <script>
 import img01 from "@/assets/双向箭头.png";
-import img02 from "@/assets/地址.png";
+import img02 from "@/assets/dizhi.png";
 import img03 from "@/assets/火.png";
 import img04 from "@/assets/金额.png";
 import img05 from "@/assets/时间.png";
