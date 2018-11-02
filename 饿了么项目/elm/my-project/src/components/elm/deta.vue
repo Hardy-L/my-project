@@ -1,8 +1,8 @@
 <template>
   <div class="deta">
       <header>
-        <span class="el-icon-arrow-left" @click="$router.back(-1)"></span>
-        <span>{{this.$route.query.name}}</span>
+        <span class="el-icon-arrow-left" @click="goback()"></span>
+        <p>{{this.$route.query.name}}</p>
       </header>
       
       <img class="imgs" :src="'//elm.cangdu.org/img/'+this.$route.query.image_path" alt="">
@@ -15,7 +15,12 @@
 </template>
 <script>
 export default {
-  name: "deta"
+  name: "deta",
+  methods:{
+    goback(){
+      this.$router.push({path:'/store/'+this.$route.query.id})
+    }
+  }
 };
 </script>
 <style>
@@ -31,10 +36,15 @@ header {
   background: #3290e8;
   line-height: 3rem;
 }
-header span:nth-child(2) {
+header p:nth-child(2) {
   margin-left: 35%;
   color: white;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 6rem;
+
 }
 .el-icon-arrow-left {
   float: left;

@@ -21,6 +21,6 @@ export default{
    id:"",
    limit:"",
    // 餐馆id
-   cgid:"",
+   cgid:""
 // $store.state.homeid
 }

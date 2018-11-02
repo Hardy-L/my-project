@@ -42,6 +42,7 @@ import HbHistory from '../components/elecontent/lyq/hbHistory'
 import Shops from "../components/elm/shops.vue";
 import Shopsafe from "../components/elm/shopsafe.vue";
 import Deta from '../components/elm/deta.vue';
+// import dingdan from "@/components/erjiyemian/dingdan"
 Vue.use(Router)
 
 export default new Router({
@@ -192,6 +193,12 @@ export default new Router({
       name:'deta',
       component:Deta
     }
+    // ,
+    // {
+    //   path:'/dingdan',
+    //   name:'dingdan',
+    //   component:dingdan
+    // }
 
   ]
 })

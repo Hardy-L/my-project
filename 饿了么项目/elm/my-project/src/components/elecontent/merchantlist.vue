@@ -6,7 +6,7 @@
        <div class="merchant-list">
         <p v-for="mls in data6" :key="mls.id" class="merchant-list-single">
          
-          <router-link :to="{name:'store',params:{id:mls.id}}"><!-- btns(mls.id) -->
+          <router-link :to="{name:'store',params:{id:mls.id}}">
               <div class="flex">
                 <img :src="'https://elm.cangdu.org/img/'+mls.image_path" alt="" class="flex-left">
                 <div class="flex-right">
@@ -159,6 +159,7 @@ export default {
         _this.suoyouxinxi = _this.data6b[0].supports[1].name;
         // console.log("所有信息" + _this.suoyouxinxi);
       });
+
   },
   // created(){
   //   // this.$store.commit("getcgid",mls.id)
