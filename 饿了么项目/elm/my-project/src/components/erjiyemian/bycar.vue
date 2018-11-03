@@ -84,21 +84,27 @@ a {
 .warp {
   width: 100%;
   background-color: rgb(66, 64, 64);
-  overflow: hidden;
+  /* overflow: hidden; */
   position: fixed;
   left: 0;
   bottom: 0;
+  /* border: 1px solid red; */
 }
 .gouwu {
   position: fixed;
-  bottom: 1.4rem;
+  bottom: 1.2rem;
   left: 1rem;
-  width: 25%;
   border: 0.2rem solid rgb(114, 113, 113);
   background-color: rgb(66, 64, 64);
   height: 3.5rem;
   width: 3.5rem;
   border-radius: 50%;
+  z-index: 200;
+  /* border:1px solid red; */
+}
+.gouwu img{
+  width: 2.8rem;
+  z-index: 100;
 }
 .yunfei {
   margin: 0.5rem 0 0 6rem;
