@@ -111,7 +111,7 @@
                      score-template="{value}">
                 </el-rate>
                  </span>  </div>
-               <div class="sd"><span>送达时间 </span><span>分钟</span></div>
+               <div class="sd"><span>送达时间 </span><span>20分钟</span></div>
              </li>
            </ul>
          </div>

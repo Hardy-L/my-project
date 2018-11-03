@@ -62,7 +62,9 @@ export default {
     data2:[],
     data3:[]
   }),
-  mounted() {},
+  mounted() {
+    
+  },
   created() {
     // 接口  5
     var api5 = "https://elm.cangdu.org/v2/index_entry";

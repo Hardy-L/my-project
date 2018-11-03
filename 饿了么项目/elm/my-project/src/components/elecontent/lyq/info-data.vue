@@ -31,13 +31,14 @@
 import wode from "../wode";
 export default {
   name: "info_data",
+  data(){
+      return {
+       arrs:[]
+      }
+  },
   components: {
     wode
-  },computed:{
-  arrs(){
-    return this.$store.state.xzdata
-  }
-},
+  },
 created() {
     var botchoice = {
         waimai: false,
@@ -46,7 +47,8 @@ created() {
         mine: false
       };
       this.$store.commit("changebotchoice", botchoice);
-
+      this.arrs = this.$store.state.dingdan.a;
+      console.log(this.arrs)
 },
 };
 </script>

@@ -63,7 +63,7 @@
  <div v-show="value2">
      <div v-for="item in imgs" :key="item.id" class="paixu">
          <div @click="dianjia1(item.id)" class="paixu2">
-           <img :src="item.src" alt=""> <span class="wen">{{item.title}}</span>
+           <img :src="item.src" alt=""> <span class="wenzi">{{item.title}}</span>
            </div>
          </div>
      
@@ -407,7 +407,7 @@ width: 1.5rem;
   transform: rotateZ(-90deg)
 }
 .shaixuan{
-  width: 200%;
+  width: 100%;
   background-color:#fff;
  overflow: hidden;
 }
@@ -441,7 +441,7 @@ width: 1.5rem;
   margin-left: 0.5rem;
 }
 .queding{
-  width: 200%;
+  width: 100%;
   /* border: 1px solid red; */
   background-color:#e4e4e4;
   font-size: 2rem;
@@ -467,4 +467,7 @@ width: 1.5rem;
 .active {
    background: white;
  }
+ .wenzi{
+   font-size: 1rem;
+    }
 </style>

@@ -28,6 +28,6 @@ export default{
       dingdan: Boolean,
       mine: Boolean
     },
-  
+    dingdan:{}//订单数组
 // $store.state.homeid
 }

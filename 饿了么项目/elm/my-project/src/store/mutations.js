@@ -1,3 +1,4 @@
+import Vue from "vue";
 //  vuex中去操作数据的方法 （只能同步执行）
 export default {
   changeusermsg(state, value) {
@@ -23,7 +24,7 @@ export default {
   },
   add(state,a){
     //点击的商品的count++
-    console.log(a)
+    // console.log(a)
     a.count++
     //数组内如果没有那就添加
     if(state.xzdata.indexOf(a) == -1){
@@ -62,15 +63,26 @@ export default {
     state.cgid=getid
   },
   qingkong(state){
+
     for(let ii =0;ii<state.xzdata.length;ii++){
         state.xzdata[ii].count = 0
         state.xzdata.splice(ii,1)
         ii--;
-        state.num=0
     };
+    state.num=0
   },
   changebotchoice(state, value) {
     state.botchoice = value;
   },
-
+  dianji(state){
+    console.log("------------")
+    Vue.set(state.dingdan,"a",state.xzdata);
+    for(let ii =0;ii<state.xzdata.length;ii++){
+      state.xzdata[ii].count = 0
+      state.xzdata.splice(ii,1)
+      ii--;
+    };
+  state.num=0;
+  console.log(state.dingdan)
+  }
 }

@@ -129,6 +129,7 @@ export default {
   }),
   methods: {
     dianji() {
+      this.$store.commit("dianji")
       alert("下单成功");
     }
   },
