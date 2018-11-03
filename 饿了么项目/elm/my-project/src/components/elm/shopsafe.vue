@@ -40,7 +40,7 @@ export default {
   name: "shopsafe"
 };
 </script>
-<style>
+<style scoped>
 /* 外层div */
 .shopsafe {
   background: #e4e4e4;

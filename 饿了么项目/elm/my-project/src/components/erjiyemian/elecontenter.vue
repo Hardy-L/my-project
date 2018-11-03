@@ -62,10 +62,10 @@ import wode from "@/components/elecontent/wode"
                 id:this.getId
             }
             this.cont=a
-            console.log("aaa"+a)
+            // console.log("aaa"+a)
         },
         updaMsg2(lc){
-            console.log(lc+"qqqqqqqqqqqqqqqqq")
+            // console.log(lc+"qqqqqqqqqqqqqqqqq")
             this.aaa=lc;
         }
     }

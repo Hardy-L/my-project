@@ -4,7 +4,8 @@
       <!-- hand-->
       <div class="hand">
         <!-- 返回 -->
-<span class="el-icon-arrow-left" @click="$router.back(-1)"></span>    <div class="title_head">  
+<span class="el-icon-arrow-left" @click="$router.back(-1)"></span>   
+ <div class="title_head">  
       <span class="title_text">我的</span>
     </div>
     </div>

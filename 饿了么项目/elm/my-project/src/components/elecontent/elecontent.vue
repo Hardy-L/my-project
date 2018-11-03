@@ -65,7 +65,7 @@ export default {
   mounted() {},
   created() {
     // 接口  5
-    var api5 = "/api/v2/index_entry";
+    var api5 = "https://elm.cangdu.org/v2/index_entry";
     var _this = this;
     this.$http.get(api5).then(data => {
       _this.data = data.data.splice(0,8)
@@ -85,9 +85,12 @@ export default {
   width: 100%;
   height: 3rem;
   background-color: #3190e8;
-  /* border: 1px solid red; */
   display: flex;
   justify-content: space-around;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
 }
 .top-left {
   font-size: 1.6rem;
@@ -128,8 +131,10 @@ export default {
 
 }
 .merchant {
-  padding-top: 0.5em;
+  margin-top: 3.5rem;
   width: 100%;
+  /* border: 1px solid red; */
+  box-sizing: border-box;
 }
 .merchant-single {
   font-size: .9rem;
