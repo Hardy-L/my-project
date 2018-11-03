@@ -42,20 +42,20 @@ export default {
   bottom: 0;
   display: flex;
   justify-content: space-around;
-  background-color: white;
+  background-color: #fff;
 }
 .xuanzebtn {
   width: 25%;
   text-align: center;
 }
 .xuanzebtn img {
-  width: 30%;
+  width: 25%;
 }
 .xuanzebtn p {
   text-align: center;
-  font-size: 0.16rem;
+  font-size: 0.5rem;
 }
 .xuanzebtn>a{
-    color: black;
+    color: #333;
 }
 </style>

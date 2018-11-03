@@ -25,8 +25,8 @@
                    </div>
                 </div>
                 <div class="flex-right-content-right">
-                 <span class="fengniao">蜂鸟专送</span> 
-                 <span class="zhunshi">准时达</span>
+                 <b class="fengniao">蜂鸟专送</b> 
+                 <b class="zhunshi">准时达</b>
                   </div>
               </div>
               <div class="flex-right-bottom mutual">
@@ -47,7 +47,7 @@
 </template>
 <script>
 // element UI
-import {Loading} from 'element-ui';
+import { Loading } from "element-ui";
 export default {
   name: "merchantlist",
   data: () => ({
@@ -60,7 +60,7 @@ export default {
     sbdata: "",
     data: [],
     aaa: [],
-    Arr:[]
+    Arr: []
   }),
   // 设置属性,便于监听这个属性是否更新
   props: ["cli", "cli2"],
@@ -73,7 +73,6 @@ export default {
       });
     },
     cli2(news2, olds2) {
-
       var _this = this;
       _this.data6 = _this.data6b;
       var arrId = [];
@@ -129,7 +128,7 @@ export default {
   },
 
   created() {
-      let loadingInstance1 = Loading.service({
+    let loadingInstance1 = Loading.service({
       fullscreen: true
     });
     // 接口 6
@@ -146,7 +145,6 @@ export default {
         }
       })
       .then(function(data) {
-        
         //关闭加载提示
         loadingInstance1.close();
         // 成功后的回调
@@ -159,8 +157,7 @@ export default {
         _this.suoyouxinxi = _this.data6b[0].supports[1].name;
         // console.log("所有信息" + _this.suoyouxinxi);
       });
-
-  },
+  }
   // created(){
   //   // this.$store.commit("getcgid",mls.id)
   //   // console.log(mls.id)
@@ -172,68 +169,77 @@ export default {
   background: #fff;
 }
 .flex {
-  overflow: hidden;
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid #f1f1f1;
-  padding: .5rem 0;
+  padding: 0.4rem;
+  text-align: center;
 }
 .merchant-list {
-  margin: 0.8rem 0.8rem 0 0.4rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 .flex-left {
-  float: left;
   width: 4rem;
-  padding: 1%;
+  height: 4.5rem;
+  margin-right: 0.3rem;
 }
 .flex-right {
-  float: right;
-  width: 76%;
+  flex: auto;
 }
 .mutual {
-  overflow: hidden;
-}
-.flex-right-top-left {
-  float: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .flex-right-top-right {
-  float: right;
   color: #999;
-  font-size: 0.1rem;
+  width: 4rem;
+  text-align: center;
+  line-height: 1.3rem;
+  height: 1.3rem;
+  font-size: 0.6rem;
 }
 .pinpai {
   color: #333;
-  /* border: 1px solid black; */
   background-color: #ffd930;
-  font-size: .1rem;
+  font-size: 0.5rem;
   border-radius: 0.3rem;
-  padding: 0 0.3rem;
-  margin: 0 0.8rem 0 0;
+  width: 6rem;
+  height: 2rem;
 }
 .shoppingname {
   color: #333;
   font-size: 0.8rem;
   font-weight: 600;
+  width: 4rem;
 }
 .flex-right-content {
   margin: 0.6rem 0;
+  line-height: 1rem;
 }
 .star {
   float: left;
+  width: 5rem;
 }
 .yueshou {
   float: left;
   color: #666;
-  font-size: .8rem;
-  margin-left: .3rem;
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
 }
 .fengniao {
-  background-color:#3190e8;
+  background-color: #3190e8;
   color: white;
-  font-size: 0.06rem;
+  font-size: 0.5rem;
+  width: 2rem;
+  /* border: 1px solid black; */
 }
 .zhunshi {
-  border: 0.1rem solid #3190e8;
+  border: 0.04rem solid #3190e8;
   color: #3190e8;
-  font-size: 0.06rem;
+  width: 2rem;
+  font-size: 0.5rem;
 }
 .fujin {
   margin: 0.4rem;
@@ -242,15 +248,15 @@ export default {
 }
 .flex-right-content-left {
   float: left;
-  color:#666;
-  font-size: .8rem;
+  color: #666;
+  font-size: 0.8rem;
 }
 .flex-right-content-right {
   float: right;
 }
 .gongli {
-  color:#666;
-  font-size: .6rem;
+  color: #666;
+  font-size: 0.6rem;
   /* margin-left: 4rem; */
   /* border: 1px solid red; */
 }
@@ -261,7 +267,7 @@ export default {
 }
 .time {
   color: #3190e8;
-  font-size: .6rem;
+  font-size: 0.6rem;
 }
 </style>
 <style>
