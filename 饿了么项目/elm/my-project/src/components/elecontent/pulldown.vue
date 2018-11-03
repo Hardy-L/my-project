@@ -291,24 +291,24 @@ export default {
     var _this = this;
 
     // 接口8
-    const api8 = "/api/shopping/v2/restaurant/category";
+    const api8 = "https://elm.cangdu.org/shopping/v2/restaurant/category";
     this.$http.get(api8).then(data => {
       _this.data8 = data.data;
-      console.log("获取到数据");
-      console.log(_this.data8);
+      // console.log("获取到数据");
+      // console.log(_this.data8);
     });
     // 接口9
-    const api9="/api/shopping/v1/restaurants/delivery_modes";
+    const api9="https://elm.cangdu.org/shopping/v1/restaurants/delivery_modes";
     this.$http.get(api9).then(data=>{
      _this.data9=data.data;
-     console.log("data9"+_this.data9)
+    //  console.log("data9"+_this.data9)
     });
     // 接口10//商家属性活动列表
-    const api10="/api/shopping/v1/restaurants/activity_attributes";
+    const api10="https://elm.cangdu.org/shopping/v1/restaurants/activity_attributes";
     this.$http.get(api10).then(data=>{
       _this.data10=data.data;
-      console.log("data10"+_this.data10)
-      console.log("颜色"+_this.data10[2].icon_color)
+      // console.log("data10"+_this.data10)
+      // console.log("颜色"+_this.data10[2].icon_color)
     })
   }
 };
