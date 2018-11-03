@@ -220,7 +220,8 @@ export default {
 }
 .star {
   float: left;
-  width: 5rem;
+  width: 6rem;
+  /* border:1px solid red; */
 }
 .yueshou {
   float: left;
@@ -273,13 +274,13 @@ export default {
 <style>
 /* 星星评分 */
 <style > .el-rate__item {
-  width: 0.4rem;
+  width: 0.1rem;
 }
 .el-rate__icon {
-  font-size: 0.001rem;
-  margin: 0;
+  font-size: .8rem;
+  margin: 0 .05rem;
 }
 .el-rate__text {
-  font-size: 0.001rem;
+  font-size: 0.6rem;
 }
 </style>
