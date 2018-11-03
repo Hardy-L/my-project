@@ -35,10 +35,8 @@
                配送费¥5元
            </div>
            </span>
-           <span class="qisong">
-               <div v-show = "show>0">还差¥{{show}}元起送</div>
-               <router-link v-show = "show<=0" to="/orderfrom">去结算</router-link>
-           </span>
+               <div  class="qisong" v-show = "show>0">还差¥{{show}}元起送</div>
+               <router-link  class="qisong" v-show = "show<=0" to="/orderfrom" style="backgroundColor:#4cd964" @click="aaa">去结算</router-link>
         </div>
 </template>
 <script>

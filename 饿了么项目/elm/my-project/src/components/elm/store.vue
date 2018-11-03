@@ -68,7 +68,7 @@
                       <div class="jiajian">
                       <span @click="jiangou(stores.specfoods[0])">
                       <img src="@/assets/减号.png" alt="" class="gouwu" v-if="stores.specfoods[0].count >0">
-                      </span><span v-if="stores.specfoods[0].count >0"> {{stores.specfoods[0].count}}</span>
+                      </span><span v-if="stores.specfoods[0].count >0">&nbsp; {{stores.specfoods[0].count}}&nbsp;</span>
                        <span @click="jiagou(stores.specfoods[0])">
                       <img src="@/assets/加购物车.png" alt="" class="gouwu">
                     </span>
@@ -447,12 +447,18 @@ header {
 }
 .jiajian {
   /* border: 1px solid black; */
-  width: 4rem;
+  width: 4.2rem;
   margin-left: 2rem;
+  /* padding-left: 1.2rem; */
+  display: flex;
+  justify-content: flex-end;
+  /* 上下居中 */
+  align-items: center;
 }
 /* 加减图标 */
 .gouwu {
   width: 1.2rem;
+  /* margin-left:2.2rem;  */
 }
 /* 底部购物车 */
 .bottom {
