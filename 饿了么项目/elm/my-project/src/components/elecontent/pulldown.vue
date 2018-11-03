@@ -13,19 +13,18 @@
  </div>
  <!-- ---------------------------------- -->
  <div class="down">
- <div class="down-left">
- <div v-show="value1">
-     <div v-for="(down,index) in data8" :key="index">
+ <!-- <div class="down-left"> -->
+ <div v-show="value1" class="down-left">
+     <div v-for="(down,index) in data8" :key="index"  :class="{'active':index ==checkindex}">
 
       <div class="pandu" v-if="index==0">
-         <div class="left-left" @click="dianji4(index)" :class="{'active':index ==checkindex }"
->
+         <div class="left-left" @click="dianji4(index)">
               <span class="wen">{{down.name}}</span>
               <span class="shu">{{down.count}}</span>
               <span>></span>
              </div>
       </div>
-          <div class="panduan" v-else-if="index==4">
+          <div class="panduan" v-else-if="index==4" >
         <div class="left-left" @click="dianji4(index)">
              <img class="tu" :src="'https://fuss10.elemecdn.com/'+down.image_url+'.jpeg'">
               <span class="wen">{{down.name}}</span>
@@ -105,7 +104,7 @@
         <button class="clickbtn" @click="quedingbtn">确定</button>
         </div>
  </div>
- </div>
+ <!-- </div> -->
 <!-- ---------------------------------- -->
  <div class="down-right">
        <div v-show="value4">
@@ -135,7 +134,7 @@ import img06 from "@/assets/pingfen.png";
 
 export default {
   data: () => ({
-    checkindex: 8,
+    checkindex:0,
     value1: false,
     value2: false,
     value3: false,
@@ -195,7 +194,7 @@ export default {
       this.value1 = !this.value1;
       this.value2 = false;
       this.value3 = false;
-      this.value4 = false;
+      this.value4 = this.value1;
     },
     dianji2: function() {
       this.value2 = !this.value2;
@@ -212,6 +211,7 @@ export default {
       this.value4 = !this.value4;
       this.arr = this.data8[a].sub_categories;
       this.name1 = this.data8[a].name;
+      this.checkindex = a;
     },
     // 点击我,我调用父组件传过来的方法
     updaMsg(b) {
@@ -296,21 +296,17 @@ export default {
     const api8 = "https://elm.cangdu.org/shopping/v2/restaurant/category";
     this.$http.get(api8).then(data => {
       _this.data8 = data.data;
-      // console.log("获取到数据");
-      // console.log(_this.data8);
+      this.arr = _this.data8[0].sub_categories
     });
     // 接口9
     const api9="https://elm.cangdu.org/shopping/v1/restaurants/delivery_modes";
     this.$http.get(api9).then(data=>{
      _this.data9=data.data;
-    //  console.log("data9"+_this.data9)
     });
     // 接口10//商家属性活动列表
     const api10="https://elm.cangdu.org/shopping/v1/restaurants/activity_attributes";
     this.$http.get(api10).then(data=>{
       _this.data10=data.data;
-      // console.log("data10"+_this.data10)
-      // console.log("颜色"+_this.data10[2].icon_color)
     })
   }
 };
@@ -341,6 +337,7 @@ export default {
   float: left;
   /* border: 1px solid red; */
   /* opacity: 2; */
+  height: 27rem;
 }
 .down-right {
   overflow: hidden;
@@ -348,7 +345,7 @@ export default {
 }
 .scoll {
   /* border:1px solid red; */
-  height: 23.3rem;
+  height: 27rem;
   width: 100%;
   overflow: scroll;
 }
@@ -367,7 +364,7 @@ export default {
 }
 .yiguo,
 .left-left {
-  margin: 1.4rem 0;
+  padding: 1.0rem 0;
   font-size: 0.8rem;
 }
 .tu {
@@ -469,6 +466,5 @@ width: 1.5rem;
 }
 .active {
    background: white;
-
  }
 </style>
