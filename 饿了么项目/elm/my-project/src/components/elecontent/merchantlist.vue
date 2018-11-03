@@ -73,7 +73,6 @@ export default {
       });
     },
     cli2(news2, olds2) {
-
       var _this = this;
       _this.data6 = _this.data6b;
       var arrId = [];
