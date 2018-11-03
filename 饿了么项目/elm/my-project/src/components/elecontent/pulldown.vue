@@ -18,7 +18,8 @@
      <div v-for="(down,index) in data8" :key="index">
 
       <div class="pandu" v-if="index==0">
-         <div class="left-left" @click="dianji4(index)">
+         <div class="left-left" @click="dianji4(index)" :class="{'active':index ==checkindex }"
+>
               <span class="wen">{{down.name}}</span>
               <span class="shu">{{down.count}}</span>
               <span>></span>
@@ -134,6 +135,7 @@ import img06 from "@/assets/pingfen.png";
 
 export default {
   data: () => ({
+    checkindex: 8,
     value1: false,
     value2: false,
     value3: false,
@@ -465,4 +467,8 @@ width: 1.5rem;
   float: left;
   margin-right: 0.6rem;
 }
+.active {
+   background: white;
+
+ }
 </style>

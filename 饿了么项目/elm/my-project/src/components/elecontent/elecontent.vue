@@ -79,9 +79,6 @@ export default {
     });
   }
 };
-//组件内的每一个this对象,都是Vue的孩子
-//Vue祖宗的原型数据,就会共享给所有的孩子
-// Vue.prototype.$axios=axios;
 </script>
 <style scoped>
 .head {

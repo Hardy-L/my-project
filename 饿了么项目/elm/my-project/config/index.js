@@ -15,7 +15,7 @@ module.exports = {
       target: 'https://elm.cangdu.org', //源地址 
       changeOrigin: true, //改变源 
       pathRewrite: { 
-        '^/api': '' //路径重写 
+        '^/api': '/' //路径重写 
         } 
     } 
     },
@@ -52,7 +52,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

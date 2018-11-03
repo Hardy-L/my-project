@@ -11,7 +11,8 @@
     </div>
     <ul class="order_list_ul">
         <li class="order_list_li" v-for="(item,index) in arrs" :key="index">
-            <img src="'elm.cangdu.org/img/'+item.image_path" class="restaurant_image"> 
+            <!-- <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt=""> -->
+            <img :src="'//elm.cangdu.org/img/'+item.image_path" class="restaurant_image" alt=""> 
             <section class="order_item_right">
                 <section><header class="order_item_right_header">
                     <section class="order_header"><h4><span class="ellipsis">{{item.name }}</span></h4> 
