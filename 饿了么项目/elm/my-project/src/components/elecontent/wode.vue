@@ -36,6 +36,7 @@ export default {
 </script>
 <style>
 .botfix {
+    z-index: 100;
   width: 100%;
   padding: 0.1rem;
   position: fixed;
@@ -55,7 +56,7 @@ export default {
   text-align: center;
   font-size: 0.5rem;
 }
-.xuanzebtn>a{
-    color: #333;
+.xuanzebtn > a {
+  color: #333;
 }
 </style>

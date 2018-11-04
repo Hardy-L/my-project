@@ -19,8 +19,10 @@
               <div class="flex-right-content mutual">
                 <div class="flex-right-content-left">
                   <div class="block">
-                       <span class="star"><el-rate v-model="mls.rating" disabled show-score text-color="#ff9900" score-template="{value}">
-                   </el-rate></span>
+                       <span class="star">
+                         <el-rate v-model="mls.rating" disabled show-score text-color="#ff9900" score-template="{value}">
+                         </el-rate>
+                   </span> 
                        <span class="yueshou">月售{{mls.recent_order_num}}单</span>
                    </div>
                 </div>
@@ -220,14 +222,15 @@ export default {
 }
 .star {
   float: left;
-  width: 6rem;
+  /* width: 6rem; */
   /* border:1px solid red; */
+  height: 1rem;
 }
 .yueshou {
   float: left;
   color: #666;
-  font-size: 0.8rem;
-  margin-left: 0.3rem;
+  font-size: 0.5rem;
+  margin-left: 0.1rem;
 }
 .fengniao {
   background-color: #3190e8;
@@ -270,17 +273,27 @@ export default {
   color: #3190e8;
   font-size: 0.6rem;
 }
+
 </style>
 <style>
 /* 星星评分 */
-<style > .el-rate__item {
-  width: 0.1rem;
-}
-.el-rate__icon {
-  font-size: .8rem;
-  margin: 0 .05rem;
-}
-.el-rate__text {
-  font-size: 0.6rem;
-}
+<style>  
+.el-rate__item {
+    margin-top: 0.1rem;
+    margin-left: 0.03rem;
+    width: 0.087rem;
+    /* border: 1px solid green; */
+  }
+
+  .el-rate__icon {
+    font-size: .05rem;
+    /* border: 1px solid green; */
+    margin:0;
+  }
+
+  .el-rate__text {
+    font-size: 0.1rem;
+    /* border: 1px solid green; */
+  }
+
 </style>
