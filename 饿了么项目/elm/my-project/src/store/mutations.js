@@ -63,7 +63,6 @@ export default {
     state.cgid=getid
   },
   qingkong(state){
-
     for(let ii =0;ii<state.xzdata.length;ii++){
         state.xzdata[ii].count = 0
         state.xzdata.splice(ii,1)
@@ -75,14 +74,13 @@ export default {
     state.botchoice = value;
   },
   dianji(state){
-    console.log("------------")
+  console.log(state.xzdata)
     Vue.set(state.dingdan,"a",state.xzdata);
-    for(let ii =0;ii<state.xzdata.length;ii++){
-      state.xzdata[ii].count = 0
-      state.xzdata.splice(ii,1)
-      ii--;
-    };
+    // for(let ii =0;ii<state.xzdata.length;ii++){
+    //   state.xzdata[ii].count = 0
+    //   state.xzdata.splice(ii,1)
+    //   ii--;
+    // };
   state.num=0;
-  console.log(state.dingdan)
   }
 }
