@@ -23,9 +23,9 @@
  <div class="dizhi">
    <div>
   <img src="../../assets/dizhi.png" alt="">
-  <span>请添加一个收货地址</span>
+  <router-link to="account_newaddress"><span class="black">请添加一个收货地址</span></router-link>
    </div>
-  <span class="el-icon-arrow-right"></span>
+  <router-link to="account_newaddress"><span class="el-icon-arrow-right"></span></router-link>
    </div>
  <div style="width:100%;height:0.2rem;background:linear-gradient(to right,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink,skyblue, pink);margin-bottom:1rem;"></div>
  <!-- 送达时间 -->
@@ -369,5 +369,8 @@ export default {
 .ul_li {
   height: 35.2rem;
   overflow: scroll;
+}
+.black{
+  color:black;
 }
 </style>
